@@ -133,6 +133,6 @@ export const faqs = [
   ],
   [
     "Yangan bana nasıl yardımcı olur?",
-    "Yangan fikrinizi birkaç adımda bir proje özetine dönüştürmenize yardımcı olur. Bu ilk sürümde demo modundadır; hazır yanıtlar verir ve bilgilerinizi sunucuya göndermez.",
+    "Yangan fikrinizi birkaç adımda bir proje özetine dönüştürmenize yardımcı olur. Web, uygulama, oyun ve proje süreciyle ilgili sorularınıza yanıt verir; hazırladığınız özeti forma aktarabilirsiniz.",
   ],
 ] as const;

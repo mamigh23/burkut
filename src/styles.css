@@ -312,6 +312,8 @@ svg {
 /* Opening */
 .hero {
   position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
   isolation: isolate;
   overflow: clip;
   background: radial-gradient(
@@ -1955,7 +1957,42 @@ svg {
   opacity: 1;
 }
 .planet-moving .planet-image {
-  animation: planet-float 16s ease-in-out infinite;
+  animation: planet-float 10s ease-in-out infinite;
+  transform-origin: 50% 48%;
+}
+.planet-orbit {
+  position: absolute;
+  inset: 12% 4% auto;
+  aspect-ratio: 1;
+  transform: rotate(-24deg) scaleY(0.44);
+  pointer-events: none;
+  z-index: 1;
+}
+.planet-orbit-track {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #2e6b4f55;
+  border-radius: 50%;
+  position: relative;
+}
+.planet-orbit-track::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--forest-600);
+  box-shadow: 0 0 0 7px #b9d8c455;
+}
+.planet-moving .planet-orbit-track {
+  animation: planet-orbit 18s linear infinite;
+}
+@keyframes planet-orbit {
+  to {
+    transform: rotate(360deg);
+  }
 }
 .planet-frame::after {
   content: "";
@@ -2071,10 +2108,10 @@ html[data-motion="paused"] {
 @keyframes planet-float {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(8px) rotate(-3deg);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-26px) rotate(3deg);
   }
 }
 .faq {

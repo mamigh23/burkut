@@ -11,7 +11,7 @@
 - Demo proje formu: zorunlu alanlar, e-posta doğrulama, hata odaklaması ve dürüst demo sonucu.
 - Yangan: rehberli akış, bütçe/detay atlama, geri dönüş, özet düzeltme ve forma aktarım.
 - Önceki seçim değiştiğinde sonraki bağımlı cevapların temizlenmesi.
-- Ayrı soru alanında hazır hizmet yanıtları; sürekli demo etiketi.
+- Ayrı soru alanında hazır hizmet yanıtları. Üçüncü paketle sürekli demo etiketi kullanıcı kararıyla kaldırıldı.
 - Kapat/aç konuşma korunması, sıfırlama, odak yönetimi, Escape ve sayfa içi bellek.
 
 Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve aydınlatma metni, kullanıcının kararıyla ertelendi. Gerçek veri gönderimi ve AI entegrasyonu bulunmuyor.
@@ -43,6 +43,17 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Gezegen sonrasında 12 responsive genişlik tekrar kontrol edildi; yatay taşma görülmedi. Mobil tarayıcı daha küçük WebP dosyasını seçti.
 - 111 düz yüzey metni için hesaplanmış renklerden kontrast oranı kontrol edildi; eşik altı sonuç yok. Gradient veya yarı saydam arka plan nedeniyle 22 öğe bu otomatik kontrolden dışlandı. Bu sonuç tam erişilebilirlik denetimi değildir.
 - Yerel **üretim build önizlemesinde** ana sayfa ve gezegen dosyası HTTP 200 döndürdü; gezegen ve Yangan hazır yanıtı çalıştı. Kontrol edilen temiz üretim sekmesinde konsol hata/uyarı kaydı bulunmadı. Bu kontrol canlı yayın veya üretim performans ölçümü değildir.
+
+## Üçüncü geliştirme paketi: sunum ve otomatik kalite
+
+- Sitedeki demo etiketleri, önizleme kutusu ve ilgili anlatım kaldırıldı. Yangan “dijital asistan” olarak tanımlanıyor. Form kontrol düğmesi gerçek gönderim izlenimi vermiyor; gönderim bağlantısının kapalı olduğu işlem alanında ve kontrol sonucunda belirtiliyor.
+- Hero için `100vh` yedeği ve `100dvh` minimum yüksekliği eklendi. İçeriğin daha uzun olduğu kısa ekranlarda kesilmeden büyüyebiliyor.
+- Gezegenin 16 saniye / 8 px hareketi, 10 saniye / 34 px salınım ve ±3 derece eğime dönüştürüldü. 18 saniyelik yörünge animasyonu eklendi. Ekran dışındayken hareket çalışmıyor; ortak durdurma ve sistem azaltılmış hareket kuralları korunuyor.
+- GitHub Actions kalite akışı eklendi: main push ve pull request için temiz bağımlılık kurulumu, lint, test ve build. Yerelde kontroller geçti; GitHub çalıştırma sonucu ayrıca kontrol edilmeli.
+- Kullanılmayan italik fontlar ve JetBrains Mono'nun gereksiz alfabe tanımları çıkarıldı. Üretim CSS dosyası 72,13 kB'dan 62,10 kB'a, gzip 21,40 kB'dan 13,74 kB'a düştü. Bu ölçüm Lighthouse puanı değildir.
+- 1920×944, 1440×1100, 1440×800, 768×1024, 390×844 ve 320×568 ekranlarında hero yüksekliği ekran yüksekliğinin altında kalmadı; yatay taşma görülmedi. Sayfa metninde demo ifadesi bulunmadı.
+- Gezegen ve yörünge animasyonlarının çalışması, durdurulduğunda ikisinin de `none` olması ve tekrar başlatılması tarayıcıda doğrulandı.
+- TypeScript, üretim build, lint ve 6 akış/doğrulama testi başarılı.
 
 ## Henüz tamamlanmayan kabul kontrolleri
 

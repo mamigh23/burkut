@@ -185,9 +185,6 @@ export default function Yangan({
               <X size={18} />
             </button>
           </div>
-          <div className="chat-demo">
-            <i /> DEMO MODU — HAZIR YANITLAR
-          </div>
           <div
             className="chat-scroll"
             ref={scroll}
@@ -307,11 +304,10 @@ export default function Yangan({
                         });
                       }}
                     >
-                      Demo forma aktar <ArrowUpRight size={16} />
+                      Forma aktar <ArrowUpRight size={16} />
                     </button>
                     <p>
-                      Özet sunucuya gönderilmez. Formdaki bilgileri kontrol
-                      ederek demo akışını deneyebilirsin.
+                      Proje özetini formda gözden geçirip tamamlayabilirsin.
                     </p>
                   </div>
                 )}

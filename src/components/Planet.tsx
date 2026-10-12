@@ -49,6 +49,9 @@ export default function Planet() {
           />
         )}
         <div className="planet-atmosphere" aria-hidden="true" />
+        <div className="planet-orbit" aria-hidden="true">
+          <div className="planet-orbit-track" />
+        </div>
         <div className="planet-service planet-service-web" aria-hidden="true">
           <i />
           <span>Web</span>

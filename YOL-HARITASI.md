@@ -25,7 +25,7 @@ Markanın şu an doğrulanabilir dayanağı; hizmet alanları, tasarım yaklaş�
 - Allbytech'in bölüm ritmi ve maket sunumundan yararlanılır; Bürküt'e özgü metin ve sahneler hazırlanır.
 - Logo çalışması ertelendi. İlk arayüzde Türkçe karakterleri doğru bir Bürküt metin işareti kullanılır; nihai logo olarak sunulmaz.
 - Gerçek iletişim bilgileri ve aydınlatma metni ertelendi. Bunlar demo geliştirmesini engellemez; gerçek veri toplayan yayına geçişten önce tamamlanır.
-- Form ve Yangan başlangıçta açıkça belirtilmiş demo modunda çalışır. Kişisel bilgiler sunucuya gönderilmez veya kalıcı tarayıcı deposuna yazılmaz.
+- Form ve Yangan ilk sürümde yerel akışlarla çalışır. Kullanıcı kararıyla sitedeki demo etiketleri kaldırıldı; gerçek gönderim açılana kadar form bunu ilgili işlemde açıkça belirtir. Kişisel bilgiler sunucuya gönderilmez veya kalıcı tarayıcı deposuna yazılmaz.
 - Ziyaretçinin ana eylemi “Projeni Anlat” olur. Yangan bu eylemi destekler.
 
 ## 1. Marka ve içerik temeli
@@ -128,7 +128,7 @@ Yapılacaklar:
 - Hizmet → aşama → zaman → isteğe bağlı bütçe → detay → özet/düzeltme akışı kurulur.
 - Geriye dönüp seçim değiştirildiğinde bağımlı sonraki cevaplar yeniden değerlendirilir.
 - Özet, iletişim formuna aktarılabilir; gerçek gönderim henüz açılmaz.
-- Ayrı serbest soru alanı oluşturulur. Gerçek model olmadan hazır yanıtların sınırı açıkça belirtilir; demo modu sürekli görünür olur.
+- Ayrı serbest soru alanı oluşturulur. Gerçek model olmadan hizmetlerle ilgili hazır yanıtlar kullanılır; dijital asistan tanımı korunur. Kullanıcı kararıyla sürekli demo etiketi gösterilmez.
 - Panel kapanınca konuşma korunur; sıfırlama ve sayfa yenileme temizler.
 
 **Çıktı:** Mobil ve masaüstünde çalışan Yangan demo asistanı.  

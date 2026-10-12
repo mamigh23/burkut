@@ -70,7 +70,6 @@ export default function App() {
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} Bürküt Teknoloji.</span>
             <span>İlk adım. Yeni ihtimaller.</span>
-            <span className="mono">DEMO / 0.1</span>
             <MotionToggle />
           </div>
         </div>

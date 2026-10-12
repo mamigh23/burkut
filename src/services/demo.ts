@@ -29,7 +29,7 @@ export async function submitDemoProject(): Promise<{
   return {
     mode: "demo",
     message:
-      "Demo: bilgiler sunucuya gönderilmedi. Formun nasıl çalıştığını denedin; yazdıkların bu sayfada kaldı.",
+      "Proje özetin kontrol edildi. Gönderim bağlantısı henüz açık olmadığı için bilgiler Bürküt'e iletilmedi; bu sayfada kaldı.",
   };
 }
 
@@ -45,5 +45,5 @@ export function demoReply(input: string): string {
     return "Bürküt kurumsal siteler, tanıtım sayfaları ve ihtiyaca göre web uygulamaları geliştirir. Önce sitenin amacı, hedef kitlesi ve gerekli içerikleri netleştirebiliriz.";
   if (/merhaba|selam/.test(text))
     return "Merhaba! Web sitesi, uygulama veya oyun fikrini konuşabiliriz. “Fikrimi netleştir” ile birlikte bir proje özeti hazırlayalım.";
-  return "Demo modunda yalnızca hazır hizmet yanıtları verebiliyorum. Web, uygulama, oyun veya proje süreci hakkında sorabilirsin. Fikrini yapılandırmak için “Fikrimi netleştir” seçeneğini kullanabilirsin.";
+  return "Web, uygulama, oyun ve proje süreci hakkında yardımcı olabilirim. Fikrini yapılandırmak için “Fikrimi netleştir” seçeneğini kullanabilirsin.";
 }

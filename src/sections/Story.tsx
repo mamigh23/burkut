@@ -228,9 +228,9 @@ export function About({ onChat }: { onChat: () => void }) {
               <span className="mono">TANIŞTIRALIM: YANGAN</span>
               <h3>Bir fikirle başlayalım mı?</h3>
               <p>
-                Bürküt'ün yapay zekâ asistanı.
+                Bürküt'ün dijital asistanı.
                 <br />
-                İlk sürümde, hazır yanıtlarla demo modunda.
+                Fikrini birlikte netleştirelim.
               </p>
               <button onClick={onChat}>
                 Sorunu Yangan'a anlat <ArrowUpRight size={18} />

@@ -67,7 +67,7 @@ export default function Contact({ draft }: { draft: Draft | null }) {
       setStatus(result.message);
     } catch {
       setStatus(
-        "Demo tamamlanamadı. Yazdıkların korundu; tekrar deneyebilirsin.",
+        "Kontrol tamamlanamadı. Yazdıkların korundu; tekrar deneyebilirsin.",
       );
     } finally {
       setBusy(false);
@@ -94,15 +94,6 @@ export default function Contact({ draft }: { draft: Draft | null }) {
               <br />
               Aklındakini birkaç cümleyle anlat.
             </p>
-            <div className="contact-demo-note">
-              <span className="mono">
-                <i /> GELİŞTİRME ÖNİZLEMESİ
-              </span>
-              <p>
-                Bu form demo modunda. Gerçek iletişim ve gönderim bağlantıları
-                sonraki aşamada eklenecek.
-              </p>
-            </div>
             <div className="contact-steps">
               <span>
                 01 <b>Fikrini paylaş</b>
@@ -121,7 +112,6 @@ export default function Contact({ draft }: { draft: Draft | null }) {
           >
             <div className="form-heading">
               <h3>Projeni anlat.</h3>
-              <span>DEMO</span>
             </div>
             <p className="form-subtitle">
               İyi bir başlangıç için birkaç küçük detay.
@@ -266,16 +256,14 @@ export default function Contact({ draft }: { draft: Draft | null }) {
               />
             </div>
             <p className="form-privacy">
-              Demo sırasında bilgiler sunucuya gönderilmez ve sayfa
-              yenilendiğinde temizlenir. Gerçek gönderim, aydınlatma metni ve
-              servisler tamamlandığında açılacak.
+              Bilgilerin bu sayfada kalır. Gönderim bağlantısı henüz açık değil.
             </p>
             <button
               className="button form-submit"
               disabled={busy}
               type="submit"
             >
-              {busy ? "Demo kontrol ediliyor…" : "Demo Formu Dene"}
+              {busy ? "Özet kontrol ediliyor…" : "Proje Özetini Kontrol Et"}
               <ArrowUpRight size={18} />
             </button>
             <div className="form-status" role="status">
