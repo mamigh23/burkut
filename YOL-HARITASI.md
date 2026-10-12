@@ -142,6 +142,7 @@ Yapılacaklar:
 
 - 320, 375, 390, 640, 768, 1024 ve 1440 px ile önemli breakpoint sınırları kontrol edilir.
 - Klavye, görünür odak, erişilebilir sekmeler, form hataları, yüzde 200 zoom ve azaltılmış hareket tercihi kontrol edilir.
+- **Uygulandı:** Yedi arayüz durumunda yerel axe-core taraması ve bulunan kontrast/düğme adı düzeltmeleri. [Denetim raporu](./docs/qa/ERISILEBILIRLIK.md). Manuel inceleme, ekran okuyucu ve fiziksel cihaz kontrolleri sürüyor.
 - Yangan geri/düzelt/sıfırla durumları ve formun boş/hatalı alanları test edilir. Otomatik testler özellikle akış mantığı ve veri doğrulamasına odaklanır.
 - TypeScript, lint ve build kontrolleri çalıştırılır; konsol hataları ve bozuk varlıklar giderilir.
 - Font/görsel boyutları, düzen kaymaları ve performans gerçek tarayıcıda ölçülür. Ölçülmemiş puan raporlanmaz.

@@ -164,7 +164,6 @@ export function Approach() {
             >
               <button
                 className="process-button"
-                aria-label={step.title}
                 aria-expanded={active === index}
                 aria-controls={`process-${index}`}
                 onClick={() => setActive(index)}
@@ -172,6 +171,9 @@ export function Approach() {
                 <span className="mono">00{index + 1}</span>
                 <span>{step.title}</span>
                 <ArrowUpRight size={20} aria-hidden="true" />
+                {active === index && (
+                  <span className="sr-only">{step.title}</span>
+                )}
               </button>
               <div className="process-content" id={`process-${index}`}>
                 <span className="mobile-process-number mono">

@@ -668,7 +668,7 @@ svg {
   background: #f2f1e9;
   border-bottom: 1px solid #dfe0d5;
   font-size: 8px;
-  color: #69715f;
+  color: #606956;
 }
 .browser-dots {
   display: flex;
@@ -942,7 +942,7 @@ svg {
   gap: 5px;
   padding: 7px 5px;
   border-radius: 15px;
-  color: #69795f;
+  color: #52614a;
 }
 .planner-week span.active {
   background: #233329;
@@ -1514,7 +1514,7 @@ svg {
   transform: rotate(-2deg);
 }
 .web-side-label {
-  color: #7b906f;
+  color: #617653;
   font-family: "Inter Tight Variable", sans-serif;
   font-size: 33px;
   line-height: 1.2;

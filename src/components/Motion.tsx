@@ -62,8 +62,8 @@ export function MotionToggle({ planet = false }: { planet?: boolean }) {
       onClick={toggle}
       aria-label={
         enabled
-          ? "Dekoratif hareketleri durdur"
-          : "Dekoratif hareketleri başlat"
+          ? "Hareketi durdur: dekoratif animasyonlar"
+          : "Hareketi başlat: dekoratif animasyonlar"
       }
     >
       {enabled ? (

@@ -54,6 +54,8 @@ npm run preview
 
 GitHub kalite akışı lint, test, build ve dosya boyutu sınırlarını kontrol eder. Boyut sınırları: toplam JavaScript 100 KiB gzip, toplam CSS 20 KiB gzip, tek raster görsel 600 KiB. Bu kontrol tarayıcı performansı veya Lighthouse puanı ölçmez.
 
+Yerel erişilebilirlik taraması ve tekrar çalıştırma adımları: [Erişilebilirlik kontrolü](./docs/qa/ERISILEBILIRLIK.md). Denetim aracı yalnızca `?audit=a11y` ile geliştirme sunucusunda açılır.
+
 ## Kaynak yapısı
 
 ```text

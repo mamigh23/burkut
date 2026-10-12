@@ -34,7 +34,7 @@ export default function App() {
         İçeriğe geç
       </a>
       <Header />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <Hero />
         <Vision />
         <Services />

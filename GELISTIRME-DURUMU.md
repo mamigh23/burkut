@@ -64,6 +64,16 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Sınırı aşan geçici bir görselle kontrolün hata kodu 1 verdiği doğrulandı; geçici dosya kaldırıldı ve normal çıktı tekrar geçti.
 - TypeScript, build, lint ve mevcut 6 test geçti. Boyut koruması Lighthouse veya gerçek cihaz performans ölçümünün yerine geçmez.
 
+## Beşinci geliştirme paketi: erişilebilirlik denetimi
+
+- Yalnızca açık yerel denetim adresinde çalışan axe-core aracı eklendi; üretim paketinde araç metni veya kodu bulunmadığı doğrulandı.
+- Konsept maketlerdeki düşük kontrastlı tarayıcı metni, yan etiket ve takvim rakamları koyulaştırıldı. Süreç düğmeleri ve hareket kontrolünün görünür metin/erişilebilir ad uyuşmazlıkları düzeltildi.
+- “İçeriğe geç” bağlantısı için ana içerik odak hedefi yapıldı; klavye Enter sonrası aktif öğenin main olması doğrulandı.
+- Masaüstünde üç ürün sekmesi, mobilde menü, hatalı form, Yangan karşılama ve ilk akış sorusu tarandı. Yedi durumda otomatik ihlal sayısı 0; manuel inceleme isteyen incomplete bulgular korundu. Bu sonuç tam erişilebilirlik sertifikası değildir.
+- [Denetim notları](./docs/qa/ERISILEBILIRLIK.md) ve [ham sonuçlar](./docs/qa/accessibility-2026-10-13.json) kaydedildi.
+- Önceki iki GitHub Quality çalışmasının success sonucu API üzerinden doğrulandı: cede6ab ve 5a3708f. Yeni commit'in kontrol sonucu ayrıca izlenmeli.
+- TypeScript, lint, build, 6 test ve dosya boyutu sınırları geçti. Paket kurulumunun npm denetimi 0 güvenlik açığı bildirdi.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

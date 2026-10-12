@@ -12,3 +12,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <App />
   </React.StrictMode>,
 );
+
+if (
+  import.meta.env.DEV &&
+  new URLSearchParams(window.location.search).get("audit") === "a11y"
+) {
+  void import("./dev/accessibility").then(({ startAccessibilityAudit }) =>
+    startAccessibilityAudit(),
+  );
+}

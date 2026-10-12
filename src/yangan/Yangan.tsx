@@ -168,7 +168,7 @@ export default function Yangan({
             <YanganMark />
             <div>
               <b>Yangan</b>
-              <span>Bürküt'ün yapay zekâ asistanı</span>
+              <span>Bürküt'ün dijital asistanı</span>
             </div>
             <button
               aria-label="Yeni konuşma"
