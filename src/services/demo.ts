@@ -1,0 +1,49 @@
+import type { Area } from "../content";
+
+export interface ProjectData {
+  areas: Area[];
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  detail: string;
+  budget: string;
+}
+export type Errors = Partial<Record<keyof ProjectData, string>>;
+export function validateProject(data: ProjectData): Errors {
+  const errors: Errors = {};
+  if (!data.areas.length) errors.areas = "En az bir proje alanı seçmelisin.";
+  if (!data.name.trim()) errors.name = "Adını ve soyadını yazmalısın.";
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()))
+    errors.email = "Geçerli bir e-posta adresi yazmalısın.";
+  if (!data.detail.trim())
+    errors.detail = "Fikrini birkaç cümleyle anlatmalısın.";
+  return errors;
+}
+
+export async function submitDemoProject(): Promise<{
+  mode: "demo";
+  message: string;
+}> {
+  await new Promise((resolve) => setTimeout(resolve, 350));
+  return {
+    mode: "demo",
+    message:
+      "Demo: bilgiler sunucuya gönderilmedi. Formun nasıl çalıştığını denedin; yazdıkların bu sayfada kaldı.",
+  };
+}
+
+export function demoReply(input: string): string {
+  const text = input.toLocaleLowerCase("tr");
+  if (/fiyat|bütçe|ücret|kaç para|süre|zaman|teslim/.test(text))
+    return "Fiyat ve süre, kapsam ve gereksinimler netleşince proje özelinde değerlendirilir. Burada kesin bir teklif veremem. Proje özetini hazırlamak için “Fikrimi netleştir” seçeneğini kullanabilirsin.";
+  if (/oyun/.test(text))
+    return "Oyun fikrinde önce temel oynanışı, hedef platformu ve ilk prototipin kapsamını netleştirebiliriz. Bürküt oyun prototipi, oynanış ve oyun arayüzü üzerine çalışır.";
+  if (/uygulama|mobil/.test(text))
+    return "Uygulama için kullanıcıların hangi ihtiyacını çözeceğini ve temel akışları belirlemek iyi bir başlangıç. Platform ve araçlar projenin ihtiyacına göre değerlendirilir.";
+  if (/web|site/.test(text))
+    return "Bürküt kurumsal siteler, tanıtım sayfaları ve ihtiyaca göre web uygulamaları geliştirir. Önce sitenin amacı, hedef kitlesi ve gerekli içerikleri netleştirebiliriz.";
+  if (/merhaba|selam/.test(text))
+    return "Merhaba! Web sitesi, uygulama veya oyun fikrini konuşabiliriz. “Fikrimi netleştir” ile birlikte bir proje özeti hazırlayalım.";
+  return "Demo modunda yalnızca hazır hizmet yanıtları verebiliyorum. Web, uygulama, oyun veya proje süreci hakkında sorabilirsin. Fikrini yapılandırmak için “Fikrimi netleştir” seçeneğini kullanabilirsin.";
+}

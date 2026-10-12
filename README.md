@@ -1,33 +1,70 @@
 # Bürküt Teknoloji
 
-Bürküt; web siteleri, uygulamalar ve oyunlar geliştirmek için oluşturulan teknoloji markasıdır. Bu depo, markanın ilk kurumsal web sitesi için şartname, referans incelemesi ve uygulama yol haritasını içerir.
+Bürküt; web siteleri, uygulamalar ve oyunlar geliştirmek için oluşturulan teknoloji markasıdır. Bu depo ilk kurumsal web sitesinin kaynak kodunu, marka şartnamesini ve geliştirme yol haritasını içerir.
 
 ## Projenin durumu
 
-Proje planlama aşamasındadır. Henüz uygulama kaynak kodu, çalışan web sitesi veya gerçek AI/form entegrasyonu bulunmamaktadır.
+İlk demo sürüm geliştirildi: responsive ana sayfa, özgün Web / Uygulama / Oyun konseptleri, Yangan rehberli proje akışı, hazır soru yanıtları ve alan doğrulamalı demo formu.
+
+**Gerçek AI veya form gönderimi yoktur.** Demo verileri sunucuya gönderilmez; sayfa yenilenince temizlenir. Konseptler müşteri portföyü değildir.
 
 - Görünen marka: **Bürküt**
 - Kurumsal isim: **Bürküt Teknoloji**
-- Planlanan asistan: **Yangan**
+- Asistan: **Yangan — demo modu**
 - Görsel yön: orman yeşili, mavi ve siyah
-- Planlanan altyapı: React, TypeScript, Vite, Tailwind CSS ve özel CSS
+- Altyapı: React, TypeScript, Vite, Tailwind CSS ve özel CSS
 
 ## Belgeler
 
 - [Marka kimliği ve web sitesi şartnamesi](./Bürküt.md)
 - [Canlı referans incelemesi](./REFERANS-INCELEMESI.md)
 - [Marka ve geliştirme yol haritası](./YOL-HARITASI.md)
+- [Geliştirme durumu ve doğrulama](./GELISTIRME-DURUMU.md)
 
 ## İlk geliştirme paketi
 
-İçerik temeli, proje iskeleti, tasarım tokenları, navbar ve hero hazırlanacak. Ardından ana sayfa bölümleri, ayrı Web / Uygulama / Oyun konseptleri ve Yangan demo deneyimi geliştirilecek.
+İçerik temeli, proje iskeleti, tasarım tokenları, navbar ve hero hazırlandı. Ana sayfa bölümleri, ayrı Web / Uygulama / Oyun konseptleri ve Yangan demo deneyimi eklendi. Gerçek cihaz kontrolleri ve üretim performansı değerlendirmesi devam ediyor.
 
 Logo üretimi, gerçek iletişim bilgileri ve aydınlatma metni sonraki aşamaya bırakılmıştır. Gerçek servisler kurulana kadar form ve asistan açıkça belirtilmiş demo modunda çalışacaktır.
 
 ## Kurulum
 
-Uygulama henüz kurulmadığından çalıştırma komutu bulunmuyor. Kaynak kod eklendiğinde kurulum ve doğrulama adımları burada belgelenecek.
+Node.js 22.12+ veya desteklenen daha yeni bir Node sürümü kullanın. Geliştirme Node.js 24 üzerinde yapıldı.
+
+```sh
+npm ci
+npm run dev
+```
+
+Vite'ın terminalde gösterdiği yerel adresi açın. Önizleme varsayılan olarak yalnızca `127.0.0.1` üzerinden erişilir.
+
+## Doğrulama ve üretim build
+
+```sh
+npm run typecheck
+npm run lint
+npm test
+npm run build
+npm run preview
+```
+
+Üretim çıktısı `dist/` altında oluşur. Paket sürümleri `package-lock.json` ile sabitlenmiştir. `package.json` içindeki `private: true`, npm paket yayınını engeller; GitHub reposunun public görünürlüğünü değiştirmez.
+
+## Kaynak yapısı
+
+```text
+src/components/   Ortak arayüz ve navigasyon
+src/sections/     Ana sayfa bölümleri
+src/concepts/     HTML/CSS/SVG ürün maketleri
+src/yangan/       Asistan ve test edilen akış mantığı
+src/services/     Demo yanıtları ve form doğrulaması
+src/content.ts    Merkezi Türkçe metinler
+src/styles.css    Palet tokenları, düzen ve responsive stiller
+public/licenses/  Dağıtılan font ve simge lisansları
+```
+
+Domain seçilmediği için canonical ve üretim OG URL'si tanımlanmamıştır. Gerçek AI ve talep servisi bağlanmadan önce nihai iletişim ve aydınlatma içeriği tamamlanmalıdır.
 
 ## Lisans
 
-Henüz açık kaynak lisansı seçilmedi.
+Projenin kendisi için henüz açık kaynak lisansı seçilmedi. Fontların ve Lucide simgelerinin lisansları `public/licenses/` altında korunur.

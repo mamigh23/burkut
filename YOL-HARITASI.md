@@ -1,10 +1,12 @@
 # Bürküt — Marka ve web sitesi yol haritası
 
 **Tarih:** 12 Ekim 2026  
-**Durum:** Plan; uygulama henüz başlamadı.  
+**Durum:** İlk demo uygulaması hazır; kalite kontrolleri devam ediyor.  
 **Temel belgeler:** Bürküt.md ve REFERANS-INCELEMESI.md
 
 ## Hedef
+
+**İlerleme:** 1–5. aşamaların ilk demo sürümü uygulandı. 6. aşamadaki temel kontroller yapıldı; gerçek cihaz, ekran okuyucu ve üretim performans kontrolleri henüz tamamlanmadı. Gerçek servisler ve yayın başlamadı. Ayrıntılar: [GELISTIRME-DURUMU.md](./GELISTIRME-DURUMU.md).
 
 Bürküt Teknoloji'nin web, uygulama ve oyun geliştirme alanlarını açıkça anlatan; özgün görsel kimliği, ürün konseptleri ve Yangan asistanıyla güven veren ilk kurumsal sitesini oluşturmak.
 
