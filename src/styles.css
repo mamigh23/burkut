@@ -1908,21 +1908,174 @@ svg {
 .connection-copy .button {
   margin-top: 25px;
 }
-.connection-orb {
-  width: min(850px, 120%);
-  margin: 18px auto -105px;
+.planet-figure {
+  width: min(900px, calc(100% - 40px));
+  margin: 48px auto 0;
   position: relative;
 }
-.connection-orb::after {
+.planet-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  color: var(--text-muted);
+  font-size: 11px;
+  margin-bottom: 20px;
+}
+.planet-caption > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: var(--forest-600);
+}
+.planet-caption i {
+  width: 5px;
+  height: 5px;
+  background: var(--forest-600);
+  border-radius: 50%;
+}
+.planet-frame {
+  position: relative;
+  width: min(850px, 100%);
+  height: clamp(330px, 43vw, 600px);
+  margin: auto;
+  isolation: isolate;
+}
+.planet-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.planet-loaded .planet-image {
+  opacity: 1;
+}
+.planet-moving .planet-image {
+  animation: planet-float 16s ease-in-out infinite;
+}
+.planet-frame::after {
   content: "";
   position: absolute;
-  inset: auto 0 0;
-  height: 130px;
-  background: linear-gradient(transparent, var(--paper));
+  inset: auto -5% -1px;
+  height: 30%;
+  background: linear-gradient(transparent, var(--paper) 94%);
+  z-index: 2;
+  pointer-events: none;
 }
-.connection-orb svg {
-  width: 100%;
-  display: block;
+.planet-atmosphere {
+  position: absolute;
+  z-index: -1;
+  inset: 3% -4% -28%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    #b9d8c455,
+    #b9d8c414 65%,
+    transparent 73%
+  );
+  pointer-events: none;
+}
+.planet-fallback {
+  width: 94%;
+  aspect-ratio: 1;
+  margin: auto;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 28% 25%,
+    var(--mint),
+    var(--forest-600) 35%,
+    var(--forest-950) 85%
+  );
+  box-shadow: 0 0 28px #4f83ff22;
+}
+.planet-service {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 15px;
+  border: 1px solid var(--border-light);
+  border-radius: 100px;
+  background: #f4f7f3ec;
+  backdrop-filter: blur(12px);
+  color: var(--forest-950);
+  font-size: 12px;
+  box-shadow: 0 8px 28px #14231d12;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.planet-loaded .planet-service {
+  opacity: 1;
+}
+.planet-service i {
+  width: 5px;
+  height: 5px;
+  background: var(--forest-600);
+  border-radius: 50%;
+}
+.planet-service-web {
+  left: 12%;
+  top: 31%;
+}
+.planet-service-app {
+  right: 8%;
+  top: 44%;
+}
+.planet-service-game {
+  left: 35%;
+  top: 68%;
+}
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 100px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 10px;
+}
+.motion-toggle:hover {
+  background: var(--surface-muted);
+}
+.planet-motion,
+.planet-figure > .motion-system-label {
+  position: absolute;
+  right: 0;
+  bottom: 12px;
+  z-index: 3;
+}
+.motion-system-label {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.service-band:hover > div {
+  animation-play-state: paused;
+}
+html[data-motion="paused"] *,
+html[data-motion="paused"] *::before,
+html[data-motion="paused"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+html[data-motion="paused"] {
+  scroll-behavior: auto;
+}
+@keyframes planet-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 .faq {
   background: white;
@@ -2652,6 +2805,11 @@ legend > span,
     gap: 25px;
   }
 }
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none;
+  }
+}
 @media (max-width: 1023px) {
   .section-heading {
     gap: 35px;
@@ -3124,9 +3282,31 @@ legend > span,
   .connection-copy p {
     font-size: 13px;
   }
-  .connection-orb {
-    margin-bottom: -60px;
-    width: 100%;
+  .planet-figure {
+    margin-top: 35px;
+  }
+  .planet-caption {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .planet-frame {
+    height: clamp(290px, 80vw, 520px);
+  }
+  .planet-service {
+    font-size: 10px;
+    padding: 7px 10px;
+  }
+  .planet-service-web {
+    left: 1%;
+    top: 31%;
+  }
+  .planet-service-app {
+    right: 0;
+    top: 45%;
+  }
+  .planet-service-game {
+    top: 67%;
   }
   .faq-layout {
     grid-template-columns: 1fr;
@@ -3231,7 +3411,10 @@ legend > span,
     width: auto;
     max-width: 400px;
     margin-left: auto;
-    height: min(480px, calc(100dvh - 112px - var(--keyboard-inset, 0px)));
+    height: min(
+      480px,
+      max(160px, calc(var(--chat-viewport-height, 100dvh) - 24px))
+    );
   }
   .chat-launcher {
     right: 16px;

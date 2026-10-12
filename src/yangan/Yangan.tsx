@@ -43,8 +43,19 @@ export default function Yangan({
   const panel = useRef<HTMLElement>(null);
   const scroll = useRef<HTMLDivElement>(null);
   const nearBottom = useRef(true);
+  const wasOpen = useRef(false);
+  useEffect(() => {
+    if (!open) return;
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onEscape);
+    return () => window.removeEventListener("keydown", onEscape);
+  }, [open, setOpen]);
   useEffect(() => {
     if (open) closeButton.current?.focus();
+    else if (wasOpen.current) launcher.current?.focus();
+    wasOpen.current = open;
   }, [open]);
   useEffect(() => {
     if (!open) return;
@@ -62,11 +73,16 @@ export default function Yangan({
     if (!open) return;
     const viewport = window.visualViewport;
     const resize = () => {
-      if (panel.current)
+      if (panel.current) {
         panel.current.style.setProperty(
           "--keyboard-inset",
           `${Math.max(0, window.innerHeight - (viewport?.height || window.innerHeight) - (viewport?.offsetTop || 0))}px`,
         );
+        panel.current.style.setProperty(
+          "--chat-viewport-height",
+          `${viewport?.height || window.innerHeight}px`,
+        );
+      }
     };
     resize();
     viewport?.addEventListener("resize", resize);
@@ -83,7 +99,6 @@ export default function Yangan({
   }, [messages, mode, flow.step]);
   const close = () => {
     setOpen(false);
-    launcher.current?.focus();
   };
   const reset = () => {
     dispatch({ type: "reset" });
@@ -95,7 +110,10 @@ export default function Yangan({
     nearBottom.current = true;
   };
   const answer = (value: string) => {
-    dispatch({ type: "answer", value });
+    dispatch({
+      type: "answer",
+      value: value === "Atla" ? "Belirtilmedi" : value,
+    });
     setInput("");
     setAnnouncement(
       flow.step < 4 ? questions[flow.step + 1].title : "Proje özetin hazır.",

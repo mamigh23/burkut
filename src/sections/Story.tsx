@@ -14,6 +14,7 @@ import {
 import { services, steps, faqs } from "../content";
 import { ArrowLink, Eyebrow, YanganMark } from "../components/UI";
 import { Dashboard } from "../concepts/Scenes";
+import Planet from "../components/Planet";
 
 export function Vision() {
   return (
@@ -326,45 +327,7 @@ export function Connection() {
         </p>
         <ArrowLink>Fikrini Paylaş</ArrowLink>
       </div>
-      <div className="connection-orb" aria-hidden="true">
-        <svg viewBox="0 0 800 450">
-          <defs>
-            <radialGradient id="orb-glow">
-              <stop stopColor="#b9d8c4" stopOpacity=".45" />
-              <stop offset="1" stopColor="#b9d8c4" stopOpacity="0" />
-            </radialGradient>
-          </defs>
-          <ellipse cx="400" cy="270" rx="370" ry="240" fill="url(#orb-glow)" />
-          <g fill="none" stroke="#2e6b4f" strokeOpacity=".3">
-            <ellipse cx="400" cy="290" rx="280" ry="240" />
-            <ellipse cx="400" cy="290" rx="210" ry="240" />
-            <ellipse cx="400" cy="290" rx="110" ry="240" />
-            <ellipse cx="400" cy="290" rx="280" ry="80" />
-            <ellipse cx="400" cy="290" rx="280" ry="160" />
-            <path d="M120 290h560M400 50v480" />
-          </g>
-          <g fill="#2e6b4f">
-            <circle cx="193" cy="146" r="6" />
-            <circle cx="570" cy="180" r="7" />
-            <circle cx="290" cy="370" r="5" />
-            <circle cx="400" cy="50" r="6" />
-          </g>
-          <path
-            d="m193 146 207-96 170 130-280 190"
-            stroke="#2457c5"
-            strokeOpacity=".5"
-            fill="none"
-          />
-          <circle
-            cx="570"
-            cy="180"
-            r="16"
-            fill="none"
-            stroke="#2457c5"
-            strokeOpacity=".4"
-          />
-        </svg>
-      </div>
+      <Planet />
     </section>
   );
 }

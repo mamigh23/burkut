@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Header from "./components/Header";
 import { Brand } from "./components/UI";
@@ -15,12 +15,21 @@ import {
 } from "./sections/Story";
 import Contact, { type Draft } from "./sections/Contact";
 import Yangan from "./yangan/Yangan";
+import { MotionProvider, MotionToggle } from "./components/Motion";
 
 export default function App() {
   const [chatOpen, setChatOpen] = useState(false);
   const [draft, setDraft] = useState<Draft | null>(null);
+  useEffect(() => {
+    const anchor = window.location.hash.slice(1);
+    if (!anchor) return;
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(anchor)?.scrollIntoView({ behavior: "instant" });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
   return (
-    <>
+    <MotionProvider>
       <a className="skip-link" href="#main">
         İçeriğe geç
       </a>
@@ -62,10 +71,22 @@ export default function App() {
             <span>© {new Date().getFullYear()} Bürküt Teknoloji.</span>
             <span>İlk adım. Yeni ihtimaller.</span>
             <span className="mono">DEMO / 0.1</span>
+            <MotionToggle />
           </div>
         </div>
       </footer>
-      <Yangan open={chatOpen} setOpen={setChatOpen} onDraft={setDraft} />
-    </>
+      <Yangan
+        open={chatOpen}
+        setOpen={setChatOpen}
+        onDraft={(nextDraft) => {
+          setDraft(nextDraft);
+          requestAnimationFrame(() => {
+            document
+              .getElementById("contact-name")
+              ?.focus({ preventScroll: true });
+          });
+        }}
+      />
+    </MotionProvider>
   );
 }

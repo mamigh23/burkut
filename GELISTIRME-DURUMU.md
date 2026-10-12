@@ -30,6 +30,20 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Örnek demo form verisiyle gönderimin sunucuya gönderilmediğini belirten sonuç görüldü.
 - Yangan soru alanında web hizmetiyle ilgili hazır yanıt kontrol edildi.
 
+## İkinci geliştirme paketi: gezegen ve kalite
+
+- Soyut bağlantı küresi, kullanıcı kararıyla özgün ve hayalî Bürküt gezegeniyle değiştirildi. Görsel şeffaf WebP, küçük ekranlar için ayrı 640 px sürüm ve lazy yükleme kullanıyor.
+- Gezegenin boyutları önceden ayrıldı. Görsel yüklenemezse CSS küre yedeği gösterilir. Hayalî dünya olduğu görünür açıklamayla belirtilir.
+- Gezegen ve hizmet bandı için ortak hareket durdurma kontrolü eklendi; sistem hareket azaltma tercihi korunur. Tarayıcıda düğmeye basınca her iki animasyonun da `none` olması doğrulandı.
+- Mobil Yangan kapanışında gizlenen açma düğmesi yüzünden odak dönüşünün başarısız olabildiği durum düzeltildi. Mobil Escape sonrası odak açma düğmesine döndü.
+- Yangan özeti forma aktarıldığında ad alanına odak veriliyor. Atlanan detay “Belirtilmedi” olarak aktarılıyor; tarayıcıda doğrulandı.
+- Kısa ekran ve klavye için panel yüksekliği VisualViewport yüksekliğine bağlandı. Gerçek telefon testi hâlâ yapılmadı.
+- Doğrudan bölüm URL'siyle açılışta ilgili anchor'a kaydırma eklendi ve gezegen bölümünde doğrulandı.
+- Mobil menünün masaüstü breakpoint'inde açık kalmasına karşı durum ve görünürlük koruması eklendi.
+- Gezegen sonrasında 12 responsive genişlik tekrar kontrol edildi; yatay taşma görülmedi. Mobil tarayıcı daha küçük WebP dosyasını seçti.
+- 111 düz yüzey metni için hesaplanmış renklerden kontrast oranı kontrol edildi; eşik altı sonuç yok. Gradient veya yarı saydam arka plan nedeniyle 22 öğe bu otomatik kontrolden dışlandı. Bu sonuç tam erişilebilirlik denetimi değildir.
+- Yerel **üretim build önizlemesinde** ana sayfa ve gezegen dosyası HTTP 200 döndürdü; gezegen ve Yangan hazır yanıtı çalıştı. Kontrol edilen temiz üretim sekmesinde konsol hata/uyarı kaydı bulunmadı. Bu kontrol canlı yayın veya üretim performans ölçümü değildir.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

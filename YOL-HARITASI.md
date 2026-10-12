@@ -8,6 +8,8 @@
 
 **İlerleme:** 1–5. aşamaların ilk demo sürümü uygulandı. 6. aşamadaki temel kontroller yapıldı; gerçek cihaz, ekran okuyucu ve üretim performans kontrolleri henüz tamamlanmadı. Gerçek servisler ve yayın başlamadı. Ayrıntılar: [GELISTIRME-DURUMU.md](./GELISTIRME-DURUMU.md).
 
+**Son görsel karar:** Soyut bağlantı küresi yerine hayalî **Bürküt gezegeni** kullanılacak. İlk görsel ve responsive sürümleri eklendi. Bu karar marka görseli içindir; gerçek operasyon coğrafyası veya müşteri istatistiği anlamına gelmez.
+
 Bürküt Teknoloji'nin web, uygulama ve oyun geliştirme alanlarını açıkça anlatan; özgün görsel kimliği, ürün konseptleri ve Yangan asistanıyla güven veren ilk kurumsal sitesini oluşturmak.
 
 İlk somut hedef, mobil ve masaüstünde çalışan, gerçek hizmet bağlantılarına ihtiyaç duymadan incelenebilen bir demo sitedir. İkinci hedef, gerçek iletişim ve AI servisleri tamamlandığında yayına alınabilecek bir temel kurmaktır.

@@ -8,6 +8,14 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const update = (event: MediaQueryListEvent) => {
+      if (event.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", update);
+    return () => desktop.removeEventListener("change", update);
+  }, []);
+  useEffect(() => {
     const update = () => setScrolled(window.scrollY > 80);
     update();
     window.addEventListener("scroll", update, { passive: true });

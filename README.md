@@ -20,6 +20,7 @@ Bürküt; web siteleri, uygulamalar ve oyunlar geliştirmek için oluşturulan t
 - [Canlı referans incelemesi](./REFERANS-INCELEMESI.md)
 - [Marka ve geliştirme yol haritası](./YOL-HARITASI.md)
 - [Geliştirme durumu ve doğrulama](./GELISTIRME-DURUMU.md)
+- [Bürküt gezegeni görseli ve üretim promptu](./docs/BURKUT-GEZEGENI.md)
 
 ## İlk geliştirme paketi
 
