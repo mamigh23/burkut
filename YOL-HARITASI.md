@@ -145,6 +145,7 @@ Yapılacaklar:
 - Yangan geri/düzelt/sıfırla durumları ve formun boş/hatalı alanları test edilir. Otomatik testler özellikle akış mantığı ve veri doğrulamasına odaklanır.
 - TypeScript, lint ve build kontrolleri çalıştırılır; konsol hataları ve bozuk varlıklar giderilir.
 - Font/görsel boyutları, düzen kaymaları ve performans gerçek tarayıcıda ölçülür. Ölçülmemiş puan raporlanmaz.
+- **Uygulandı:** GitHub kalite akışında JS/CSS gzip ve tek görsel boyutu sınırları kontrol ediliyor. Kaydırma bandının iki yönü ve hareket durdurma davranışı tarayıcıda doğrulandı. Gerçek cihaz ve Lighthouse kontrolleri devam ediyor.
 - Title, description, sosyal paylaşım görseli ve favicon planı hazırlanır; domain bilinmeden canonical uydurulmaz.
 
 **Çıktı:** İncelenebilir demo, kısa doğrulama raporu ve kalan üretim bağımlılıkları.  

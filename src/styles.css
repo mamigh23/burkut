@@ -1224,23 +1224,40 @@ svg {
   background: var(--forest-600);
 }
 .service-band {
+  --band-offset: -80px;
   background: var(--forest-950);
   color: var(--mint);
   overflow: clip;
-  padding: 20px 0;
+  padding: clamp(28px, 4vw, 52px) 0;
+  border-block: 1px solid var(--border-dark);
 }
-.service-band > div {
+.service-band-track {
+  display: flex;
   white-space: nowrap;
   width: max-content;
   font-family: "Inter Tight Variable", sans-serif;
-  font-size: 25px;
-  letter-spacing: -0.02em;
-  animation: marquee 40s linear infinite;
+  font-size: clamp(36px, 5.4vw, 82px);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  transform: translate3d(var(--band-offset), 0, 0);
 }
-.service-band span {
-  display: inline-block;
-  margin: 0 40px;
-  font-size: 21px;
+.service-band-group,
+.service-band-item {
+  display: flex;
+  align-items: center;
+}
+.service-band-item b {
+  font-weight: 550;
+}
+.service-band-item .band-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--mint);
+}
+.service-band-item i {
+  margin: 0 clamp(24px, 3.6vw, 60px);
+  font-style: normal;
+  font-size: 0.6em;
+  color: var(--forest-600);
 }
 .services {
   background: white;
@@ -2093,9 +2110,6 @@ svg {
   font-size: 10px;
   color: var(--text-muted);
 }
-.service-band:hover > div {
-  animation-play-state: paused;
-}
 html[data-motion="paused"] *,
 html[data-motion="paused"] *::before,
 html[data-motion="paused"] *::after {
@@ -2756,11 +2770,6 @@ legend > span,
     transform: translateY(0);
   }
 }
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
 @keyframes chat-in {
   from {
     opacity: 0;
@@ -3066,16 +3075,6 @@ legend > span,
   .section-heading > p {
     max-width: 440px;
     margin-top: 25px;
-  }
-  .service-band {
-    padding: 16px 0;
-  }
-  .service-band > div {
-    font-size: 21px;
-  }
-  .service-band span {
-    margin: 0 25px;
-    font-size: 17px;
   }
   .service-grid {
     grid-template-columns: 1fr;

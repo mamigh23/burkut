@@ -15,6 +15,7 @@ import { services, steps, faqs } from "../content";
 import { ArrowLink, Eyebrow, YanganMark } from "../components/UI";
 import { Dashboard } from "../concepts/Scenes";
 import Planet from "../components/Planet";
+import ScrollBand from "../components/ScrollBand";
 
 export function Vision() {
   return (
@@ -49,13 +50,7 @@ export function Services() {
   const icons = { web: Code2, app: Smartphone, game: Gamepad2 };
   return (
     <>
-      <div className="service-band" aria-hidden="true">
-        <div>
-          FİKİR <span>✳</span> TASARIM <span>✳</span> GELİŞTİRME <span>✳</span>{" "}
-          DENEYİM <span>✳</span> FİKİR <span>✳</span> TASARIM <span>✳</span>{" "}
-          GELİŞTİRME <span>✳</span> DENEYİM <span>✳</span>
-        </div>
-      </div>
+      <ScrollBand />
       <section className="services section-pad" id="hizmetler">
         <div className="container">
           <div className="section-heading">

@@ -26,7 +26,7 @@ Bürküt; web siteleri, uygulamalar ve oyunlar geliştirmek için oluşturulan t
 
 İçerik temeli, proje iskeleti, tasarım tokenları, navbar ve hero hazırlandı. Ana sayfa bölümleri, ayrı Web / Uygulama / Oyun konseptleri ve Yangan demo deneyimi eklendi. Gerçek cihaz kontrolleri ve üretim performansı değerlendirmesi devam ediyor.
 
-Logo üretimi, gerçek iletişim bilgileri ve aydınlatma metni sonraki aşamaya bırakılmıştır. Gerçek servisler kurulana kadar form ve asistan açıkça belirtilmiş demo modunda çalışacaktır.
+Logo üretimi, gerçek iletişim bilgileri ve aydınlatma metni sonraki aşamaya bırakılmıştır. Form ve asistan yerel akışlarla çalışır; kullanıcı kararıyla demo etiketleri kaldırılmıştır. Gönderim bağlantısının kapalı olduğu formda belirtilir.
 
 ## Kurulum
 
@@ -46,10 +46,13 @@ npm run typecheck
 npm run lint
 npm test
 npm run build
+npm run check:assets
 npm run preview
 ```
 
 Üretim çıktısı `dist/` altında oluşur. Paket sürümleri `package-lock.json` ile sabitlenmiştir. `package.json` içindeki `private: true`, npm paket yayınını engeller; GitHub reposunun public görünürlüğünü değiştirmez.
+
+GitHub kalite akışı lint, test, build ve dosya boyutu sınırlarını kontrol eder. Boyut sınırları: toplam JavaScript 100 KiB gzip, toplam CSS 20 KiB gzip, tek raster görsel 600 KiB. Bu kontrol tarayıcı performansı veya Lighthouse puanı ölçmez.
 
 ## Kaynak yapısı
 

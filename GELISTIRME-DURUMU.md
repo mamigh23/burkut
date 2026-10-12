@@ -55,6 +55,15 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Gezegen ve yörünge animasyonlarının çalışması, durdurulduğunda ikisinin de `none` olması ve tekrar başlatılması tarayıcıda doğrulandı.
 - TypeScript, üretim build, lint ve 6 akış/doğrulama testi başarılı.
 
+## Dördüncü geliştirme paketi: kaydırma bandı ve boyut koruması
+
+- Zamanla otomatik akan ince şerit kaldırıldı. Büyük dolu/konturlu tipografi, daha geniş boşluklar ve kaydırmaya bağlı yatay hareket eklendi. Aşağı kaydırmada sola, yukarı kaydırmada geri hareket eder.
+- Güncelleme yalnızca bant ekran yakınındayken çalışır; pasif scroll dinleyicisi ve requestAnimationFrame ile birleştirilir. Kapatılan hareket tercihi ve sistem azaltılmış hareket tercihinde bant sabit kalır.
+- Tarayıcıda iki kaydırma yönünde farklı transform değerleri ölçüldü. Hareket kapalıyken kaydırma sonrasında offset sabit kaldı. 320, 390, 768, 1440 ve 1920 px genişlikte yatay taşma görülmedi.
+- Üretim dosyaları için `npm run check:assets` eklendi ve GitHub kalite akışına bağlandı: toplam JS 100 KiB gzip, toplam CSS 20 KiB gzip, tek raster görsel 600 KiB sınırı. Yeni build yaklaşık 83,3 KiB JS / 13,4 KiB CSS gzip ile sınırların içinde.
+- Sınırı aşan geçici bir görselle kontrolün hata kodu 1 verdiği doğrulandı; geçici dosya kaldırıldı ve normal çıktı tekrar geçti.
+- TypeScript, build, lint ve mevcut 6 test geçti. Boyut koruması Lighthouse veya gerçek cihaz performans ölçümünün yerine geçmez.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
