@@ -1,11 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  ArrowUpRight,
-  Check,
-  ArrowRight,
-  CircleAlert,
-  Sparkles,
-} from "lucide-react";
+import { ArrowUpRight, Check, ArrowRight } from "lucide-react";
 import { areaLabels, type Area } from "../content";
 import {
   validateProject,
@@ -34,23 +28,6 @@ const empty: ProjectData = {
   detail: "",
   budget: "",
 };
-const fieldLabels: Record<keyof ProjectData, string> = {
-  areas: "Proje türü",
-  name: "Ad soyad",
-  email: "E-posta",
-  phone: "Telefon",
-  company: "Kurum / marka",
-  detail: "Fikrinden bahset",
-  budget: "Bütçe",
-};
-function FieldError({ id, children }: { id: string; children: string }) {
-  return (
-    <span id={id} className="field-error">
-      <CircleAlert size={15} aria-hidden="true" />
-      <span>{children}</span>
-    </span>
-  );
-}
 export default function Contact({ draft }: { draft: Draft | null }) {
   const [data, setData] = useState<ProjectData>(empty);
   const [errors, setErrors] = useState<Errors>({});
@@ -58,9 +35,6 @@ export default function Contact({ draft }: { draft: Draft | null }) {
   const [busy, setBusy] = useState(false);
   const form = useRef<HTMLFormElement>(null);
   const requestKey = useRef<{ payload: string; key: string } | null>(null);
-  const errorFields = (Object.keys(errors) as (keyof ProjectData)[]).filter(
-    (key) => !!errors[key],
-  );
   const focusError = (next: Errors) => {
     const first = Object.keys(next)[0];
     if (first)
@@ -83,12 +57,8 @@ export default function Contact({ draft }: { draft: Draft | null }) {
     }
   }, [draft]);
   const update = (key: keyof ProjectData, value: string) => {
-    const next = { ...data, [key]: value };
-    setData(next);
-    setErrors((current) => ({
-      ...current,
-      [key]: current[key] ? validateProject(next)[key] : undefined,
-    }));
+    setData({ ...data, [key]: value });
+    setErrors((current) => ({ ...current, [key]: undefined }));
     setStatus("");
   };
   const submit = async (event: React.SubmitEvent<HTMLFormElement>) => {
@@ -98,7 +68,7 @@ export default function Contact({ draft }: { draft: Draft | null }) {
     setErrors(next);
     setStatus("");
     if (Object.keys(next).length) {
-      requestAnimationFrame(() => focusError(next));
+      focusError(next);
       return;
     }
     setBusy(true);
@@ -166,39 +136,7 @@ export default function Contact({ draft }: { draft: Draft | null }) {
             <p className="form-subtitle">
               İyi bir başlangıç için birkaç küçük detay.
             </p>
-            {errorFields.length > 0 && (
-              <div className="form-guidance">
-                <div className="form-guidance-heading">
-                  <span className="form-guidance-icon" aria-hidden="true">
-                    <Sparkles size={18} />
-                  </span>
-                  <div role="status" aria-live="polite">
-                    <strong>Birkaç küçük detay kaldı.</strong>
-                    <p>
-                      {errorFields.length} alanı tamamlayıp devam edebilirsin.
-                    </p>
-                  </div>
-                </div>
-                <div
-                  className="form-error-links"
-                  role="group"
-                  aria-label="Kontrol edilecek alanlar"
-                >
-                  {errorFields.map((field) => (
-                    <button
-                      type="button"
-                      key={field}
-                      onClick={() => focusError({ [field]: errors[field] })}
-                    >
-                      {fieldLabels[field]}{" "}
-                      <ArrowUpRight size={13} aria-hidden="true" />
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
             <fieldset
-              className={errors.areas ? "area-fieldset-invalid" : undefined}
               aria-describedby={errors.areas ? "areas-error" : undefined}
             >
               <legend>
@@ -234,7 +172,9 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                 ))}
               </div>
               {errors.areas && (
-                <FieldError id="areas-error">{errors.areas}</FieldError>
+                <span className="field-error" id="areas-error">
+                  {errors.areas}
+                </span>
               )}
             </fieldset>
             <div className="form-grid">
@@ -296,9 +236,9 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                     onChange={(event) => update(field.key, event.target.value)}
                   />
                   {errors[field.key] && (
-                    <FieldError id={`${field.key}-error`}>
-                      {errors[field.key]!}
-                    </FieldError>
+                    <span id={`${field.key}-error`} className="field-error">
+                      {errors[field.key]}
+                    </span>
                   )}
                 </div>
               ))}
@@ -326,7 +266,9 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                 {data.detail.length} / {projectLimits.detail} karakter
               </span>
               {errors.detail && (
-                <FieldError id="detail-error">{errors.detail}</FieldError>
+                <span id="detail-error" className="field-error">
+                  {errors.detail}
+                </span>
               )}
             </div>
             <div className="form-field">
@@ -345,7 +287,9 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                 onChange={(event) => update("budget", event.target.value)}
               />
               {errors.budget && (
-                <FieldError id="budget-error">{errors.budget}</FieldError>
+                <span id="budget-error" className="field-error">
+                  {errors.budget}
+                </span>
               )}
             </div>
             <p className="form-privacy">
