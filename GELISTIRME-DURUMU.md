@@ -146,6 +146,15 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Yerel sentetik form testi, Türkçe karakter görsel kontrolü, 320/390 px taşma kontrolü ve mobil form erişilebilirlik taraması geçti. Otomatik ihlal 0. 38 test, typecheck, lint, build ve boyut sınırları geçti.
 - Kapsam ve ölçüm sınırları [font/form raporunda](./docs/qa/FONT-VE-FORM.md). Gerçek cihaz/ekran okuyucu/Lighthouse çalışması sürüyor.
 
+## On dördüncü geliştirme paketi: form hata tasarımı
+
+- Kullanıcı isteğiyle düz kırmızı hata metinleri ikonlu, yumuşak tonlu açıklama kartlarına dönüştürüldü. Hatalı alanlar kısa kenar vurgusu, açıklamalar hafif giriş animasyonu kullanıyor.
+- Form üstünde kalan alan sayısı ve ilgili alana götüren düğmeler eklendi. Düğmenin Enter ile e-posta alanına odak taşıdığı doğrulandı.
+- Geçersiz e-posta yazılırken uyarı korunuyor; doğru adresle temizleniyor. Eksikler bitince özet kaldırılıyor. Boş gönderimde ilk hatalı alan render sonrası odaklanıyor.
+- Hareket durdurma düğmesiyle yeni alan/açıklama animasyonlarının `none` olduğu tarayıcıda doğrulandı; sistem azaltılmış hareket CSS kuralı da uygulanıyor. Fiziksel sistem tercihi ayrıca test edilmedi.
+- Gerçek 320×640 görünümünde belge taşması yok. Masaüstü 1280×720 hatalı form durumunda axe-core otomatik ihlal 0; [ham rapor](./docs/qa/form-errors-2026-10-13.json). Manuel kontrast kontrolleri hâlâ gerekli.
+- 38 test, typecheck, lint ve build geçti. Normal cPanel paketi güncellendi; SMTP beklemede ve servisler kapalı.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

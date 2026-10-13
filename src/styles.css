@@ -2455,10 +2455,116 @@ legend > span,
   font-weight: 400;
 }
 .field-error {
-  color: var(--error);
+  color: #8e392f;
   font-size: 11px;
-  display: block;
-  margin-top: 7px;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 9px 11px;
+  background: #fff3ed;
+  border: 1px solid #f1dbd2;
+  border-radius: 9px;
+  animation: form-hint-in 200ms ease-out both;
+}
+.field-error > svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.form-guidance {
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid #d4e4d9;
+  border-radius: 14px;
+  background: #f2f7f3;
+  animation: form-hint-in 240ms ease-out both;
+}
+.form-guidance-heading {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.form-guidance-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: #dcebe0;
+  color: var(--forest-600);
+}
+.form-guidance strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.form-guidance p {
+  margin-top: 3px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.form-error-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.form-error-links button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid #cfdfd4;
+  border-radius: 8px;
+  background: white;
+  color: var(--forest-800);
+  font-size: 11px;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+.form-error-links button:hover {
+  background: #e4eee7;
+  transform: translateY(-1px);
+}
+.contact-form [aria-invalid="true"] {
+  border-color: #d99385 !important;
+  background: #fffaf7;
+  animation: form-field-attention 550ms ease-out;
+}
+.area-fieldset-invalid .area-options input:not(:checked) + span {
+  border-color: #d99385;
+  background: #fffaf7;
+}
+@keyframes form-hint-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes form-field-attention {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 #d9938500;
+  }
+  45% {
+    box-shadow: 0 0 0 4px #d9938529;
+  }
+}
+:root[data-motion="paused"] .field-error,
+:root[data-motion="paused"] .form-guidance,
+:root[data-motion="paused"] .contact-form [aria-invalid="true"],
+:root[data-motion="paused"] .form-error-links button {
+  animation: none;
+  transition: none;
 }
 .field-count {
   display: block;

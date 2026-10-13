@@ -23,6 +23,8 @@
 
 **Yeni kalite paketi:** Font çıktısı 319264 → 193612 bayt (yaklaşık %39,4 azalma); Türkçe alt kümeler korundu. Form karakter sayacı, bütçe hata erişilebilirliği ve işlem sırasında giriş kilidi eklendi. [Doğrulama raporu](./docs/qa/FONT-VE-FORM.md).
 
+**Form görsel iyileştirmesi:** Zorunlu alan hataları ikonlu açıklama kartlarına dönüştürüldü; eksik alan özeti, klavyeyle alanlara geçiş ve hafif animasyonlar eklendi. Hareket durdurma kontrolü, doğru değerle uyarının temizlenmesi ve dar ekran görünümü doğrulandı. Ayrıntılar geliştirme durumunda kayıtlı; SMTP beklemede kalıyor.
+
 **Öncelik sırası:** Kalan manuel kalite kontrolleri → API hosting ve sağlayıcı kararları → gerçek form ve Yangan servisleri → nihai paylaşım bilgileri ve servislerin canlı doğrulaması.
 
 **7. aşama için gereken kararlar:** Taleplerin ulaşacağı adres, API için hosting desteği ve AI sağlayıcısı/kullanım bütçesi. Domain ve statik cPanel yayını tamamlandı. Logo, gerçek iletişim bilgileri ve aydınlatma metni kullanıcı kararıyla ertelenmiş durumda; bu paketle yeniden açılmadı. Anahtarlar public repoya yazılmayacak; gerçek veri gönderimi servisler ve ilgili metinler hazır olduğunda açılacak.
