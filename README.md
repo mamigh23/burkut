@@ -75,7 +75,9 @@ public/licenses/  Dağıtılan font ve simge lisansları
 
 Yayın adresi `https://burkut.gemnative.com/`; canonical, OG URL, robots ve sitemap bu adrese göre hazırlandı. [cPanel kurulum rehberi](./docs/CPANEL-YAYIN.md). Gerçek AI ve talep servisi bağlanmadan önce nihai iletişim ve aydınlatma içeriği tamamlanmalıdır.
 
-Gerçek form için sunucu/istemci sözleşmesi hazır; kurulum ve sınırlar [server/README.md](./server/README.md) içinde. `.env.example` varsayılan kapalı gönderim bayrağını gösterir. Mevcut site kişisel bilgileri sunucuya göndermeye başlamadı.
+Gerçek form için sunucu/istemci sözleşmesi hazır; kurulum ve sınırlar [server/README.md](./server/README.md) içinde. Yangan sohbet altyapısı ve kalan bağlantılar [sohbet rehberinde](./docs/YANGAN-SERVISI.md). `.env.example` iki servisi de varsayılan kapalı tutar. Mevcut site kişisel bilgileri sunucuya göndermeye başlamadı.
+
+Statik canlı site kontrol edildi: [yayın raporu](./docs/qa/CANLI-YAYIN.md). GitHub'a kaynak push etmek cPanel dosyalarını otomatik güncellemez.
 
 ## Lisans
 

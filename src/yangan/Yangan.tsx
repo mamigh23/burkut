@@ -9,7 +9,7 @@ import {
   X,
 } from "lucide-react";
 import { YanganMark } from "../components/UI";
-import { demoReply } from "../services/demo";
+import { chatEnabled, replyToChat } from "../services/chat";
 import {
   answerArea,
   flowReducer,
@@ -39,6 +39,17 @@ export default function Yangan({
   const [input, setInput] = useState("");
   const [announcement, setAnnouncement] = useState("");
   const [unread, setUnread] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [chatError, setChatError] = useState("");
+  const pending = useRef<AbortController | null>(null);
+  const requestVersion = useRef(0);
+  useEffect(
+    () => () => {
+      requestVersion.current++;
+      pending.current?.abort();
+    },
+    [],
+  );
   const launcher = useRef<HTMLButtonElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const panel = useRef<HTMLElement>(null);
@@ -102,6 +113,10 @@ export default function Yangan({
     setOpen(false);
   };
   const reset = () => {
+    requestVersion.current++;
+    pending.current?.abort();
+    setBusy(false);
+    setChatError("");
     dispatch({ type: "reset" });
     setMode("welcome");
     setMessages([]);
@@ -121,22 +136,47 @@ export default function Yangan({
     );
     nearBottom.current = true;
   };
+  const requestReply = async (next: Message[]) => {
+    const version = ++requestVersion.current;
+    const controller = new AbortController();
+    pending.current = controller;
+    setBusy(true);
+    setChatError("");
+    setAnnouncement("Yangan yanıtlıyor.");
+    const timeout = setTimeout(() => controller.abort(), 20_000);
+    try {
+      const reply = await replyToChat(next, controller.signal);
+      if (version !== requestVersion.current) return;
+      setMessages([...next, { role: "assistant", content: reply }]);
+      setAnnouncement(reply);
+    } catch {
+      if (version !== requestVersion.current) return;
+      setChatError(
+        "Yanıt alınamadı. Tekrar deneyebilir veya fikrini proje özetine dönüştürebilirsin.",
+      );
+      setAnnouncement("Yanıt alınamadı.");
+    } finally {
+      clearTimeout(timeout);
+      if (version === requestVersion.current) {
+        setBusy(false);
+        pending.current = null;
+      }
+    }
+  };
   const send = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     const value = input.trim();
-    if (!value) return;
+    if (!value || busy) return;
     if (mode === "flow") {
       answer(value);
       return;
     }
-    const reply = demoReply(value);
-    setMessages((current) => [
-      ...current,
-      { role: "user", content: value },
-      { role: "assistant", content: reply },
-    ]);
+    const history =
+      messages.at(-1)?.role === "user" ? messages.slice(0, -1) : messages;
+    const next: Message[] = [...history, { role: "user", content: value }];
+    setMessages(next);
     setInput("");
-    setAnnouncement(reply);
+    void requestReply(next);
   };
   const current = questions[flow.step];
   return (
@@ -318,7 +358,8 @@ export default function Yangan({
               <>
                 <div className="chat-message assistant">
                   Web, uygulama, oyun veya proje süreci hakkında sorabilirsin.
-                  Bu sürümde hazır yanıtlarla yardımcı oluyorum.
+                  {!chatEnabled &&
+                    " Bu sürümde hazır yanıtlarla yardımcı oluyorum."}
                 </div>
                 {messages.map((message, index) => (
                   <div className={`chat-message ${message.role}`} key={index}>
@@ -326,6 +367,24 @@ export default function Yangan({
                   </div>
                 ))}
               </>
+            )}
+            {busy && (
+              <div className="chat-message assistant" aria-hidden="true">
+                Yangan yanıtlıyor…
+              </div>
+            )}
+            {mode === "chat" && chatError && (
+              <div className="chat-message assistant" role="alert">
+                <p>{chatError}</p>
+                <button
+                  type="button"
+                  className="chat-retry"
+                  disabled={busy}
+                  onClick={() => void requestReply(messages)}
+                >
+                  Tekrar dene
+                </button>
+              </div>
             )}
           </div>
           {unread && (
@@ -363,7 +422,7 @@ export default function Yangan({
                 <button
                   type="submit"
                   aria-label="Mesajı gönder"
-                  disabled={!input.trim()}
+                  disabled={!input.trim() || busy}
                 >
                   <Send size={17} />
                 </button>
@@ -372,6 +431,7 @@ export default function Yangan({
             {mode !== "welcome" && (
               <button
                 className="chat-mode-switch"
+                disabled={busy}
                 onClick={() => {
                   setMode(mode === "chat" ? "flow" : "chat");
                   setInput("");

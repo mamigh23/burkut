@@ -24,7 +24,7 @@ Kurulum sırası:
 
 Bu temel tek süreç içinde bellek kullanır: yoğunluk kayıtları 60 saniye, istek sonuçları 10 dakika tutulur; her harita en fazla 1000 giriş kabul eder. Çoklu sunucu/serverless ortamında kalıcı, ortak yoğunluk ve idempotency deposu veya sağlayıcının kendi koruması gerekir. Başarısız anahtarlar da geçici olarak korunur; zaman aşımında sağlayıcının kabul etmiş olma ihtimali nedeniyle körlemesine tekrar teslim yapılmaz. Saklama süresi sona erdikten sonra süreç koruması biter; adaptör sağlayıcı tarafında anahtarı idempotent işlemek zorundadır.
 
-Gerçek sağlayıcı, hosting rotası, alıcı, ortak depo ve teslim testi bu paketle kurulmuş sayılmaz. Yangan gerçek AI bağlantısı da ayrı bir sonraki iştir. Yapılandırılmamış durumda site mevcut yerel özet kontrolünü kullanır.
+Gerçek sağlayıcı, hosting rotası, alıcı, ortak depo ve teslim testi bu paketle kurulmuş sayılmaz. Yangan sohbet sözleşmesi hazır; gerçek AI bağlantısı için [ayrı rehber](../docs/YANGAN-SERVISI.md) bulunur. Yapılandırılmamış durumda site mevcut yerel özet kontrolünü kullanır.
 
 ## Kontrol
 

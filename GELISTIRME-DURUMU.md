@@ -112,6 +112,15 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - [cPanel yayın rehberi](./docs/CPANEL-YAYIN.md) eklendi. ZIP yerel teslim dosyasıdır; Git'e eklenmez. Kaynak ve rehber repo içinde korunur.
 - cPanel/DNS/SSL üzerinde işlem yapılmadı; site bu çalışmada canlıya yüklenmedi. Gerçek form teslimi ve AI bağlantısı kapalı kalıyor.
 
+## Onuncu geliştirme paketi: canlı doğrulama ve Yangan servis temeli
+
+- Kullanıcının cPanel yayını HTTPS üzerinden doğrulandı. HTTP yönlendirmesi, robots/sitemap, gezegen görseli, 320/390/1440 px taşma kontrolü ve hero seçimi geçti. [Canlı rapor](./docs/qa/CANLI-YAYIN.md).
+- Yangan için ortak sohbet doğrulaması, güvenilir sunucu talimatı, sınırlı geçmiş, 24 KiB gövde, yoğunluk ve süre sınırları eklendi. Sunucu anahtarı veya gerçek sağlayıcı kurulmadı.
+- İstemci bağlantı bayrağı kapalıyken ağ isteği yapmıyor. Açık mod için bekleme, tekrar deneme, sıfırlamada iptal ve proje özeti alternatifi hazır. [Kurulum notları](./docs/YANGAN-SERVISI.md).
+- Yerel tarayıcıda hazır yanıtın görüntülendiği doğrulandı. Build, lint, 36 test ve dosya boyutu kontrolü geçti.
+- Yerel `/api/chat` ve Vite proxy üzerinden sentetik POST isteği 503 döndürdü; sağlayıcısız rota doğrulandı ve kontrol sunucusu durduruldu.
+- Yeni kaynak değişiklikleri canlıya otomatik yüklenmez; güncel cPanel ZIP'i kullanıcı tarafından ayrıca yüklenmelidir. Gerçek form ve AI kapalı kalıyor.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
@@ -119,9 +128,9 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Azaltılmış hareket için CSS mevcut; işletim sistemi tercihiyle ayrı doğrulama yapılmadı.
 - Bütün bileşenlerin tüm ekran/etkileşim durumları için kapsamlı görsel regresyon kontrolü.
 - Ağ/CPU yavaşlatmalı Lighthouse ve gerçek yayın ortamı performansı. Yerel üretim örnekleri alındı; build boyutları veya yerel süreler gerçek ziyaretçi performans puanı değildir.
-- Üretim domain'i, canonical/OG URL, nihai paylaşım görseli ve favicon.
+- Nihai paylaşım görseli ve favicon. Üretim domain'i, canonical/OG URL ve temel SEO dosyaları tamamlandı.
 - Gerçek talep servisi, hata/yoğunluk senaryoları, veri işleme düzeni ve gerçek AI bağlantısı.
 
 ## Yol haritasındaki karşılığı
 
-1–5. aşamaların ilk demo uygulaması tamamlandı. 6. aşamadaki temel build, akış, responsive ve tarayıcı kontrolleri yapıldı; yukarıdaki kabul kontrolleri devam ediyor. 7. aşamadaki gerçek servisler ve yayın başlamadı. Site canlıya yayımlanmadı.
+1–5. aşamaların ilk uygulaması tamamlandı ve statik site canlıda. 6. aşamadaki temel kontroller yapıldı; yukarıdaki kabul kontrolleri sürüyor. 7. aşamada talep ve sohbet servisi temeli hazır, gerçek sağlayıcı bağlantıları kapalı.

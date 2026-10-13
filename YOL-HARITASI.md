@@ -1,10 +1,10 @@
 # Bürküt — Marka ve web sitesi yol haritası
 
 **Tarih:** 12 Ekim 2026  
-**Durum:** İlk demo uygulaması hazır; kalite kontrolleri devam ediyor.  
+**Durum:** Statik site canlıda; gerçek servislerin temeli ve kalite kontrolleri ilerliyor.
 **Temel belgeler:** Bürküt.md ve REFERANS-INCELEMESI.md
 
-**Yayın kararı:** Kullanıcı siteyi cPanel üzerinden `https://burkut.gemnative.com/` adresine yükleyecek. Statik yayın ZIP'i ve [kurulum rehberi](./docs/CPANEL-YAYIN.md) hazır; gerçek servisler kapalı kalıyor. Domain/hosting tercihi belirlendi; DNS/SSL ve canlı doğrulama henüz yapılmadı.
+**Yayın durumu:** Kullanıcı siteyi cPanel üzerinden `https://burkut.gemnative.com/` adresine yükledi. HTTPS, HTTP yönlendirmesi, temel SEO dosyaları ve responsive görünüm doğrulandı. [Canlı kontrol raporu](./docs/qa/CANLI-YAYIN.md). Gerçek talep ve AI bağlantıları kapalı; yeni geliştirmeler ayrıca ZIP ile yüklenmeli.
 
 ## Güncel durum ve sıradaki işler — 13 Ekim 2026
 
@@ -12,18 +12,18 @@
 | --- | --- | --- |
 | 1–5: İçerik, temel, tasarım, ana sayfa, Yangan | Çalışan ilk sürüm tamamlandı | Gerçek servis bağlantıları 7. aşamada |
 | 6: Kalite | Devam ediyor | Fiziksel telefon/klavye, yüzde 200 zoom, ekran okuyucu, sistem hareket tercihi, manuel kontrast incelemesi, kapsamlı görsel kontrol ve Lighthouse |
-| 7: Gerçek servisler ve yayın | Teknik temel başladı; bağlantılar kapalı | Talep sağlayıcısı ve hosting rotası, talep alıcısı, gerçek AI, domain/hosting, SEO paylaşım bilgileri ve yayın doğrulaması |
-| 8: Yayın sonrası geliştirme | Yayından sonra | Gerçek portföy, içerik iyileştirme ve bakım |
+| 7: Gerçek servisler ve yayın | Statik yayın doğrulandı; talep ve sohbet temeli hazır | Talep sağlayıcısı/alıcı, API hosting rotaları, AI sağlayıcısı/bütçesi, nihai paylaşım görseli ve favicon |
+| 8: Yayın sonrası geliştirme | Yayın kontrolü başladı | Gerçek portföy, içerik iyileştirme ve bakım |
 
-**Bu pakette ilerleme:** Ayrı yerel üretim kopyasında masaüstü/mobil FCP, LCP, CLS ve kaynak yükleme örnekleri alındı. [Ölçüm raporu](./docs/qa/PERFORMANS.md). Bu örnekler Lighthouse veya fiziksel cihaz testinin yerine geçmez.
+**Bu pakette ilerleme:** Canlı site kontrol edildi. Yangan sohbeti için sunucu/istemci sözleşmesi, sınırlı geçmiş, yoğunluk ve süre koruması, bekleme/tekrar deneme/sıfırlama davranışı eklendi. Toplam 36 test geçti. [Sohbet bağlantı rehberi](./docs/YANGAN-SERVISI.md).
 
-**Öncelik sırası:** Kalan manuel kalite kontrolleri → gerçek form ve Yangan servisleri → domain/hosting ve paylaşım bilgileri → yayın.
+**Öncelik sırası:** Kalan manuel kalite kontrolleri → API hosting ve sağlayıcı kararları → gerçek form ve Yangan servisleri → nihai paylaşım bilgileri ve servislerin canlı doğrulaması.
 
-**7. aşama için gereken kararlar:** Taleplerin ulaşacağı adres, kullanılacak domain/hosting ve AI sağlayıcısı/kullanım bütçesi. Logo, gerçek iletişim bilgileri ve aydınlatma metni kullanıcı kararıyla ertelenmiş durumda; bu paketle yeniden açılmadı. Anahtarlar public repoya yazılmayacak; gerçek veri gönderimi servisler ve ilgili metinler hazır olduğunda açılacak.
+**7. aşama için gereken kararlar:** Taleplerin ulaşacağı adres, API için hosting desteği ve AI sağlayıcısı/kullanım bütçesi. Domain ve statik cPanel yayını tamamlandı. Logo, gerçek iletişim bilgileri ve aydınlatma metni kullanıcı kararıyla ertelenmiş durumda; bu paketle yeniden açılmadı. Anahtarlar public repoya yazılmayacak; gerçek veri gönderimi servisler ve ilgili metinler hazır olduğunda açılacak.
 
 ## Hedef
 
-**İlerleme:** 1–5. aşamaların ilk demo sürümü uygulandı. 6. aşamadaki temel kontroller yapıldı; gerçek cihaz, ekran okuyucu ve üretim performans kontrolleri henüz tamamlanmadı. Gerçek servisler ve yayın başlamadı. Ayrıntılar: [GELISTIRME-DURUMU.md](./GELISTIRME-DURUMU.md).
+**İlerleme:** 1–5. aşamaların ilk sürümü uygulandı ve statik site yayımlandı. 6. aşamada gerçek cihaz, ekran okuyucu ve üretim performans kontrolleri sürüyor. 7. aşamada teknik temel hazır; sağlayıcı bağlantıları kapalı. Ayrıntılar: [GELISTIRME-DURUMU.md](./GELISTIRME-DURUMU.md).
 
 **Son görsel karar:** Soyut bağlantı küresi yerine hayalî **Bürküt gezegeni** kullanılacak. İlk görsel ve responsive sürümleri eklendi. Bu karar marka görseli içindir; gerçek operasyon coğrafyası veya müşteri istatistiği anlamına gelmez.
 
@@ -180,6 +180,7 @@ Bu aşama demo tamamlandıktan ve gerekli işletme kararları sağlandıktan son
 - Proje talep servisi sunucu doğrulaması, yoğunluk koruması ve tekrar gönderim kontrolüyle bağlanır.
 - **Temel hazır:** Ortak doğrulama, sunucu işlem sözleşmesi ve istemci adaptörü eklendi; hata/yoğunluk/tekrar/zaman aşımı testleri geçti. [Kurulum ve kalan bağlantılar](./server/README.md). Gerçek sağlayıcı ve hosting rotası henüz bağlanmadı; gönderim bayrağı kapalı.
 - Yangan için sağlayıcı/model ve kullanım sınırları seçilir. Anahtarlar sunucuda tutulur; hata, tekrar deneme ve form alternatifi uygulanır.
+- **Temel hazır:** Sohbet doğrulaması, sunucu talimatı, yoğunluk/süre sınırları, istemci adaptörü ve hata sonrası tekrar deneme eklendi. [Bağlantı ve sınırlar](./docs/YANGAN-SERVISI.md). Sağlayıcı bağlı değil; sohbet bayrağı kapalı.
 - Gerçek form teslimi ve AI bağlantısı ayrı ayrı test edilir. Başarı mesajı yalnızca doğrulanmış sunucu cevabından sonra gösterilir.
 - Üretim domain'i metaveriye eklenir; HTTPS, doğru yönlendirmeler ve hata sayfası kontrol edilir.
 - Yayın adımı, kullanıcının yayın isteği geldiğinde yürütülür.

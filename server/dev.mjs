@@ -2,17 +2,21 @@ import { createServer } from "node:http";
 import { Readable } from "node:stream";
 import console from "node:console";
 import { createProjectHandler } from "./projects.ts";
+import { createChatHandler } from "./chat.ts";
 /* global Request, Headers, URL */
 
 const port = 8787;
 const handler = createProjectHandler({
   origins: ["http://127.0.0.1:5173", "http://localhost:5173"],
 });
+const chatHandler = createChatHandler({
+  origins: ["http://127.0.0.1:5173", "http://localhost:5173"],
+});
 // No delivery adapter is installed in this runner. Allowed POSTs return 503.
 const server = createServer(async (incoming, outgoing) => {
   try {
     const url = new URL(incoming.url || "/", `http://127.0.0.1:${port}`);
-    if (url.pathname !== "/api/projects") {
+    if (!["/api/projects", "/api/chat"].includes(url.pathname)) {
       outgoing.writeHead(404, {
         "Content-Type": "application/json",
         "Cache-Control": "no-store",
@@ -34,10 +38,9 @@ const server = createServer(async (incoming, outgoing) => {
         ? {}
         : { body: Readable.toWeb(incoming), duplex: "half" }),
     });
-    const response = await handler(
-      request,
-      incoming.socket.remoteAddress || "local",
-    );
+    const response = await (
+      url.pathname === "/api/chat" ? chatHandler : handler
+    )(request, incoming.socket.remoteAddress || "local");
     outgoing.writeHead(response.status, Object.fromEntries(response.headers));
     outgoing.end(await response.text());
     incoming.resume();
