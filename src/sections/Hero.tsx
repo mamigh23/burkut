@@ -1,8 +1,62 @@
 import { ArrowDown, Code2, Layers3, Gamepad2 } from "lucide-react";
 import { ArrowLink } from "../components/UI";
 import { GameScene, PhoneScene, WebScene } from "../concepts/Scenes";
+import { useState } from "react";
+import HeroCard from "../components/HeroCard";
+import { heroCards, type HeroCardId } from "../content/heroCards";
 
 export default function Hero() {
+  const [selected, setSelected] = useState<HeroCardId | null>(null);
+  const scenes = {
+    code: (
+      <>
+        <div className="code-bar">
+          <span />
+          <span />
+          <span />
+          <b>bir-fikir.tsx</b>
+        </div>
+        <div className="code-lines">
+          <span>
+            01 <i>const</i> burkut = {"{"}
+          </span>
+          <span>
+            02 fikir: <em>'Seninle başlar'</em>,
+          </span>
+          <span>
+            03 yaklaşım: <em>'Birlikte üret'</em>,
+          </span>
+          <span>
+            04 deneyim: <em>'Özenle geliştir'</em>
+          </span>
+          <span>05 {"}"}</span>
+          <span>06</span>
+          <span>
+            07 <i>await</i> burkut.<b>hayataGeçir</b>()
+          </span>
+        </div>
+        <div className="code-bottom">
+          <i /> YENİ BİR BAŞLANGIÇ
+        </div>
+      </>
+    ),
+    web: <WebScene compact />,
+    phone: <PhoneScene />,
+    game: <GameScene compact />,
+    wire: (
+      <>
+        <div className="wire-grid" />
+        <span>
+          tasarım
+          <br />
+          <b>+ kod.</b>
+        </span>
+        <div className="wire-bottom">
+          <Layers3 size={20} /> AYNI DİL. AYNI HEDEF.
+        </div>
+      </>
+    ),
+  };
   return (
     <section className="hero" id="top">
       <div className="hero-glow" aria-hidden="true" />
@@ -28,57 +82,21 @@ export default function Hero() {
           </a>
         </div>
       </div>
-      <div className="hero-showcase" aria-hidden="true">
-        <div className="hero-code">
-          <div className="code-bar">
-            <span />
-            <span />
-            <span />
-            <b>bir-fikir.tsx</b>
-          </div>
-          <div className="code-lines">
-            <span>
-              01 <i>const</i> burkut = {"{"}
-            </span>
-            <span>
-              02 fikir: <em>'Seninle başlar'</em>,
-            </span>
-            <span>
-              03 yaklaşım: <em>'Birlikte üret'</em>,
-            </span>
-            <span>
-              04 deneyim: <em>'Özenle geliştir'</em>
-            </span>
-            <span>05 {"}"}</span>
-            <span>06</span>
-            <span>
-              07 <i>await</i> burkut.<b>hayataGeçir</b>()
-            </span>
-          </div>
-          <div className="code-bottom">
-            <i /> YENİ BİR BAŞLANGIÇ
-          </div>
-        </div>
-        <div className="hero-web">
-          <WebScene compact />
-        </div>
-        <div className="hero-phone">
-          <PhoneScene />
-        </div>
-        <div className="hero-game">
-          <GameScene compact />
-        </div>
-        <div className="hero-wire">
-          <div className="wire-grid" />
-          <span>
-            tasarım
-            <br />
-            <b>+ kod.</b>
-          </span>
-          <div className="wire-bottom">
-            <Layers3 size={20} /> AYNI DİL. AYNI HEDEF.
-          </div>
-        </div>
+      <div
+        className="hero-showcase"
+        role="group"
+        aria-label="Hero konsept kartları"
+      >
+        {heroCards.map((card) => (
+          <HeroCard
+            key={`${card.id}:${card.image?.src ?? "default"}`}
+            card={card}
+            selected={selected === card.id}
+            onSelect={() => setSelected(selected === card.id ? null : card.id)}
+          >
+            {scenes[card.id]}
+          </HeroCard>
+        ))}
       </div>
       <div className="hero-bottom">
         <div>

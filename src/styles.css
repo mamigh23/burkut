@@ -431,9 +431,72 @@ svg {
   perspective: 1500px;
 }
 .hero-showcase > div {
+  position: relative;
   flex-shrink: 0;
   box-shadow: 0 20px 70px #0007;
-  transition: transform 0.5s;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+.hero-card-control {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  padding: 0;
+}
+.hero-card-visual {
+  border-radius: inherit;
+  pointer-events: none;
+}
+.hero-card[data-selected="true"],
+.hero-card:has(.hero-card-control:focus-visible) {
+  z-index: 4;
+  transform: translateY(-18px) scale(1.045);
+  box-shadow:
+    0 0 0 2px var(--mint),
+    0 22px 80px #0009,
+    0 0 38px #b9d8c425;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero-card:hover {
+    z-index: 4;
+    transform: translateY(-18px) scale(1.045);
+    box-shadow:
+      0 0 0 2px var(--mint),
+      0 22px 80px #0009,
+      0 0 38px #b9d8c425;
+    filter: brightness(1.06);
+  }
+}
+.hero-card-control:focus-visible {
+  outline-offset: 5px;
+}
+.hero-card-custom .hero-card-visual {
+  height: 100%;
+  overflow: hidden;
+}
+.hero-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hero-web.hero-card-custom {
+  height: 360px;
+}
+.hero-phone.hero-card-custom {
+  height: 320px;
+}
+.hero-game.hero-card-custom {
+  height: 270px;
+}
+.hero-wire.hero-card-custom {
+  padding: 0;
 }
 .hero-code {
   width: 275px;
@@ -598,7 +661,7 @@ svg {
     #b9d8c410 20px
   );
 }
-.hero-wire > span {
+.hero-wire .hero-card-visual > span {
   font-family: "Inter Tight Variable", sans-serif;
   font-size: 31px;
   line-height: 1.1;
@@ -3652,6 +3715,24 @@ legend > span,
   .footer-back {
     grid-row: 3;
     justify-self: start;
+  }
+}
+@media (max-width: 1199px) {
+  .hero-showcase {
+    width: 100%;
+    left: auto;
+    transform: none;
+    justify-content: flex-start;
+    height: 430px;
+    padding: 32px 28px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-padding-inline: 28px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--forest-600) transparent;
+  }
+  .hero-showcase > .hero-card {
+    flex-shrink: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {

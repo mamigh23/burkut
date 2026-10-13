@@ -60,6 +60,8 @@ Yerel üretim yükleme ölçümü: [Performans kontrolü](./docs/qa/PERFORMANS.m
 
 ## Kaynak yapısı
 
+Hero kartlarının görsellerini değiştirmek için [Hero kartları rehberi](./docs/HERO-KARTLARI.md) ve `src/content/heroCards.ts` ayar dosyasını kullanın.
+
 ```text
 src/components/   Ortak arayüz ve navigasyon
 src/sections/     Ana sayfa bölümleri

@@ -94,6 +94,15 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Node.js 24 yerel API runner ve Vite /api proxy eklendi. Boş sentetik gövdeyle doğrudan HTTP ve proxy kontrolleri 503 / SUBMISSION_UNAVAILABLE döndü; yerel rota doğrulandı. Teslim adaptörü eklenmedi ve kontrol sunucusu durduruldu.
 - Son build, lint, 22 test ve dosya boyutu kontrolü geçti.
 
+## Sekizinci geliştirme paketi: değiştirilebilir hero kartları
+
+- Hero maketleri bağımsız seçilebilir kartlara dönüştürüldü: hover, klavye odağı ve tıklama/dokunma seçimi. Aynı anda tek kalıcı seçim; tekrar basınca temizlenir.
+- Kart üzerine gelince yükselme, öne çıkma ve mint kenar/gölge vurgusu eklendi. Geçişler mevcut azaltılmış hareket kurallarına bağlı.
+- Her kartın görsel yolu, kırpma biçimi ve açıklaması src/content/heroCards.ts içinde. Özel görsel yüklenemezse mevcut sahne geri gelir. [Değiştirme rehberi](./docs/HERO-KARTLARI.md) kaydedildi; yönetim paneli eklenmedi.
+- Dar ekranlarda tüm kartlara yatay kaydırmayla ulaşılır. 320, 390, 768, 1024 ve 1440 px belge taşması kontrolü geçti; mobil son karta klavyeyle odaklanınca kaydırma alanına gelmesi doğrulandı.
+- Hover sırasında kalıcı seçim kapalıyken vurgu, Enter ile seçim, geçici gerçek görsel değişimi ve hatalı yolun yedeği tarayıcıda doğrulandı. Test görselleri ayarlardan kaldırıldı; varsayılan maketler korunuyor.
+- Yeni kartlarla axe-core otomatik taraması 0 ihlal verdi. Build, lint, 22 test ve dosya boyutu sınırları geçti.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
