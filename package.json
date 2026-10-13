@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "qa:prepare": "npm run build && node scripts/prepare-performance.mjs",
+    "qa:preview": "vite preview --host 127.0.0.1 --outDir .qa-dist --port 4173 --strictPort",
     "check:assets": "node scripts/check-assets.mjs",
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc --noEmit",

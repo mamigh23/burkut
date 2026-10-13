@@ -56,6 +56,8 @@ GitHub kalite akışı lint, test, build ve dosya boyutu sınırlarını kontrol
 
 Yerel erişilebilirlik taraması ve tekrar çalıştırma adımları: [Erişilebilirlik kontrolü](./docs/qa/ERISILEBILIRLIK.md). Denetim aracı yalnızca `?audit=a11y` ile geliştirme sunucusunda açılır.
 
+Yerel üretim yükleme ölçümü: [Performans kontrolü](./docs/qa/PERFORMANS.md). `npm run qa:prepare` ayrı `.qa-dist` kopyasını oluşturur; `npm run qa:preview` 4173 portunda sunar. Bu kopya yayın için kullanılmaz.
+
 ## Kaynak yapısı
 
 ```text

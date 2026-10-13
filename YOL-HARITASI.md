@@ -4,6 +4,21 @@
 **Durum:** İlk demo uygulaması hazır; kalite kontrolleri devam ediyor.  
 **Temel belgeler:** Bürküt.md ve REFERANS-INCELEMESI.md
 
+## Güncel durum ve sıradaki işler — 13 Ekim 2026
+
+| Aşama | Durum | Kalan iş |
+| --- | --- | --- |
+| 1–5: İçerik, temel, tasarım, ana sayfa, Yangan | Çalışan ilk sürüm tamamlandı | Gerçek servis bağlantıları 7. aşamada |
+| 6: Kalite | Devam ediyor | Fiziksel telefon/klavye, yüzde 200 zoom, ekran okuyucu, sistem hareket tercihi, manuel kontrast incelemesi, kapsamlı görsel kontrol ve Lighthouse |
+| 7: Gerçek servisler ve yayın | Başlamadı | Form sunucusu, talep alıcısı, gerçek AI, domain/hosting, SEO paylaşım bilgileri ve yayın doğrulaması |
+| 8: Yayın sonrası geliştirme | Yayından sonra | Gerçek portföy, içerik iyileştirme ve bakım |
+
+**Bu pakette ilerleme:** Ayrı yerel üretim kopyasında masaüstü/mobil FCP, LCP, CLS ve kaynak yükleme örnekleri alındı. [Ölçüm raporu](./docs/qa/PERFORMANS.md). Bu örnekler Lighthouse veya fiziksel cihaz testinin yerine geçmez.
+
+**Öncelik sırası:** Kalan manuel kalite kontrolleri → gerçek form ve Yangan servisleri → domain/hosting ve paylaşım bilgileri → yayın.
+
+**7. aşama için gereken kararlar:** Taleplerin ulaşacağı adres, kullanılacak domain/hosting ve AI sağlayıcısı/kullanım bütçesi. Logo, gerçek iletişim bilgileri ve aydınlatma metni kullanıcı kararıyla ertelenmiş durumda; bu paketle yeniden açılmadı. Anahtarlar public repoya yazılmayacak; gerçek veri gönderimi servisler ve ilgili metinler hazır olduğunda açılacak.
+
 ## Hedef
 
 **İlerleme:** 1–5. aşamaların ilk demo sürümü uygulandı. 6. aşamadaki temel kontroller yapıldı; gerçek cihaz, ekran okuyucu ve üretim performans kontrolleri henüz tamamlanmadı. Gerçek servisler ve yayın başlamadı. Ayrıntılar: [GELISTIRME-DURUMU.md](./GELISTIRME-DURUMU.md).

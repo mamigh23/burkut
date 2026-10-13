@@ -1,0 +1,192 @@
+{
+  "samples": [
+    {
+      "scenario": "desktop-load",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "fcpMs": 156,
+      "lcpMs": 304,
+      "cls": 0.0002008222231105832,
+      "domContentLoadedMs": 59.39999997615814,
+      "loadMs": 100.79999995231628,
+      "resourceCount": 8,
+      "resourceTransferBytes": 2400,
+      "resources": [
+        {
+          "path": "/assets/index-CFisKzvZ.js",
+          "transferBytes": 300,
+          "durationMs": 16.600000023841858
+        },
+        {
+          "path": "/assets/index-g57ktFaL.css",
+          "transferBytes": 300,
+          "durationMs": 15.799999952316284
+        },
+        {
+          "path": "/assets/inter-tight-latin-wght-normal-DX-nOvPD.woff2",
+          "transferBytes": 300,
+          "durationMs": 29.800000071525574
+        },
+        {
+          "path": "/assets/figtree-latin-wght-normal-D_ZTVpCC.woff2",
+          "transferBytes": 300,
+          "durationMs": 33
+        },
+        {
+          "path": "/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2",
+          "transferBytes": 300,
+          "durationMs": 33.699999928474426
+        },
+        {
+          "path": "/assets/figtree-latin-ext-wght-normal-DCwSJGxG.woff2",
+          "transferBytes": 300,
+          "durationMs": 38.299999952316284
+        },
+        {
+          "path": "/assets/inter-tight-latin-ext-wght-normal-B4u9PlvR.woff2",
+          "transferBytes": 300,
+          "durationMs": 38.799999952316284
+        },
+        {
+          "path": "/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2",
+          "transferBytes": 300,
+          "durationMs": 44.39999997615814
+        }
+      ],
+      "supported": {
+        "lcp": true,
+        "cls": true
+      },
+      "note": "Local production-build sample with inline measurement code. No CPU/network throttling; cache may be warm. Not a Lighthouse score, field data, or INP measurement."
+    },
+    {
+      "scenario": "mobile-load",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fcpMs": 180,
+      "lcpMs": 180,
+      "cls": 0,
+      "domContentLoadedMs": 67.29999995231628,
+      "loadMs": 134.5,
+      "resourceCount": 8,
+      "resourceTransferBytes": 2400,
+      "resources": [
+        {
+          "path": "/assets/index-CFisKzvZ.js",
+          "transferBytes": 300,
+          "durationMs": 9.5
+        },
+        {
+          "path": "/assets/index-g57ktFaL.css",
+          "transferBytes": 300,
+          "durationMs": 12.299999952316284
+        },
+        {
+          "path": "/assets/inter-tight-latin-ext-wght-normal-B4u9PlvR.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/inter-tight-latin-wght-normal-DX-nOvPD.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/figtree-latin-ext-wght-normal-DCwSJGxG.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/figtree-latin-wght-normal-D_ZTVpCC.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        }
+      ],
+      "supported": {
+        "lcp": true,
+        "cls": true
+      },
+      "note": "Local production-build sample with inline measurement code. No CPU/network throttling; cache may be warm. Not a Lighthouse score, field data, or INP measurement."
+    },
+    {
+      "scenario": "mobile-after-planet",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "fcpMs": 180,
+      "lcpMs": 180,
+      "cls": 0,
+      "domContentLoadedMs": 67.29999995231628,
+      "loadMs": 134.5,
+      "resourceCount": 9,
+      "resourceTransferBytes": 2700,
+      "resources": [
+        {
+          "path": "/assets/index-CFisKzvZ.js",
+          "transferBytes": 300,
+          "durationMs": 9.5
+        },
+        {
+          "path": "/assets/index-g57ktFaL.css",
+          "transferBytes": 300,
+          "durationMs": 12.299999952316284
+        },
+        {
+          "path": "/assets/inter-tight-latin-ext-wght-normal-B4u9PlvR.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/inter-tight-latin-wght-normal-DX-nOvPD.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/figtree-latin-ext-wght-normal-DCwSJGxG.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/figtree-latin-wght-normal-D_ZTVpCC.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2",
+          "transferBytes": 300,
+          "durationMs": 0
+        },
+        {
+          "path": "/images/burkut-planet-640.webp",
+          "transferBytes": 300,
+          "durationMs": 9
+        }
+      ],
+      "supported": {
+        "lcp": true,
+        "cls": true
+      },
+      "note": "Local production-build sample with inline measurement code. No CPU/network throttling; cache may be warm. Not a Lighthouse score, field data, or INP measurement."
+    }
+  ]
+}

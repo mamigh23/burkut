@@ -74,13 +74,21 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Önceki iki GitHub Quality çalışmasının success sonucu API üzerinden doğrulandı: cede6ab ve 5a3708f. Yeni commit'in kontrol sonucu ayrıca izlenmeli.
 - TypeScript, lint, build, 6 test ve dosya boyutu sınırları geçti. Paket kurulumunun npm denetimi 0 güvenlik açığı bildirdi.
 
+## Altıncı geliştirme paketi: yerel üretim ölçümü ve kalan işler
+
+- Üretim build'inden ayrı .qa-dist ölçüm kopyası, qa:prepare / qa:preview komutları ve FCP/LCP/CLS/kaynak raporu eklendi. Normal yayın çıktısına ölçüm kodu eklenmedi.
+- Masaüstü 1440×900 ve mobil ekran 390×844 örnekleri alındı. Sonuçlar ve ölçüm sınırları [performans raporunda](./docs/qa/PERFORMANS.md) kayıtlı.
+- Mobilde gezegenin 640 px görselinin yüklendiği ve yatay taşma olmadığı doğrulandı. Kontrol edilen ölçüm sekmesinde hata/uyarı kaydı yok. Geçici önizleme sunucusu durduruldu.
+- Yol haritasının başına aşamaların güncel durumu, kalan işler, öncelik sırası ve gerçek servisler için gereken kararlar eklendi.
+- Build, lint, mevcut 6 test ve dosya boyutu kontrolü geçti.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
 - Gerçek yüzde 200 tarayıcı zoom testi ve ekran okuyucu kontrolü.
 - Azaltılmış hareket için CSS mevcut; işletim sistemi tercihiyle ayrı doğrulama yapılmadı.
 - Bütün bileşenlerin tüm ekran/etkileşim durumları için kapsamlı görsel regresyon kontrolü.
-- Üretim ortamı performans/Lighthouse ölçümü. Build dosya boyutları performans puanı değildir.
+- Ağ/CPU yavaşlatmalı Lighthouse ve gerçek yayın ortamı performansı. Yerel üretim örnekleri alındı; build boyutları veya yerel süreler gerçek ziyaretçi performans puanı değildir.
 - Üretim domain'i, canonical/OG URL, nihai paylaşım görseli ve favicon.
 - Gerçek talep servisi, hata/yoğunluk senaryoları, veri işleme düzeni ve gerçek AI bağlantısı.
 
