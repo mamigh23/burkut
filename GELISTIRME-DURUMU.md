@@ -121,6 +121,14 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Yerel `/api/chat` ve Vite proxy üzerinden sentetik POST isteği 503 döndürdü; sağlayıcısız rota doğrulandı ve kontrol sunucusu durduruldu.
 - Yeni kaynak değişiklikleri canlıya otomatik yüklenmez; güncel cPanel ZIP'i kullanıcı tarafından ayrıca yüklenmelidir. Gerçek form ve AI kapalı kalıyor.
 
+## On birinci geliştirme paketi: Yangan hata ve klavye davranışı
+
+- Yoğunluk ve bağlantı hataları ayrıldı; ağ hatası ve HTML hata sayfası için güvenli açıklama eklendi. İstemci testleriyle birlikte toplam 37 test geçti.
+- Bekleme/hata durumları ve ekran boyutu değişimi için sohbet kaydırması düzeltildi. Klavyeyle tekrar denemede soru alanına odak, Escape ile açma düğmesine dönüş ve mod değişiminde güncel duyuru doğrulandı.
+- Gerçek sohbet modu için mesaj aktarımı açıklaması hazır; yerel proje özeti akışında yerel açıklama korunuyor. Hazır yanıt sürümüne ilişkin ek tanıtım cümlesi kaldırıldı.
+- 320/390/640/1440 px kontrolleri ve mobil hata durumunda axe-core taraması geçti. Otomatik ihlal 0; kapsam ve sınırlar [test raporunda](./docs/qa/YANGAN-HATA-KONTROLU.md).
+- Test ayrı yerel sunucuda sentetik soruyla yapıldı. Gerçek sağlayıcı kurulmadı; cPanel üretim paketindeki iki servis bayrağı kapalı.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

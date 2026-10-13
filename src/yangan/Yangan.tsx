@@ -9,7 +9,7 @@ import {
   X,
 } from "lucide-react";
 import { YanganMark } from "../components/UI";
-import { chatEnabled, replyToChat } from "../services/chat";
+import { ChatError, chatEnabled, replyToChat } from "../services/chat";
 import {
   answerArea,
   flowReducer,
@@ -94,6 +94,8 @@ export default function Yangan({
           "--chat-viewport-height",
           `${viewport?.height || window.innerHeight}px`,
         );
+        if (nearBottom.current && scroll.current)
+          scroll.current.scrollTop = scroll.current.scrollHeight;
       }
     };
     resize();
@@ -108,7 +110,7 @@ export default function Yangan({
     if (nearBottom.current && scroll.current)
       scroll.current.scrollTop = scroll.current.scrollHeight;
     else if (messages.length) setUnread(true);
-  }, [messages, mode, flow.step]);
+  }, [messages, mode, flow.step, busy, chatError]);
   const close = () => {
     setOpen(false);
   };
@@ -149,10 +151,12 @@ export default function Yangan({
       if (version !== requestVersion.current) return;
       setMessages([...next, { role: "assistant", content: reply }]);
       setAnnouncement(reply);
-    } catch {
+    } catch (error) {
       if (version !== requestVersion.current) return;
       setChatError(
-        "Yanıt alınamadı. Tekrar deneyebilir veya fikrini proje özetine dönüştürebilirsin.",
+        error instanceof ChatError
+          ? error.message
+          : "Yanıt alınamadı. Tekrar deneyebilir veya fikrini proje özetine dönüştürebilirsin.",
       );
       setAnnouncement("Yanıt alınamadı.");
     } finally {
@@ -358,8 +362,6 @@ export default function Yangan({
               <>
                 <div className="chat-message assistant">
                   Web, uygulama, oyun veya proje süreci hakkında sorabilirsin.
-                  {!chatEnabled &&
-                    " Bu sürümde hazır yanıtlarla yardımcı oluyorum."}
                 </div>
                 {messages.map((message, index) => (
                   <div className={`chat-message ${message.role}`} key={index}>
@@ -380,7 +382,12 @@ export default function Yangan({
                   type="button"
                   className="chat-retry"
                   disabled={busy}
-                  onClick={() => void requestReply(messages)}
+                  onClick={() => {
+                    panel.current
+                      ?.querySelector<HTMLInputElement>("#chat-input")
+                      ?.focus();
+                    void requestReply(messages);
+                  }}
                 >
                   Tekrar dene
                 </button>
@@ -435,13 +442,20 @@ export default function Yangan({
                 onClick={() => {
                   setMode(mode === "chat" ? "flow" : "chat");
                   setInput("");
+                  setAnnouncement(
+                    mode === "chat"
+                      ? (current?.title ?? "Proje özetin hazır.")
+                      : "Sorunu yazabilirsin.",
+                  );
                 }}
               >
                 {mode === "chat" ? "Fikrimi netleştir" : "Bir soru sor"}
               </button>
             )}
             <span className="chat-footnote">
-              Bu konuşma yalnızca bu sayfada tutulur.
+              {chatEnabled && mode === "chat"
+                ? "Yanıt almak için mesajların sohbet servisine gönderilir."
+                : "Bu konuşma yalnızca bu sayfada tutulur."}
             </span>
           </div>
           <span className="sr-only" role="status" aria-live="polite">

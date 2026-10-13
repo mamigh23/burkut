@@ -15,7 +15,7 @@
 | 7: Gerçek servisler ve yayın | Statik yayın doğrulandı; talep ve sohbet temeli hazır | Talep sağlayıcısı/alıcı, API hosting rotaları, AI sağlayıcısı/bütçesi, nihai paylaşım görseli ve favicon |
 | 8: Yayın sonrası geliştirme | Yayın kontrolü başladı | Gerçek portföy, içerik iyileştirme ve bakım |
 
-**Bu pakette ilerleme:** Canlı site kontrol edildi. Yangan sohbeti için sunucu/istemci sözleşmesi, sınırlı geçmiş, yoğunluk ve süre koruması, bekleme/tekrar deneme/sıfırlama davranışı eklendi. Toplam 36 test geçti. [Sohbet bağlantı rehberi](./docs/YANGAN-SERVISI.md).
+**Son pakette ilerleme:** Yangan'ın hata/tekrar deneme, klavye odağı, ekran küçülmesi ve mod değişimi kontrolleri tamamlandı; bulunan sorunlar düzeltildi. Toplam 37 test geçti. Mobil hata durumunda otomatik erişilebilirlik ihlali 0. [Kontrol ve sınırlar](./docs/qa/YANGAN-HATA-KONTROLU.md). Gerçek sağlayıcı bağlantıları kapalı kalıyor.
 
 **Öncelik sırası:** Kalan manuel kalite kontrolleri → API hosting ve sağlayıcı kararları → gerçek form ve Yangan servisleri → nihai paylaşım bilgileri ve servislerin canlı doğrulaması.
 

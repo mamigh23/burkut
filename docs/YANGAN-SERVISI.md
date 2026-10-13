@@ -9,6 +9,8 @@ Gerçek AI sağlayıcısı henüz bağlı değil. `VITE_YANGAN_CHAT=disabled` va
 - `src/services/chat.ts`: aynı origin `/api/chat` istemcisi; 200 / REPLIED ve dolu, en fazla 4000 karakter yanıt kontrolü.
 - Yangan arayüzü: bekleme durumu, çift gönderimi engelleme, hata sonrası tekrar deneme, proje özeti alternatifi ve sıfırlamada eski yanıtı iptal etme. İstemci 20 saniyede isteği iptal eder.
 
+Yoğunluk ve bağlantı hataları ayrı açıklanır. Tekrar denemede klavye odağı soru alanına döner; en alttaki konuşma hata/ekran boyutu değişiminde görünür kalır. [Klavye ve hata kontrolü](./qa/YANGAN-HATA-KONTROLU.md).
+
 İşlem en fazla 10 mesajı kabul eder; istemci son 9 mesajı, gerektiğinde daha azını gönderir. Kullanıcı mesajı 2000, asistan mesajı 4000, toplam geçmiş 12000 karakterle sınırlı. Yanıtlar React metni olarak gösterilir; model çıktısı HTML olarak çalıştırılmaz. Sunucu talimatı istemciden alınmaz. Bu kurallar modelin doğruluğunu veya tüm kötüye kullanımın önlenmesini garanti etmez.
 
 ## Gerçek bağlantı sırası
