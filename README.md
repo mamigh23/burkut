@@ -73,7 +73,7 @@ src/styles.css    Palet tokenları, düzen ve responsive stiller
 public/licenses/  Dağıtılan font ve simge lisansları
 ```
 
-Domain seçilmediği için canonical ve üretim OG URL'si tanımlanmamıştır. Gerçek AI ve talep servisi bağlanmadan önce nihai iletişim ve aydınlatma içeriği tamamlanmalıdır.
+Yayın adresi `https://burkut.gemnative.com/`; canonical, OG URL, robots ve sitemap bu adrese göre hazırlandı. [cPanel kurulum rehberi](./docs/CPANEL-YAYIN.md). Gerçek AI ve talep servisi bağlanmadan önce nihai iletişim ve aydınlatma içeriği tamamlanmalıdır.
 
 Gerçek form için sunucu/istemci sözleşmesi hazır; kurulum ve sınırlar [server/README.md](./server/README.md) içinde. `.env.example` varsayılan kapalı gönderim bayrağını gösterir. Mevcut site kişisel bilgileri sunucuya göndermeye başlamadı.
 

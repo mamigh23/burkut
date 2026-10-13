@@ -4,6 +4,8 @@
 **Durum:** İlk demo uygulaması hazır; kalite kontrolleri devam ediyor.  
 **Temel belgeler:** Bürküt.md ve REFERANS-INCELEMESI.md
 
+**Yayın kararı:** Kullanıcı siteyi cPanel üzerinden `https://burkut.gemnative.com/` adresine yükleyecek. Statik yayın ZIP'i ve [kurulum rehberi](./docs/CPANEL-YAYIN.md) hazır; gerçek servisler kapalı kalıyor. Domain/hosting tercihi belirlendi; DNS/SSL ve canlı doğrulama henüz yapılmadı.
+
 ## Güncel durum ve sıradaki işler — 13 Ekim 2026
 
 | Aşama | Durum | Kalan iş |

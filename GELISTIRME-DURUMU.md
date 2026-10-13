@@ -103,6 +103,15 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Hover sırasında kalıcı seçim kapalıyken vurgu, Enter ile seçim, geçici gerçek görsel değişimi ve hatalı yolun yedeği tarayıcıda doğrulandı. Test görselleri ayarlardan kaldırıldı; varsayılan maketler korunuyor.
 - Yeni kartlarla axe-core otomatik taraması 0 ihlal verdi. Build, lint, 22 test ve dosya boyutu sınırları geçti.
 
+## Dokuzuncu geliştirme paketi: cPanel yayın hazırlığı
+
+- Kullanıcı hedef adresi https://burkut.gemnative.com ve hosting türünü cPanel olarak belirledi.
+- Canonical, OG URL/site adı, robots.txt ve sitemap gerçek hedef adresle eklendi.
+- Gönderim bayrağı disabled olarak üretim build alındı. Build ve dosya boyutu kontrolleri geçti.
+- artifacts/burkut-cpanel.zip hazırlandı: 25 dosya, yaklaşık 1 MB. ZIP kökünde index.html, robots.txt ve sitemap.xml bulunduğu doğrulandı; kaynak proje ve gizli .env dosyaları paketlenmedi.
+- [cPanel yayın rehberi](./docs/CPANEL-YAYIN.md) eklendi. ZIP yerel teslim dosyasıdır; Git'e eklenmez. Kaynak ve rehber repo içinde korunur.
+- cPanel/DNS/SSL üzerinde işlem yapılmadı; site bu çalışmada canlıya yüklenmedi. Gerçek form teslimi ve AI bağlantısı kapalı kalıyor.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
