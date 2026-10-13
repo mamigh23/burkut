@@ -40,6 +40,21 @@ describe("form teslim istemcisi", () => {
     );
     expect((await submitProject(data, "test-key")).mode).toBe("delivered");
   });
+  it("cPanel PHP rotasını seçer ve istek anahtarını korur", async () => {
+    vi.stubEnv("VITE_PROJECT_ENDPOINT", "/api/projects.php");
+    const { submitProject } = await enabledService(
+      Response.json({ code: "DELIVERED", receipt: "ack" }, { status: 201 }),
+    );
+    await submitProject(data, "same-request-key");
+    expect(fetch).toHaveBeenCalledWith(
+      "/api/projects.php",
+      expect.objectContaining({
+        headers: expect.objectContaining({
+          "Idempotency-Key": "same-request-key",
+        }),
+      }),
+    );
+  });
   it("200 cevabını veya eksik alındıyı başarı saymaz", async () => {
     const { submitProject } = await enabledService(
       Response.json({ code: "DELIVERED" }),

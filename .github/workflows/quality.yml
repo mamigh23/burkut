@@ -22,3 +22,19 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run check:assets
+  php-mail:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: mbstring, openssl
+          coverage: none
+          tools: composer:v2
+      - run: composer install --no-dev --prefer-dist --no-interaction --no-plugins --no-scripts
+        working-directory: server/cpanel
+      - run: php server/cpanel/test.php
+      - run: php -l server/cpanel/public/api/projects.php
+      - run: composer audit --no-dev
+        working-directory: server/cpanel

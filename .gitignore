@@ -17,3 +17,6 @@ desktop.ini
 .agents/
 .aws/
 /.qa-dist/
+server/cpanel/vendor/
+server/cpanel/config.php
+server/cpanel/state/

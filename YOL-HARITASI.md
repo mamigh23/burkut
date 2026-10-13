@@ -17,6 +17,8 @@
 
 **Son pakette ilerleme:** Yangan'ın hata/tekrar deneme, klavye odağı, ekran küçülmesi ve mod değişimi kontrolleri tamamlandı; bulunan sorunlar düzeltildi. Toplam 37 test geçti. Mobil hata durumunda otomatik erişilebilirlik ihlali 0. [Kontrol ve sınırlar](./docs/qa/YANGAN-HATA-KONTROLU.md). Gerçek sağlayıcı bağlantıları kapalı kalıyor.
 
+**Form bağlantısı kararı:** Kullanıcı cPanel üzerinde Gmail SMTP istedi. PHP/PHPMailer adaptörü, özel config, dosya kilidiyle tekrar koruması, yoğunluk ve günlük sınır hazırlandı. [Kurulum](./docs/GMAIL-SMTP-KURULUM.md). 38 JavaScript testi ve ağ bağlantısız 20 PHP kontrolü geçti; gerçek uygulama şifresi/yükleme/Gmail testi henüz yapılmadı. AI kapalı kalıyor.
+
 **Öncelik sırası:** Kalan manuel kalite kontrolleri → API hosting ve sağlayıcı kararları → gerçek form ve Yangan servisleri → nihai paylaşım bilgileri ve servislerin canlı doğrulaması.
 
 **7. aşama için gereken kararlar:** Taleplerin ulaşacağı adres, API için hosting desteği ve AI sağlayıcısı/kullanım bütçesi. Domain ve statik cPanel yayını tamamlandı. Logo, gerçek iletişim bilgileri ve aydınlatma metni kullanıcı kararıyla ertelenmiş durumda; bu paketle yeniden açılmadı. Anahtarlar public repoya yazılmayacak; gerçek veri gönderimi servisler ve ilgili metinler hazır olduğunda açılacak.

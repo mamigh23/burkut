@@ -1,0 +1,15 @@
+{
+  "name": "burkut/cpanel-mail",
+  "description": "Bürkut cPanel Gmail SMTP endpoint",
+  "type": "project",
+  "require": {
+    "php": ">=8.2",
+    "ext-openssl": "*",
+    "ext-mbstring": "*",
+    "phpmailer/phpmailer": "^7.0"
+  },
+  "config": {
+    "allow-plugins": false,
+    "sort-packages": true
+  }
+}

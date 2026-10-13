@@ -79,6 +79,8 @@ Gerçek form için sunucu/istemci sözleşmesi hazır; kurulum ve sınırlar [se
 
 Statik canlı site kontrol edildi: [yayın raporu](./docs/qa/CANLI-YAYIN.md). GitHub'a kaynak push etmek cPanel dosyalarını otomatik güncellemez.
 
+cPanel formunu Gmail SMTP'ye bağlamak için [adım adım kurulum](./docs/GMAIL-SMTP-KURULUM.md) hazır. PHP/PHPMailer servisi ayrı özel klasörde çalışır; şifre public dosyalara veya GitHub'a yazılmaz. Sunucu ayarı varsayılan kapalıdır; gerçek Gmail bağlantı testi henüz yapılmadı.
+
 ## Lisans
 
 Projenin kendisi için henüz açık kaynak lisansı seçilmedi. Fontların ve Lucide simgelerinin lisansları `public/licenses/` altında korunur.

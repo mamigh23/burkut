@@ -23,8 +23,8 @@ npm run check:assets
 
 `dist/` klasörünün **içeriğini** aynı subdomain klasörüne yükleyin. `.qa-dist`, kaynak proje, node_modules veya .env dosyalarını yüklemeyin. Yeni kart görselleri için [Hero kartları rehberini](./HERO-KARTLARI.md) kullanın; kaynak değiştikten sonra yeniden build alın.
 
-Form teslimini açmak için statik dosyaların yanına gerçek API, teslim sağlayıcısı ve ertelenen veri işleme içeriği gerekir. `server/dev.mjs` yerel deneme aracıdır; cPanel'e yüklenerek üretim sunucusuna dönüşmez. [Servis temeli](../server/README.md).
+Form teslimini açmak için statik dosyaların yanına gerçek API ve SMTP ayarları gerekir. Gmail için ayrı PHP paketi ve [adım adım kurulum](./GMAIL-SMTP-KURULUM.md) hazırdır. `server/dev.mjs` yerel deneme aracıdır; cPanel'e yüklenerek üretim sunucusuna dönüşmez. [Servis temeli](../server/README.md).
 
-Bu belge kurulum adımlarını kaydeder. DNS, cPanel hesabı, SSL ve canlı site kontrolü henüz bu çalışmada yapılmadı; paket hazırlanması canlı yayın anlamına gelmez.
+Kullanıcının statik yayını HTTPS üzerinden kontrol edildi: [canlı rapor](./qa/CANLI-YAYIN.md). Gmail paketi henüz canlıya yüklenmedi; yeni paket hazırlanması canlı formun açıldığı anlamına gelmez.
 
 Resmi kaynaklar: [cPanel subdomain oluşturma](https://support.cpanel.net/hc/en-us/articles/360052780313-How-to-create-a-subdomain), [SSL rehberi](https://docs.cpanel.net/knowledge-base/security/guide-to-ssl/).

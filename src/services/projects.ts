@@ -7,6 +7,10 @@ import { submitDemoProject } from "./demo";
 
 export const projectSubmissionEnabled =
   import.meta.env.VITE_PROJECT_SUBMISSION === "enabled";
+const projectEndpoint =
+  import.meta.env.VITE_PROJECT_ENDPOINT === "/api/projects.php"
+    ? "/api/projects.php"
+    : "/api/projects";
 export class ProjectSubmissionError extends Error {
   constructor(
     message: string,
@@ -18,9 +22,9 @@ export class ProjectSubmissionError extends Error {
 export async function submitProject(data: ProjectData, idempotencyKey: string) {
   if (!projectSubmissionEnabled) return submitDemoProject();
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 12_000);
+  const timer = setTimeout(() => controller.abort(), 30_000);
   try {
-    const response = await fetch("/api/projects", {
+    const response = await fetch(projectEndpoint, {
       method: "POST",
       signal: controller.signal,
       headers: {
@@ -57,7 +61,10 @@ export async function submitProject(data: ProjectData, idempotencyKey: string) {
       throw new ProjectSubmissionError(
         "Teslim onayı alınamadı. Bilgilerin bu sayfada korundu.",
       );
-    return { mode: "delivered", message: "Proje özetin Bürküt'e iletildi." };
+    return {
+      mode: "delivered",
+      message: "Proje özetin iletildi. İlgin için teşekkürler.",
+    };
   } catch (error) {
     if (error instanceof ProjectSubmissionError) throw error;
     throw new ProjectSubmissionError(

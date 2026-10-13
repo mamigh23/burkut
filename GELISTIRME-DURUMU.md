@@ -129,6 +129,15 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - 320/390/640/1440 px kontrolleri ve mobil hata durumunda axe-core taraması geçti. Otomatik ihlal 0; kapsam ve sınırlar [test raporunda](./docs/qa/YANGAN-HATA-KONTROLU.md).
 - Test ayrı yerel sunucuda sentetik soruyla yapıldı. Gerçek sağlayıcı kurulmadı; cPanel üretim paketindeki iki servis bayrağı kapalı.
 
+## On ikinci geliştirme paketi: cPanel Gmail SMTP adaptörü
+
+- PHP 8.2+ ve PHPMailer 7.1.1 tabanlı `/api/projects.php` servisi hazırlandı. Gönderici/alıcı config'ten, Reply-To ziyaretçiden alınır; mesaj düz metindir. Gmail STARTTLS/587 kullanır, sertifika doğrulaması kapatılmadı.
+- Şifre ve vendor belge kökü dışındaki özel klasöre ayrıldı. Örnek config gönderimi kapalı tutuyor; kişiselleştirilmiş yerel paket boş şifreyle hazırlandı. Gerçek ayar ve mail adresi public kaynaklara eklenmedi.
+- Sunucu doğrulama, 24 KiB gövde sınırı, bağlantı IP'siyle yoğunluk koruması, günlük limit ve 24 saat tekrar kaydı eklendi. SMTP sonucu belirsizse aynı anahtar tekrar mail göndermez. SMTP/gelen kutusu onayı arasındaki fark rehberde açıklandı.
+- 38 JavaScript testi ve SMTP bağlantısı yapmayan 20 PHP kontrolü geçti. MIME/header, tekrar, yoğunluk, belirsiz sonuç, UTF-16 uzunluk ve bozuk depo davranışı kontrol edildi. Composer güvenlik denetimi uyarı bulmadı.
+- Özel yol bağlanmış yerel PHP HTTP rotasında GET 405 / METHOD_NOT_ALLOWED ve kapalı POST 503 / SUBMISSION_UNAVAILABLE JSON dönüşü doğrulandı. Kontrol sunucusu durduruldu; cPanel üzerinde henüz çalıştırılmadı.
+- [Gmail/cPanel adım adım rehberi](./docs/GMAIL-SMTP-KURULUM.md), ayrı site/özel klasör paketleme scripti ve GitHub PHP kontrolü eklendi. Gerçek uygulama şifresi, canlı dosya yükleme ve Gmail alındı testi bekliyor; canlı form bu paket hazırlanmasıyla açılmış sayılmaz.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
