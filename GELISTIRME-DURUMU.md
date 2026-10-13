@@ -82,6 +82,18 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Yol haritasının başına aşamaların güncel durumu, kalan işler, öncelik sırası ve gerçek servisler için gereken kararlar eklendi.
 - Build, lint, mevcut 6 test ve dosya boyutu kontrolü geçti.
 
+## Yedinci geliştirme paketi: talep servisi temeli ve mobil akış
+
+- Tarayıcı/sunucu için ortak alan, tip, uzunluk ve tek satır doğrulaması eklendi. Yangan bütçe girişi formun 120 karakter sınırıyla eşitlendi.
+- Hosting bağımsız Fetch Request/Response talep işlemi eklendi: origin/method/content-type, 24 KiB gövde, yoğunluk, tekrar anahtarı, teslim zaman aşımı ve gerçek alındı kontrolü.
+- İstemci adaptörü gerçek gönderim kapalıyken ağ isteği yapmıyor. Açık mod için aynı origin API, tekrar denemede sabit anahtar, sunucu alan hataları ve onaylı başarı davranışı hazır. Bayrak kapalı kalıyor; sunucu rotası/sağlayıcı bağlanmadı.
+- 12 sunucu sözleşmesi ve 4 istemci testi eklendi; mevcut 6 testle birlikte toplam 22 test geçti.
+- Mobil menü bağlantısı kapanınca odak hedef bölüme taşınıyor; hizmetler bölümünde doğrulandı. Sunucu alan hataları için ilk hata alanına odak davranışı eklendi.
+- Mobil Yangan akışı özet adımına kadar tekrar tamamlandı; bütçe alanı 120 sınırı, atlanan detay, forma aktarım ve ad alanına odak kontrol edildi. Özet durumunun axe-core taramasında otomatik ihlal 0; manuel inceleme bulguları [raporda](./docs/qa/yangan-summary-2026-10-13.json) korundu.
+- API temelinin kurulum sırası ve tek süreç bellek sınırları [sunucu notlarında](./server/README.md) kayıtlı. Gerçek bağlantı ve veri gönderimi başlamadı.
+- Node.js 24 yerel API runner ve Vite /api proxy eklendi. Boş sentetik gövdeyle doğrudan HTTP ve proxy kontrolleri 503 / SUBMISSION_UNAVAILABLE döndü; yerel rota doğrulandı. Teslim adaptörü eklenmedi ve kontrol sunucusu durduruldu.
+- Son build, lint, 22 test ve dosya boyutu kontrolü geçti.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

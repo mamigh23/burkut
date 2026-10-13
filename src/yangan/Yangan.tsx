@@ -18,6 +18,7 @@ import {
   summaryDetail,
 } from "./flow";
 import type { Draft } from "../sections/Contact";
+import { projectLimits } from "../shared/project";
 
 interface Message {
   role: "assistant" | "user";
@@ -349,7 +350,11 @@ export default function Yangan({
                 <input
                   id="chat-input"
                   value={input}
-                  maxLength={2000}
+                  maxLength={
+                    mode === "flow" && current?.key === "budget"
+                      ? projectLimits.budget
+                      : 2000
+                  }
                   placeholder={
                     mode === "chat" ? "Bir soru yaz…" : "İstersen buraya yaz…"
                   }

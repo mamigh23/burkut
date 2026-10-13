@@ -73,6 +73,8 @@ public/licenses/  Dağıtılan font ve simge lisansları
 
 Domain seçilmediği için canonical ve üretim OG URL'si tanımlanmamıştır. Gerçek AI ve talep servisi bağlanmadan önce nihai iletişim ve aydınlatma içeriği tamamlanmalıdır.
 
+Gerçek form için sunucu/istemci sözleşmesi hazır; kurulum ve sınırlar [server/README.md](./server/README.md) içinde. `.env.example` varsayılan kapalı gönderim bayrağını gösterir. Mevcut site kişisel bilgileri sunucuya göndermeye başlamadı.
+
 ## Lisans
 
 Projenin kendisi için henüz açık kaynak lisansı seçilmedi. Fontların ve Lucide simgelerinin lisansları `public/licenses/` altında korunur.

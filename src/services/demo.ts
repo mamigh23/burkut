@@ -1,25 +1,5 @@
-import type { Area } from "../content";
-
-export interface ProjectData {
-  areas: Area[];
-  name: string;
-  email: string;
-  phone: string;
-  company: string;
-  detail: string;
-  budget: string;
-}
-export type Errors = Partial<Record<keyof ProjectData, string>>;
-export function validateProject(data: ProjectData): Errors {
-  const errors: Errors = {};
-  if (!data.areas.length) errors.areas = "En az bir proje alanı seçmelisin.";
-  if (!data.name.trim()) errors.name = "Adını ve soyadını yazmalısın.";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()))
-    errors.email = "Geçerli bir e-posta adresi yazmalısın.";
-  if (!data.detail.trim())
-    errors.detail = "Fikrini birkaç cümleyle anlatmalısın.";
-  return errors;
-}
+export { validateProject } from "../shared/project";
+export type { ProjectData, Errors } from "../shared/project";
 
 export async function submitDemoProject(): Promise<{
   mode: "demo";

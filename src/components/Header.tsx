@@ -59,7 +59,20 @@ export default function Header() {
       {open && (
         <div className="mobile-menu" id="mobile-menu">
           {[...navigation, ["İletişim", "iletisim"]].map(([label, id]) => (
-            <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>
+            <a
+              key={id}
+              href={`#${id}`}
+              onClick={() => {
+                setOpen(false);
+                requestAnimationFrame(() => {
+                  const section = document.getElementById(id);
+                  if (section) {
+                    section.tabIndex = -1;
+                    section.focus({ preventScroll: true });
+                  }
+                });
+              }}
+            >
               {label}
               <ArrowUpRight size={20} />
             </a>

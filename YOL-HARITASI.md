@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | 1–5: İçerik, temel, tasarım, ana sayfa, Yangan | Çalışan ilk sürüm tamamlandı | Gerçek servis bağlantıları 7. aşamada |
 | 6: Kalite | Devam ediyor | Fiziksel telefon/klavye, yüzde 200 zoom, ekran okuyucu, sistem hareket tercihi, manuel kontrast incelemesi, kapsamlı görsel kontrol ve Lighthouse |
-| 7: Gerçek servisler ve yayın | Başlamadı | Form sunucusu, talep alıcısı, gerçek AI, domain/hosting, SEO paylaşım bilgileri ve yayın doğrulaması |
+| 7: Gerçek servisler ve yayın | Teknik temel başladı; bağlantılar kapalı | Talep sağlayıcısı ve hosting rotası, talep alıcısı, gerçek AI, domain/hosting, SEO paylaşım bilgileri ve yayın doğrulaması |
 | 8: Yayın sonrası geliştirme | Yayından sonra | Gerçek portföy, içerik iyileştirme ve bakım |
 
 **Bu pakette ilerleme:** Ayrı yerel üretim kopyasında masaüstü/mobil FCP, LCP, CLS ve kaynak yükleme örnekleri alındı. [Ölçüm raporu](./docs/qa/PERFORMANS.md). Bu örnekler Lighthouse veya fiziksel cihaz testinin yerine geçmez.
@@ -176,6 +176,7 @@ Bu aşama demo tamamlandıktan ve gerekli işletme kararları sağlandıktan son
 - Nihai logo, favicon, gerçek iletişim bilgileri ve tamamlanmış aydınlatma metni eklenir.
 - Domain, hosting ve talep alıcısı belirlenir; veri akışı ve saklama düzeni netleştirilir.
 - Proje talep servisi sunucu doğrulaması, yoğunluk koruması ve tekrar gönderim kontrolüyle bağlanır.
+- **Temel hazır:** Ortak doğrulama, sunucu işlem sözleşmesi ve istemci adaptörü eklendi; hata/yoğunluk/tekrar/zaman aşımı testleri geçti. [Kurulum ve kalan bağlantılar](./server/README.md). Gerçek sağlayıcı ve hosting rotası henüz bağlanmadı; gönderim bayrağı kapalı.
 - Yangan için sağlayıcı/model ve kullanım sınırları seçilir. Anahtarlar sunucuda tutulur; hata, tekrar deneme ve form alternatifi uygulanır.
 - Gerçek form teslimi ve AI bağlantısı ayrı ayrı test edilir. Başarı mesajı yalnızca doğrulanmış sunucu cevabından sonra gösterilir.
 - Üretim domain'i metaveriye eklenir; HTTPS, doğru yönlendirmeler ve hata sayfası kontrol edilir.

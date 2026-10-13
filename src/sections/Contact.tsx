@@ -2,12 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Check, ArrowRight } from "lucide-react";
 import { areaLabels, type Area } from "../content";
 import {
-  submitDemoProject,
   validateProject,
   type ProjectData,
   type Errors,
 } from "../services/demo";
 import { Eyebrow } from "../components/UI";
+import {
+  submitProject,
+  ProjectSubmissionError,
+  projectSubmissionEnabled,
+} from "../services/projects";
+import { projectLimits } from "../shared/project";
 
 export interface Draft {
   area: Area;
@@ -29,6 +34,16 @@ export default function Contact({ draft }: { draft: Draft | null }) {
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
   const form = useRef<HTMLFormElement>(null);
+  const requestKey = useRef<{ payload: string; key: string } | null>(null);
+  const focusError = (next: Errors) => {
+    const first = Object.keys(next)[0];
+    if (first)
+      form.current
+        ?.querySelector<HTMLElement>(
+          `[name="${first}"], [data-field="${first}"]`,
+        )
+        ?.focus();
+  };
   useEffect(() => {
     if (draft) {
       setErrors({});
@@ -53,21 +68,25 @@ export default function Contact({ draft }: { draft: Draft | null }) {
     setErrors(next);
     setStatus("");
     if (Object.keys(next).length) {
-      const first = Object.keys(next)[0];
-      form.current
-        ?.querySelector<HTMLElement>(
-          `[name="${first}"], [data-field="${first}"]`,
-        )
-        ?.focus();
+      focusError(next);
       return;
     }
     setBusy(true);
     try {
-      const result = await submitDemoProject();
+      const payload = JSON.stringify(data);
+      if (requestKey.current?.payload !== payload)
+        requestKey.current = { payload, key: crypto.randomUUID() };
+      const result = await submitProject(data, requestKey.current!.key);
       setStatus(result.message);
-    } catch {
+    } catch (error) {
+      if (error instanceof ProjectSubmissionError) {
+        setErrors(error.errors);
+        requestAnimationFrame(() => focusError(error.errors));
+      }
       setStatus(
-        "Kontrol tamamlanamadı. Yazdıkların korundu; tekrar deneyebilirsin.",
+        error instanceof Error
+          ? error.message
+          : "Kontrol tamamlanamadı. Yazdıkların korundu.",
       );
     } finally {
       setBusy(false);
@@ -203,7 +222,7 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                     type={field.type}
                     autoComplete={field.auto}
                     value={data[field.key]}
-                    maxLength={field.key === "email" ? 254 : 120}
+                    maxLength={projectLimits[field.key]}
                     placeholder={field.placeholder}
                     required={field.required}
                     aria-invalid={!!errors[field.key]}
@@ -230,7 +249,7 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                 rows={4}
                 placeholder="Neyi hayata geçirmek istiyorsun?"
                 value={data.detail}
-                maxLength={4000}
+                maxLength={projectLimits.detail}
                 required
                 aria-invalid={!!errors.detail}
                 aria-describedby={errors.detail ? "detail-error" : undefined}
@@ -251,19 +270,27 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                 name="budget"
                 placeholder="Henüz belli değil"
                 value={data.budget}
-                maxLength={120}
+                maxLength={projectLimits.budget}
                 onChange={(event) => update("budget", event.target.value)}
               />
             </div>
             <p className="form-privacy">
-              Bilgilerin bu sayfada kalır. Gönderim bağlantısı henüz açık değil.
+              {projectSubmissionEnabled
+                ? "Gönderdiğin bilgiler proje talebini değerlendirmek için kullanılır."
+                : "Bilgilerin bu sayfada kalır. Gönderim bağlantısı henüz açık değil."}
             </p>
             <button
               className="button form-submit"
               disabled={busy}
               type="submit"
             >
-              {busy ? "Özet kontrol ediliyor…" : "Proje Özetini Kontrol Et"}
+              {busy
+                ? projectSubmissionEnabled
+                  ? "Gönderiliyor…"
+                  : "Özet kontrol ediliyor…"
+                : projectSubmissionEnabled
+                  ? "Proje Özetini Gönder"
+                  : "Proje Özetini Kontrol Et"}
               <ArrowUpRight size={18} />
             </button>
             <div className="form-status" role="status">
