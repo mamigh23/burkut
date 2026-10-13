@@ -2460,6 +2460,18 @@ legend > span,
   display: block;
   margin-top: 7px;
 }
+.field-count {
+  display: block;
+  margin-top: 7px;
+  font-size: 11px;
+  text-align: right;
+  color: var(--text-muted);
+}
+.form-field input:disabled,
+.form-field textarea:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
 [aria-invalid="true"] {
   border-color: var(--error) !important;
 }

@@ -52,7 +52,7 @@ npm run preview
 
 Üretim çıktısı `dist/` altında oluşur. Paket sürümleri `package-lock.json` ile sabitlenmiştir. `package.json` içindeki `private: true`, npm paket yayınını engeller; GitHub reposunun public görünürlüğünü değiştirmez.
 
-GitHub kalite akışı lint, test, build ve dosya boyutu sınırlarını kontrol eder. Boyut sınırları: toplam JavaScript 100 KiB gzip, toplam CSS 20 KiB gzip, tek raster görsel 600 KiB. Bu kontrol tarayıcı performansı veya Lighthouse puanı ölçmez.
+GitHub kalite akışı lint, test, build ve dosya boyutu sınırlarını kontrol eder. Boyut sınırları: toplam JavaScript 100 KiB gzip, toplam CSS 20 KiB gzip, toplam font 210 KiB, tek raster görsel 600 KiB. Bu kontrol tarayıcı performansı veya Lighthouse puanı ölçmez. [Font/form iyileştirmeleri](./docs/qa/FONT-VE-FORM.md).
 
 Yerel erişilebilirlik taraması ve tekrar çalıştırma adımları: [Erişilebilirlik kontrolü](./docs/qa/ERISILEBILIRLIK.md). Denetim aracı yalnızca `?audit=a11y` ile geliştirme sunucusunda açılır.
 

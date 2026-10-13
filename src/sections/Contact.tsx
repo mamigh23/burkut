@@ -127,6 +127,7 @@ export default function Contact({ draft }: { draft: Draft | null }) {
             ref={form}
             className="contact-form"
             noValidate
+            aria-busy={busy}
             onSubmit={submit}
           >
             <div className="form-heading">
@@ -147,6 +148,7 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                     <input
                       data-field="areas"
                       type="checkbox"
+                      disabled={busy}
                       checked={data.areas.includes(id as Area)}
                       onChange={(event) => {
                         setData({
@@ -159,6 +161,7 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                           ...current,
                           areas: undefined,
                         }));
+                        setStatus("");
                       }}
                     />
                     <span>
@@ -221,6 +224,7 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                     name={field.key}
                     type={field.type}
                     autoComplete={field.auto}
+                    disabled={busy}
                     value={data[field.key]}
                     maxLength={projectLimits[field.key]}
                     placeholder={field.placeholder}
@@ -247,14 +251,20 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                 id="contact-detail"
                 name="detail"
                 rows={4}
+                disabled={busy}
                 placeholder="Neyi hayata geçirmek istiyorsun?"
                 value={data.detail}
                 maxLength={projectLimits.detail}
                 required
                 aria-invalid={!!errors.detail}
-                aria-describedby={errors.detail ? "detail-error" : undefined}
+                aria-describedby={
+                  errors.detail ? "detail-count detail-error" : "detail-count"
+                }
                 onChange={(event) => update("detail", event.target.value)}
               />
+              <span id="detail-count" className="field-count">
+                {data.detail.length} / {projectLimits.detail} karakter
+              </span>
               {errors.detail && (
                 <span id="detail-error" className="field-error">
                   {errors.detail}
@@ -268,11 +278,19 @@ export default function Contact({ draft }: { draft: Draft | null }) {
               <input
                 id="contact-budget"
                 name="budget"
+                disabled={busy}
                 placeholder="Henüz belli değil"
                 value={data.budget}
                 maxLength={projectLimits.budget}
+                aria-invalid={!!errors.budget}
+                aria-describedby={errors.budget ? "budget-error" : undefined}
                 onChange={(event) => update("budget", event.target.value)}
               />
+              {errors.budget && (
+                <span id="budget-error" className="field-error">
+                  {errors.budget}
+                </span>
+              )}
             </div>
             <p className="form-privacy">
               {projectSubmissionEnabled

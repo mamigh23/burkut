@@ -138,6 +138,14 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Özel yol bağlanmış yerel PHP HTTP rotasında GET 405 / METHOD_NOT_ALLOWED ve kapalı POST 503 / SUBMISSION_UNAVAILABLE JSON dönüşü doğrulandı. Kontrol sunucusu durduruldu; cPanel üzerinde henüz çalıştırılmadı.
 - [Gmail/cPanel adım adım rehberi](./docs/GMAIL-SMTP-KURULUM.md), ayrı site/özel klasör paketleme scripti ve GitHub PHP kontrolü eklendi. Gerçek uygulama şifresi, canlı dosya yükleme ve Gmail alındı testi bekliyor; canlı form bu paket hazırlanmasıyla açılmış sayılmaz.
 
+## On üçüncü geliştirme paketi: font yükü ve form kullanımı
+
+- Kullanıcı SMTP kurulumunu sonraya bıraktı. Gmail uygulama şifresi oluşturma adımı bekliyor; mail veya AI bağlantısı açılmadı.
+- Font dosyaları 13'ten 6'ya, toplam 319264'ten 193612 bayta indi. Türkçe Latin/Latin Extended parçaları ve lisanslar korundu. Dosya boyutu kontrolüne 210 KiB font sınırı eklendi.
+- Form açıklamasına karakter sayacı; bütçe alanına hata ve aria bağlantıları eklendi. İşlem sırasında alanlar devre dışı, bitince tekrar kullanılabilir. Proje türü değişince eski durum mesajı temizleniyor.
+- Yerel sentetik form testi, Türkçe karakter görsel kontrolü, 320/390 px taşma kontrolü ve mobil form erişilebilirlik taraması geçti. Otomatik ihlal 0. 38 test, typecheck, lint, build ve boyut sınırları geçti.
+- Kapsam ve ölçüm sınırları [font/form raporunda](./docs/qa/FONT-VE-FORM.md). Gerçek cihaz/ekran okuyucu/Lighthouse çalışması sürüyor.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

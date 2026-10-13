@@ -19,6 +19,10 @@
 
 **Form bağlantısı kararı:** Kullanıcı cPanel üzerinde Gmail SMTP istedi. PHP/PHPMailer adaptörü, özel config, dosya kilidiyle tekrar koruması, yoğunluk ve günlük sınır hazırlandı. [Kurulum](./docs/GMAIL-SMTP-KURULUM.md). 38 JavaScript testi ve ağ bağlantısız 20 PHP kontrolü geçti; gerçek uygulama şifresi/yükleme/Gmail testi henüz yapılmadı. AI kapalı kalıyor.
 
+**SMTP beklemede:** Kullanıcı bu kuruluma daha sonra dönmek istedi. Kaldığımız adım Gmail iki adımlı doğrulama ve uygulama şifresi oluşturma. Bu sırada kalite geliştirmeleri sürüyor; servisler açılmıyor.
+
+**Yeni kalite paketi:** Font çıktısı 319264 → 193612 bayt (yaklaşık %39,4 azalma); Türkçe alt kümeler korundu. Form karakter sayacı, bütçe hata erişilebilirliği ve işlem sırasında giriş kilidi eklendi. [Doğrulama raporu](./docs/qa/FONT-VE-FORM.md).
+
 **Öncelik sırası:** Kalan manuel kalite kontrolleri → API hosting ve sağlayıcı kararları → gerçek form ve Yangan servisleri → nihai paylaşım bilgileri ve servislerin canlı doğrulaması.
 
 **7. aşama için gereken kararlar:** Taleplerin ulaşacağı adres, API için hosting desteği ve AI sağlayıcısı/kullanım bütçesi. Domain ve statik cPanel yayını tamamlandı. Logo, gerçek iletişim bilgileri ve aydınlatma metni kullanıcı kararıyla ertelenmiş durumda; bu paketle yeniden açılmadı. Anahtarlar public repoya yazılmayacak; gerçek veri gönderimi servisler ve ilgili metinler hazır olduğunda açılacak.
