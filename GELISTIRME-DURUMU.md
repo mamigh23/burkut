@@ -167,7 +167,8 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 
 - Kullanıcı canlı form gönderiminin çalıştığını bildirdi. Bildirim HTML tasarıma dönüştürüldü: marka renkleri, iletişim tablosu, proje özeti, kayıt referansı ve mail ile yanıtlama düğmesi.
 - SMTP, gönderici ve Reply-To davranışı korundu. Düz metin alternatifi, kullanıcı alanlarında HTML kaçışlama ve satır sonları doğrulandı; SMTP bağlantısı yapmadan 23 PHP kontrolü geçti.
-- Yalnızca özel `ProjectMail.php` dosyasının değişmesi yeterli. Canlı config/şifre üzerine yazılmaz. Yeni tasarımın canlı Gmail kontrolü yüklemeden sonra yapılmalı.
+- Başlığa kullanıcının logosu eklendi; PNG e-postaya CID ile gömülür. HTML/düz metin ve gömülü logo dahil 24 PHP kontrolü geçti.
+- Özel klasöre `ProjectMail.php` ve `email-logo.png` birlikte yüklenmeli. Canlı config/şifre üzerine yazılmaz. Yeni tasarımın canlı Gmail kontrolü yüklemeden sonra yapılmalı.
 
 ## Henüz tamamlanmayan kabul kontrolleri
 

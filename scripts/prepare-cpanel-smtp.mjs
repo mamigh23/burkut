@@ -52,6 +52,7 @@ if (cpanelUser) {
 mkdirSync(`${stage}/private`);
 cpSync(`${source}/vendor`, `${stage}/private/vendor`, { recursive: true });
 cpSync(`${source}/ProjectMail.php`, `${stage}/private/ProjectMail.php`);
+cpSync(`${source}/email-logo.png`, `${stage}/private/email-logo.png`);
 writeFileSync(
   `${stage}/private/config.php`,
   readFileSync(`${source}/config.example.php`, "utf8").replaceAll(

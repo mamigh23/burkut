@@ -128,7 +128,7 @@ function projectEmailHtml(array $data, string $receipt): string {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eef2ee;"><tr><td align="center" style="padding:32px 12px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;border:1px solid #dce5de;border-radius:20px;overflow:hidden;background-color:#ffffff;">
 <tr><td style="padding:32px 28px;background-color:#0b1c17;color:#f3f7f2;">
-<p style="margin:0 0 32px;font-size:28px;line-height:1;font-weight:700;letter-spacing:-1px;">bürküt<span style="color:#acd0b8;">.</span></p>
+<p style="margin:0 0 32px;"><img src="cid:burkut-brand" width="209" height="40" alt="Bürküt" style="display:block;width:209px;max-width:100%;height:auto;border:0;"></p>
 <p style="margin:0 0 12px;font-size:11px;letter-spacing:2px;color:#acd0b8;">YENİ PROJE TALEBİ</p>
 <h1 style="margin:0;font-size:30px;line-height:1.2;font-weight:600;letter-spacing:-0.8px;">Yeni bir fikir,<br>yeni bir başlangıç.</h1>
 <p style="margin:18px 0 0;font-size:14px;line-height:1.7;color:#c0d1c5;">Web siten üzerinden bir proje özeti iletildi.</p>
@@ -181,6 +181,9 @@ function buildGmail(array $data, string $receipt, array $config): PHPMailer {
         "Ad: {$data['name']}\nE-posta: {$data['email']}\nTelefon: {$data['phone']}\nKurum: {$data['company']}\nBütçe: {$data['budget']}\n\nProje:\n{$data['detail']}";
     $mail->isHTML(true);
     $mail->Body = projectEmailHtml($data, $receipt);
+    $logo = file_get_contents(__DIR__ . '/email-logo.png');
+    if ($logo === false) throw new RuntimeException('Mail logo unavailable');
+    $mail->addStringEmbeddedImage($logo, 'burkut-brand', 'burkut-logo.png', 'base64', 'image/png');
     return $mail;
 }
 

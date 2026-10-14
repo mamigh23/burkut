@@ -32,3 +32,15 @@ for size in (32, 180):
     scaled.thumbnail((round(size * .94), round(size * .94)), Image.Resampling.LANCZOS)
     icon.alpha_composite(scaled, ((size-scaled.width)//2, (size-scaled.height)//2))
     icon.save(target / f"favicon-{size}.png", optimize=True)
+
+# Email uses an embedded PNG because WebP support varies by mail client.
+email_mark = mark.copy()
+email_mark.thumbnail((144, 92), Image.Resampling.LANCZOS)
+email_word = wordmark.copy()
+email_word.thumbnail((354, 48), Image.Resampling.LANCZOS)
+white_word = Image.new("RGBA", email_word.size, (255, 255, 255, 0))
+white_word.putalpha(email_word.getchannel("A"))
+email_logo = Image.new("RGBA", (522, 100), (0, 0, 0, 0))
+email_logo.alpha_composite(email_mark, (0, (100-email_mark.height)//2))
+email_logo.alpha_composite(white_word, (168, (100-white_word.height)//2))
+email_logo.save(root / "server/cpanel/email-logo.png", optimize=True)

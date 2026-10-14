@@ -47,7 +47,8 @@ try {
     check($mail->From === 'sender@gmail.com' && $mail->getToAddresses()[0][0] === 'recipient@gmail.com' && array_values($mail->getReplyToAddresses())[0][0] === 'test@example.com', 'Trusted From / To and visitor Reply-To');
     check($mail->Host === 'smtp.gmail.com' && $mail->Port === 587 && $mail->SMTPSecure === 'tls' && $mail->SMTPDebug === 0, 'SMTP TLS and no debug');
     check($mail->preSend() && str_contains($mail->getSentMIMEMessage(), 'text/plain'), 'MIME generation without network');
-    check($mail->ContentType === 'multipart/alternative' && str_contains($mail->getSentMIMEMessage(), 'text/html') && str_contains($mail->AltBody, 'Sentetik test'), 'HTML with plain-text alternative');
+    check(str_contains($mail->getSentMIMEMessage(), 'multipart/alternative') && str_contains($mail->getSentMIMEMessage(), 'text/html') && str_contains($mail->AltBody, 'Sentetik test'), 'HTML with plain-text alternative');
+    check(str_contains($mail->Body, 'cid:burkut-brand') && str_contains($mail->getSentMIMEMessage(), 'Content-ID: <burkut-brand>') && str_contains($mail->getSentMIMEMessage(), 'Content-Type: image/png'), 'Embedded brand logo without remote image request');
     $hostile = array_replace($payload, ['name'=>'<img src=x onerror=alert(1)>', 'detail'=>"<script>alert(1)</script>\nİkinci satır & detay"]);
     $html = \Burkut\projectEmailHtml($hostile, 'test<receipt>');
     check(!str_contains($html, '<script>') && !str_contains($html, '<img src=x') && str_contains($html, '&lt;script&gt;') && str_contains($html, 'İkinci satır &amp; detay') && str_contains($html, '<br'), 'Escape visitor HTML and preserve line breaks');
