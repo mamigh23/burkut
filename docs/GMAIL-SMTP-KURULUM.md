@@ -58,9 +58,9 @@ cd server/cpanel
 composer install --no-dev --prefer-dist --no-plugins --no-scripts
 php test.php
 cd ../..
-node scripts/prepare-cpanel-smtp.mjs YOUR_ADDRESS@gmail.com
+node scripts/prepare-cpanel-smtp.mjs YOUR_ADDRESS@gmail.com CPANEL_USER
 ```
 
-Script, iki servis kapalı olan normal yayından ayrı SMTP staging dizini oluşturur; gerçek config veya şifre okumaz. Staging'in `public/` ve `private/` içerikleri ayrı ZIP yapılır. Özel ayarlar ve vendor Git'e eklenmez. PHP testleri sentetik teslim callback'i ve ağ bağlantısız MIME üretimi kullanır; Gmail'e bağlantı yapmaz.
+Script, iki servis kapalı olan normal yayından ayrı SMTP staging dizini oluşturur; gerçek config veya şifre okumaz. İsteğe bağlı cPanel kullanıcı adı verilirse staging API yolu `/home/CPANEL_USER/burkut-private` düzenine göre hazırlanır. Dosya Yöneticisi'ndeki gerçek ana dizin farklıysa yüklenen API yolu buna göre düzeltilmelidir. Staging'in `public/` ve `private/` içerikleri ayrı ZIP yapılır. Özel ayarlar ve vendor Git'e eklenmez. PHP testleri sentetik teslim callback'i ve ağ bağlantısız MIME üretimi kullanır; Gmail'e bağlantı yapmaz.
 
 Kaynak: [PHPMailer resmi deposu](https://github.com/PHPMailer/PHPMailer).

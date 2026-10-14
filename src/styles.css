@@ -244,14 +244,23 @@ svg {
   box-shadow: 0 6px 30px #060c0b14;
 }
 .brand {
-  font-size: 31px;
-  font-weight: 750;
-  letter-spacing: -0.065em;
+  --brand-mark-width: 52px;
+  --brand-word-width: 128px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   line-height: 1;
-  display: inline-block;
 }
-.brand-dot {
-  color: var(--mint);
+.brand-mark {
+  display: block;
+  width: var(--brand-mark-width);
+  height: auto;
+}
+.brand-wordmark {
+  display: block;
+  width: var(--brand-word-width);
+  height: auto;
+  filter: brightness(0) invert(1);
 }
 .desktop-links {
   display: flex;
@@ -2514,10 +2523,12 @@ legend > span,
   padding-bottom: 55px;
 }
 .brand-footer {
-  font-size: 48px;
+  --brand-mark-width: 72px;
+  --brand-word-width: 156px;
+  gap: 16px;
 }
-.brand-footer .brand-dot {
-  color: var(--forest-600);
+.brand-footer .brand-wordmark {
+  filter: none;
 }
 .footer-top p {
   font-size: 12px;
@@ -3025,7 +3036,9 @@ legend > span,
     gap: 15px;
   }
   .brand {
-    font-size: 28px;
+    --brand-mark-width: 44px;
+    --brand-word-width: 108px;
+    gap: 10px;
   }
   .desktop-links,
   .nav-cta {
@@ -3519,7 +3532,9 @@ legend > span,
     gap: 8px;
   }
   .brand-footer {
-    font-size: 42px;
+    --brand-mark-width: 64px;
+    --brand-word-width: 140px;
+    gap: 14px;
   }
   .footer-bottom {
     flex-wrap: wrap;

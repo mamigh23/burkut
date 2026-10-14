@@ -8,7 +8,20 @@ export function Brand({ footer = false }: { footer?: boolean }) {
       href="#top"
       aria-label="Bürküt ana sayfa"
     >
-      bürküt<span className="brand-dot">.</span>
+      <img
+        className="brand-mark"
+        src="/images/brand/logo-mark.webp"
+        width={192}
+        height={122}
+        alt=""
+      />
+      <img
+        className="brand-wordmark"
+        src="/images/brand/logo-wordmark.webp"
+        width={512}
+        height={67}
+        alt=""
+      />
     </a>
   );
 }

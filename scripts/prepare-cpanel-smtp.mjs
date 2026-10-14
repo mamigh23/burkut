@@ -12,8 +12,11 @@ import console from "node:console";
 
 // Writes staging files only. Never reads a real server config or SMTP password.
 const gmail = process.argv[2] || "YOUR_ADDRESS@gmail.com";
+const cpanelUser = process.argv[3];
 if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(gmail))
   throw new Error("A Gmail address is required; do not pass any password.");
+if (cpanelUser && !/^[a-zA-Z0-9_]{1,32}$/.test(cpanelUser))
+  throw new Error("Use only the cPanel account name, never a password.");
 const source = resolve("server/cpanel");
 if (!existsSync(`${source}/vendor/autoload.php`))
   throw new Error("Run composer install in server/cpanel first.");
@@ -36,6 +39,16 @@ const stage = resolve(`artifacts/cpanel-smtp-${Date.now()}`);
 mkdirSync(stage, { recursive: true });
 cpSync("dist", `${stage}/public`, { recursive: true });
 cpSync(`${source}/public/api`, `${stage}/public/api`, { recursive: true });
+if (cpanelUser) {
+  const endpoint = `${stage}/public/api/projects.php`;
+  writeFileSync(
+    endpoint,
+    readFileSync(endpoint, "utf8").replace(
+      "/home/CPANEL_USER/burkut-private",
+      `/home/${cpanelUser}/burkut-private`,
+    ),
+  );
+}
 mkdirSync(`${stage}/private`);
 cpSync(`${source}/vendor`, `${stage}/private/vendor`, { recursive: true });
 cpSync(`${source}/ProjectMail.php`, `${stage}/private/ProjectMail.php`);

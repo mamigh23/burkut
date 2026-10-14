@@ -155,6 +155,14 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Yeni yerel üretim ölçümleri ve canlı PageSpeed raporları alındı: mobil performans 95, masaüstü 100; erişilebilirlik, en iyi uygulamalar ve SEO iki görünümde de 100. Bunlar tek laboratuvar örneği; manuel kontroller ve gerçek kullanıcı verisi yerine geçmez.
 - cPanel için yalnızca hash'li varlıklara uzun önbellek ve CSS/JS sıkıştırma dosyası eklendi. Henüz canlıya uygulanmadı. [Ayrıntılı kontrol raporu](./docs/qa/KALITE-2026-10-14.md).
 
+## On beşinci geliştirme paketi: kullanıcı logosu ve SMTP hazırlığı
+
+- Kullanıcının sağladığı şeffaf logo dosyalarından web varlıkları hazırlandı; orijinaller değiştirilmedi. Üst menü ve alt bilgiye simge ve yazı eklendi.
+- Favicon yalnızca `onlylogo.png` simgesidir; yazısız ve şeffaf arka planlıdır. Tarayıcı ve Apple simgeleri üretildi.
+- 320 px görünümde taşma olmadığı ve marka görsellerinin yüklendiği kontrol edildi. 47 test, lint, typecheck, üretim derlemesi ve varlık boyutu sınırları geçti.
+- Kullanıcı Gmail uygulama şifresini hazırladığını bildirdi. Özel paket boş şifre ve kapalı gönderimle hazırlandı; cPanel kullanıcı adına göre API klasör yolu yerel pakete işlendi. Canlı yükleme, özel config ve gerçek mail testi bekliyor.
+- Logo varlıklarının yenilenmesi [logo rehberinde](./docs/LOGO.md) açıklanıyor.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
@@ -162,7 +170,7 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Azaltılmış hareket için CSS mevcut; işletim sistemi tercihiyle ayrı doğrulama yapılmadı.
 - Bütün bileşenlerin tüm ekran/etkileşim durumları için kapsamlı görsel regresyon kontrolü.
 - Güncel kaynaklar cPanel'e yüklendikten sonra Lighthouse ve önbellek HTTP başlıklarının tekrar kontrolü. Canlı laboratuvar ölçümü alındı; gerçek ziyaretçi verisi henüz yok.
-- Nihai paylaşım görseli ve favicon. Üretim domain'i, canonical/OG URL ve temel SEO dosyaları tamamlandı.
+- Nihai paylaşım görseli. Favicon, üretim domain'i, canonical/OG URL ve temel SEO dosyaları tamamlandı.
 - Gerçek talep servisi, hata/yoğunluk senaryoları, veri işleme düzeni ve gerçek AI bağlantısı.
 
 ## Yol haritasındaki karşılığı
