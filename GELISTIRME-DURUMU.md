@@ -176,6 +176,13 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Kullanıcı logolu HTML e-posta tasarımının da tamamlandığını onayladı. SMTP kurulumu, gerçek gönderim ve logolu bildirim artık bekleyen iş değildir. Gmail gelen kutusuna doğrudan erişilmedi; teslim ve görünüm kabulü kullanıcı beyanıdır.
 - İletişim bilgileri, aydınlatma metni, paylaşım görseli, kalan manuel kontroller ve isteğe bağlı gerçek AI bağlantısı açık kalıyor.
 
+## On yedinci geliştirme paketi: paylaşım önizlemesi ve aydınlatma taslağı
+
+- Mevcut marka varlıklarıyla 1200×630 paylaşım PNG'si hazırlandı, görsel olarak kontrol edildi. OG/Twitter meta etiketleri ve görsel alt metinleri eklendi.
+- Resmî KVKK kaynaklarına ve gerçek veri akışına göre aydınlatma taslağı yazıldı. Kullanıcının verdiği şirket unvanı ve başvuru e-postası işlendi. Posta adresi, saklama ve Gmail aktarım düzeni eksik olduğundan nihai metin olarak yayımlanmadı.
+- SMTP bağlantısı açık güncel site paketi hazırlandı. Canlı özel config değiştirilmez; cPanel yüklemesi kullanıcı tarafından yapılmalı. 47 test, lint, typecheck, build ve varlık bütçeleri geçti.
+- Eksik bilgiler ve yükleme adımları [yayını tamamlama listesinde](./docs/YAYIN-TAMAMLAMA.md) toplandı. Manuel kabul kontrolleri aşağıda açık kalıyor.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
@@ -183,7 +190,7 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Azaltılmış hareket için CSS mevcut; işletim sistemi tercihiyle ayrı doğrulama yapılmadı.
 - Bütün bileşenlerin tüm ekran/etkileşim durumları için kapsamlı görsel regresyon kontrolü.
 - Güncel kaynaklar cPanel'e yüklendikten sonra Lighthouse ve önbellek HTTP başlıklarının tekrar kontrolü. Canlı laboratuvar ölçümü alındı; gerçek ziyaretçi verisi henüz yok.
-- Nihai paylaşım görseli. Favicon, üretim domain'i, canonical/OG URL ve temel SEO dosyaları tamamlandı.
+- Paylaşım görseli ve OG/Twitter etiketleri hazır; cPanel yüklemesi ve sosyal platformdaki görünümü bekliyor. Favicon, üretim domain'i, canonical/OG URL ve temel SEO dosyaları tamamlandı.
 - Canlı hata/yoğunluk senaryoları, veri işleme düzeni ve gerçek AI bağlantısı. Talep servisi ve Gmail gönderimi çalışıyor; otomatik sunucu sınır testleri geçti.
 
 ## Yol haritasındaki karşılığı

@@ -12,7 +12,7 @@
 | --- | --- | --- |
 | 1–5: İçerik, temel, tasarım, ana sayfa, Yangan | Çalışan ilk sürüm tamamlandı | Gerçek servis bağlantıları 7. aşamada |
 | 6: Kalite | Devam ediyor | Fiziksel telefon/klavye, yüzde 200 zoom, ekran okuyucu, sistem hareket tercihi, manuel kontrast incelemesi, kapsamlı görsel kontrol ve Lighthouse |
-| 7: Gerçek servisler ve yayın | Site, Gmail SMTP ve logolu bildirim tamamlandı; gerçek AI kapalı | İletişim bilgileri, aydınlatma metni, nihai paylaşım görseli; AI için sağlayıcı/bütçe ve hosting kararı |
+| 7: Gerçek servisler ve yayın | Site, Gmail SMTP ve logolu bildirim tamamlandı; gerçek AI kapalı | İletişim bilgileri, aydınlatma taslağının eksik işletme/aktarım bilgileri; paylaşım görseli paketinin yüklenmesi; AI için sağlayıcı/bütçe ve hosting kararı |
 | 8: Yayın sonrası geliştirme | Yayın kontrolü başladı | Gerçek portföy, içerik iyileştirme ve bakım |
 
 **Önceki Yangan paketi:** Hata/tekrar deneme, klavye odağı, ekran küçülmesi ve mod değişimi kontrolleri tamamlandı; bulunan sorunlar düzeltildi. O pakette toplam 37 test geçti. Mobil hata durumunda otomatik erişilebilirlik ihlali 0. [Kontrol ve sınırlar](./docs/qa/YANGAN-HATA-KONTROLU.md). Gerçek AI sağlayıcı bağlantısı kapalı kalıyor.
@@ -25,9 +25,11 @@
 
 **14 Ekim kalite kontrolleri:** Mobil menünün kısa ekran, dışarı tıklama ve odak davranışı düzeltildi. 47 uygulama testi ve o pakette 20 PHP kontrolü geçti. Canlı PageSpeed performansı mobil 95, masaüstü 100; diğer üç kategori iki görünümde de 100. [Kapsam, ham ölçümler ve kalan kontroller](./docs/qa/KALITE-2026-10-14.md). Logo ve favicon eklendi; Gmail daha sonra aynı gün tamamlandı. İletişim bilgileri bekliyor. Reddedilen form hata tasarımı geri getirilmedi.
 
-**Öncelik sırası:** İletişim bilgileri ve aydınlatma metni → kalan manuel kalite kontrolleri → paylaşım görseli → isteğe bağlı gerçek Yangan AI bağlantısı için sağlayıcı/bütçe/hosting kararı.
+**Öncelik sırası:** Şirket posta adresi ve veri işleme/aktarım bilgilerinin tamamlanması → aydınlatma metninin yayımlanması ve iletişim bilgileri → paylaşım görseli içeren güncel site paketinin yüklenmesi → kalan manuel kontroller → isteğe bağlı gerçek Yangan AI bağlantısı.
 
-**7. aşamada kalanlar:** İletişim bilgileri, veri işleme düzenine uygun aydınlatma metni ve paylaşım görseli. AI için hosting desteği ve sağlayıcı/kullanım bütçesi kararı bekliyor. Domain, cPanel yayını, logo, favicon ve Gmail gönderimi tamamlandı. Anahtarlar public repoya yazılmaz.
+**7. aşamada kalanlar:** İletişim bilgileri ve veri işleme düzenine uygun aydınlatma metninin tamamlanması. Paylaşım görseli ve OG/Twitter etiketleri hazır; cPanel yüklemesi bekliyor. AI için hosting desteği ve sağlayıcı/kullanım bütçesi kararı bekliyor. Domain, cPanel yayını, logo, favicon ve Gmail gönderimi tamamlandı. Anahtarlar public repoya yazılmaz.
+
+**Paylaşım ve aydınlatma paketi:** 1200×630 PNG, OG/Twitter etiketleri ve SMTP bağlantısı açık site ZIP’i hazırlandı. [Aydınlatma taslağı](./docs/AYDINLATMA-METNI-TASLAK.md) gerçek form/Gmail akışına göre yazıldı; kullanıcı şirket unvanını ve başvuru e-postasını verdi. Posta adresi, hosting kayıt/saklama düzeni ve Gmail yurt dışı aktarım dayanağı eksik olduğundan taslak henüz ziyaretçilere yayımlanmadı. Kullanıcıya kalan işler [teslim listesinde](./docs/YAYIN-TAMAMLAMA.md).
 
 ## Hedef
 
