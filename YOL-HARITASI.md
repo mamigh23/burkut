@@ -1,10 +1,10 @@
 # Bürküt — Marka ve web sitesi yol haritası
 
 **Tarih:** 12 Ekim 2026  
-**Durum:** Statik site canlıda; gerçek servislerin temeli ve kalite kontrolleri ilerliyor.
+**Durum:** Site ve Gmail form gönderimi canlıda; logolu e-posta kullanıcı tarafından doğrulandı. Kalan içerik ve kalite kontrolleri sürüyor.
 **Temel belgeler:** Bürküt.md ve REFERANS-INCELEMESI.md
 
-**Yayın durumu:** Kullanıcı siteyi cPanel üzerinden `https://burkut.gemnative.com/` adresine yükledi. HTTPS, HTTP yönlendirmesi, temel SEO dosyaları ve responsive görünüm doğrulandı. [Canlı kontrol raporu](./docs/qa/CANLI-YAYIN.md). Gerçek talep ve AI bağlantıları kapalı; yeni geliştirmeler ayrıca ZIP ile yüklenmeli.
+**Yayın durumu:** Kullanıcı siteyi cPanel üzerinden `https://burkut.gemnative.com/` adresine yükledi. HTTPS, HTTP yönlendirmesi, temel SEO dosyaları ve responsive görünüm doğrulandı. [Canlı kontrol raporu](./docs/qa/CANLI-YAYIN.md). Gmail SMTP form bağlantısı aktif; logolu HTML bildirimin çalıştığı kullanıcı tarafından onaylandı. Gerçek AI bağlantısı kapalı; yeni geliştirmeler ayrıca ilgili dosyalar veya ZIP ile yüklenmeli.
 
 ## Güncel durum ve sıradaki işler — 14 Ekim 2026
 
@@ -12,26 +12,26 @@
 | --- | --- | --- |
 | 1–5: İçerik, temel, tasarım, ana sayfa, Yangan | Çalışan ilk sürüm tamamlandı | Gerçek servis bağlantıları 7. aşamada |
 | 6: Kalite | Devam ediyor | Fiziksel telefon/klavye, yüzde 200 zoom, ekran okuyucu, sistem hareket tercihi, manuel kontrast incelemesi, kapsamlı görsel kontrol ve Lighthouse |
-| 7: Gerçek servisler ve yayın | Statik yayın doğrulandı; Gmail ve sohbet temeli hazır | cPanel özel config kurulumu ve mail testi, AI sağlayıcısı/bütçesi ve hosting rotası, nihai paylaşım görseli |
+| 7: Gerçek servisler ve yayın | Site, Gmail SMTP ve logolu bildirim tamamlandı; gerçek AI kapalı | İletişim bilgileri, aydınlatma metni, nihai paylaşım görseli; AI için sağlayıcı/bütçe ve hosting kararı |
 | 8: Yayın sonrası geliştirme | Yayın kontrolü başladı | Gerçek portföy, içerik iyileştirme ve bakım |
 
-**Son pakette ilerleme:** Yangan'ın hata/tekrar deneme, klavye odağı, ekran küçülmesi ve mod değişimi kontrolleri tamamlandı; bulunan sorunlar düzeltildi. Toplam 37 test geçti. Mobil hata durumunda otomatik erişilebilirlik ihlali 0. [Kontrol ve sınırlar](./docs/qa/YANGAN-HATA-KONTROLU.md). Gerçek sağlayıcı bağlantıları kapalı kalıyor.
+**Önceki Yangan paketi:** Hata/tekrar deneme, klavye odağı, ekran küçülmesi ve mod değişimi kontrolleri tamamlandı; bulunan sorunlar düzeltildi. O pakette toplam 37 test geçti. Mobil hata durumunda otomatik erişilebilirlik ihlali 0. [Kontrol ve sınırlar](./docs/qa/YANGAN-HATA-KONTROLU.md). Gerçek AI sağlayıcı bağlantısı kapalı kalıyor.
 
-**Form bağlantısı kararı:** Kullanıcı cPanel üzerinde Gmail SMTP istedi. PHP/PHPMailer adaptörü, özel config, dosya kilidiyle tekrar koruması, yoğunluk ve günlük sınır hazırlandı. [Kurulum](./docs/GMAIL-SMTP-KURULUM.md). 38 JavaScript testi ve ağ bağlantısız 20 PHP kontrolü geçti; gerçek uygulama şifresi/yükleme/Gmail testi henüz yapılmadı. AI kapalı kalıyor.
+**Form bağlantısı tamamlandı:** cPanel üzerinde PHP/PHPMailer ve Gmail SMTP aktif. Özel config belge kökü dışında tutuluyor; dosya kilidiyle tekrar koruması, yoğunluk ve günlük sınır mevcut. [Kurulum](./docs/GMAIL-SMTP-KURULUM.md). Son uygulama kontrollerinde 47 JavaScript testi, son mail şablonunda SMTP bağlantısı yapmadan 24 PHP kontrolü geçti. Kullanıcı gerçek gönderimi ve logolu e-postayı doğruladı. AI kapalı kalıyor.
 
-**SMTP kurulumu:** Kullanıcı uygulama şifresini hazırladığını bildirdi. Kullanıcı adına göre özel yol içeren yerel paketler hazır. Sıradaki adım cPanel belge kökü dışındaki özel klasöre yükleme ve config ayarı; ardından kontrollü mail testi. Şifre sohbetten alınmaz, gönderim henüz açılmadı.
+**SMTP kabulü — 14 Ekim 2026:** PHP 8.2 üzerinde özel klasör bağlantısı doğrulandı; kullanıcı gönderimi açıp formdan mail alındığını ve ardından logolu tasarımın tamamlandığını bildirdi. HTML bildirimde iletişim tablosu, proje özeti, yanıt düğmesi ve gömülü logo var; düz metin alternatifi korunuyor. Uygulama şifresi sohbet veya public repoya alınmadı. Canlı kabul kullanıcı beyanına dayanır; gelen kutusuna doğrudan erişilmedi.
 
 **Yeni kalite paketi:** Font çıktısı 319264 → 193612 bayt (yaklaşık %39,4 azalma); Türkçe alt kümeler korundu. Form karakter sayacı, bütçe hata erişilebilirliği ve işlem sırasında giriş kilidi eklendi. [Doğrulama raporu](./docs/qa/FONT-VE-FORM.md).
 
-**14 Ekim kontrolleri:** Mobil menünün kısa ekran, dışarı tıklama ve odak davranışı düzeltildi. 47 uygulama testi ve 20 PHP kontrolü geçti. Canlı PageSpeed performansı mobil 95, masaüstü 100; diğer üç kategori iki görünümde de 100. [Kapsam, ham ölçümler ve kalan kontroller](./docs/qa/KALITE-2026-10-14.md). Logo ve favicon eklendi; Gmail kurulumu ve iletişim bilgileri bekliyor. Reddedilen form hata tasarımı geri getirilmedi.
+**14 Ekim kalite kontrolleri:** Mobil menünün kısa ekran, dışarı tıklama ve odak davranışı düzeltildi. 47 uygulama testi ve o pakette 20 PHP kontrolü geçti. Canlı PageSpeed performansı mobil 95, masaüstü 100; diğer üç kategori iki görünümde de 100. [Kapsam, ham ölçümler ve kalan kontroller](./docs/qa/KALITE-2026-10-14.md). Logo ve favicon eklendi; Gmail daha sonra aynı gün tamamlandı. İletişim bilgileri bekliyor. Reddedilen form hata tasarımı geri getirilmedi.
 
-**Öncelik sırası:** Kalan manuel kalite kontrolleri → API hosting ve sağlayıcı kararları → gerçek form ve Yangan servisleri → nihai paylaşım bilgileri ve servislerin canlı doğrulaması.
+**Öncelik sırası:** İletişim bilgileri ve aydınlatma metni → kalan manuel kalite kontrolleri → paylaşım görseli → isteğe bağlı gerçek Yangan AI bağlantısı için sağlayıcı/bütçe/hosting kararı.
 
-**7. aşama için gerekenler:** Gmail kurulumu ve doğrulanmış teslim, AI için hosting desteği ve sağlayıcı/kullanım bütçesi. Domain ve statik cPanel yayını tamamlandı. Logo ve favicon tamamlandı; iletişim bilgilerini kullanıcı hazırlıyor; aydınlatma metni ertelenmiş durumda. Anahtarlar public repoya yazılmayacak; gerçek veri gönderimi servisler ve ilgili metinler hazır olduğunda açılacak.
+**7. aşamada kalanlar:** İletişim bilgileri, veri işleme düzenine uygun aydınlatma metni ve paylaşım görseli. AI için hosting desteği ve sağlayıcı/kullanım bütçesi kararı bekliyor. Domain, cPanel yayını, logo, favicon ve Gmail gönderimi tamamlandı. Anahtarlar public repoya yazılmaz.
 
 ## Hedef
 
-**İlerleme:** 1–5. aşamaların ilk sürümü uygulandı ve statik site yayımlandı. 6. aşamada gerçek cihaz, ekran okuyucu ve üretim performans kontrolleri sürüyor. 7. aşamada teknik temel hazır; sağlayıcı bağlantıları kapalı. Ayrıntılar: [GELISTIRME-DURUMU.md](./GELISTIRME-DURUMU.md).
+**İlerleme:** 1–5. aşamaların ilk sürümü uygulandı ve site yayımlandı. 6. aşamada kalan manuel kontroller sürüyor. 7. aşamada Gmail gönderimi ve logolu bildirim tamamlandı; gerçek AI bağlantısı kapalı. Ayrıntılar: [GELISTIRME-DURUMU.md](./GELISTIRME-DURUMU.md).
 
 **Son görsel karar:** Soyut bağlantı küresi yerine hayalî **Bürküt gezegeni** kullanılacak. İlk görsel ve responsive sürümleri eklendi. Bu karar marka görseli içindir; gerçek operasyon coğrafyası veya müşteri istatistiği anlamına gelmez.
 
@@ -48,9 +48,9 @@ Markanın şu an doğrulanabilir dayanağı; hizmet alanları, tasarım yaklaş�
 - React + TypeScript + Vite; Tailwind CSS ve özel CSS. Paketler uygulama başlangıcında uyumlu kararlı sürümlerle kurulup lockfile ile sabitlenir.
 - Ana renk orman yeşili, yardımcı vurgu mavi; renkler tek token kaynağından gelir.
 - Allbytech'in bölüm ritmi ve maket sunumundan yararlanılır; Bürküt'e özgü metin ve sahneler hazırlanır.
-- Logo çalışması ertelendi. İlk arayüzde Türkçe karakterleri doğru bir Bürküt metin işareti kullanılır; nihai logo olarak sunulmaz.
+- Kullanıcının sağladığı logo siteye, favicon'a ve e-posta başlığına uygulandı; orijinal çizim korunur.
 - Gerçek iletişim bilgileri ve aydınlatma metni ertelendi. Bunlar demo geliştirmesini engellemez; gerçek veri toplayan yayına geçişten önce tamamlanır.
-- Form ve Yangan ilk sürümde yerel akışlarla çalışır. Kullanıcı kararıyla sitedeki demo etiketleri kaldırıldı; gerçek gönderim açılana kadar form bunu ilgili işlemde açıkça belirtir. Kişisel bilgiler sunucuya gönderilmez veya kalıcı tarayıcı deposuna yazılmaz.
+- Canlı form Gmail SMTP ile gönderir; yerel geliştirme ve normal statik paket varsayılan olarak kapalıdır. Yangan gerçek AI bağlantısı kapalı kalır. Kişisel form bilgileri kalıcı tarayıcı deposuna yazılmaz; canlı gönderimde sunucu ve Gmail üzerinden işlenir.
 - Ziyaretçinin ana eylemi “Projeni Anlat” olur. Yangan bu eylemi destekler.
 
 ## 1. Marka ve içerik temeli

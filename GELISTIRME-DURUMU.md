@@ -170,6 +170,12 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Başlığa kullanıcının logosu eklendi; PNG e-postaya CID ile gömülür. HTML/düz metin ve gömülü logo dahil 24 PHP kontrolü geçti.
 - Özel klasöre `ProjectMail.php` ve `email-logo.png` birlikte yüklenmeli. Canlı config/şifre üzerine yazılmaz. Yeni tasarımın canlı Gmail kontrolü yüklemeden sonra yapılmalı.
 
+## Canlı Gmail kabulü — 14 Ekim 2026
+
+- Canlı API'de PHP 8.2 ve özel dosya yüklemesi GET 405 / METHOD_NOT_ALLOWED yanıtıyla doğrulandı. Kullanıcı config üzerinden gönderimi açtı ve gerçek form gönderiminin çalıştığını bildirdi.
+- Kullanıcı logolu HTML e-posta tasarımının da tamamlandığını onayladı. SMTP kurulumu, gerçek gönderim ve logolu bildirim artık bekleyen iş değildir. Gmail gelen kutusuna doğrudan erişilmedi; teslim ve görünüm kabulü kullanıcı beyanıdır.
+- İletişim bilgileri, aydınlatma metni, paylaşım görseli, kalan manuel kontroller ve isteğe bağlı gerçek AI bağlantısı açık kalıyor.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
@@ -178,8 +184,8 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Bütün bileşenlerin tüm ekran/etkileşim durumları için kapsamlı görsel regresyon kontrolü.
 - Güncel kaynaklar cPanel'e yüklendikten sonra Lighthouse ve önbellek HTTP başlıklarının tekrar kontrolü. Canlı laboratuvar ölçümü alındı; gerçek ziyaretçi verisi henüz yok.
 - Nihai paylaşım görseli. Favicon, üretim domain'i, canonical/OG URL ve temel SEO dosyaları tamamlandı.
-- Gerçek talep servisi, hata/yoğunluk senaryoları, veri işleme düzeni ve gerçek AI bağlantısı.
+- Canlı hata/yoğunluk senaryoları, veri işleme düzeni ve gerçek AI bağlantısı. Talep servisi ve Gmail gönderimi çalışıyor; otomatik sunucu sınır testleri geçti.
 
 ## Yol haritasındaki karşılığı
 
-1–5. aşamaların ilk uygulaması tamamlandı ve statik site canlıda. 6. aşamadaki temel kontroller yapıldı; yukarıdaki kabul kontrolleri sürüyor. 7. aşamada talep ve sohbet servisi temeli hazır, gerçek sağlayıcı bağlantıları kapalı.
+1–5. aşamaların ilk uygulaması tamamlandı ve site canlıda. 6. aşamadaki temel kontroller yapıldı; yukarıdaki kabul kontrolleri sürüyor. 7. aşamada gerçek Gmail talep servisi ve logolu bildirim tamamlandı; gerçek AI bağlantısı kapalı.
