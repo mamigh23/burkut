@@ -42,6 +42,12 @@ Sorun halinde `enabled=false` gönderimi durdurur. TLS veya şifre kontrolünü 
 
 ## Koruma ve sınırlar
 
+### Çalışan kurulumda e-posta tasarımını güncelleme
+
+Bildirim, koyu yeşil başlık, iletişim tablosu, proje özeti ve ziyaretçiye mail yanıtı düğmesi içeren HTML olarak gönderilir. Düz metin alternatifi korunur. Kullanıcı alanları HTML için kaçışlanır; uzaktan resim veya font yüklenmez. E-posta istemcisine göre köşe, boşluk ve renk gösterimi değişebilir.
+
+Yalnızca `server/cpanel/ProjectMail.php` dosyasını sunucunun özel `burkut-private` klasöründeki aynı dosyanın yerine yükle. Çalışan `config.php`, `vendor/` ve `state/` dosyalarını değiştirme. Bu değişiklik frontend derlemesi gerektirmez. Yeni bir test talebiyle Gmail görünümünü ve Yanıtla adresini doğrula; eski e-postaların görünümü değişmez.
+
 - Sunucu alan/tip/uzunluk doğrulaması, satır sonu/header injection engeli ve 24 KiB gövde sınırı.
 - Kaynak origin ve POST/JSON kontrolü. Origin tek başına bot koruması/kimlik doğrulama değildir.
 - İstemci IP'si bağlantı bilgisinden alınır; kontrolsüz proxy başlığı kullanılmaz. CDN/reverse proxy varsa güvenilir IP çözümlemesi hosting'e göre ayrıca ayarlanmalı.

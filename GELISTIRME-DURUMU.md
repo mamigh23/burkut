@@ -163,6 +163,12 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Kullanıcı Gmail uygulama şifresini hazırladığını bildirdi. Özel paket boş şifre ve kapalı gönderimle hazırlandı; cPanel kullanıcı adına göre API klasör yolu yerel pakete işlendi. Canlı yükleme, özel config ve gerçek mail testi bekliyor.
 - Logo varlıklarının yenilenmesi [logo rehberinde](./docs/LOGO.md) açıklanıyor.
 
+## On altıncı geliştirme paketi: proje bildirimi e-posta tasarımı
+
+- Kullanıcı canlı form gönderiminin çalıştığını bildirdi. Bildirim HTML tasarıma dönüştürüldü: marka renkleri, iletişim tablosu, proje özeti, kayıt referansı ve mail ile yanıtlama düğmesi.
+- SMTP, gönderici ve Reply-To davranışı korundu. Düz metin alternatifi, kullanıcı alanlarında HTML kaçışlama ve satır sonları doğrulandı; SMTP bağlantısı yapmadan 23 PHP kontrolü geçti.
+- Yalnızca özel `ProjectMail.php` dosyasının değişmesi yeterli. Canlı config/şifre üzerine yazılmaz. Yeni tasarımın canlı Gmail kontrolü yüklemeden sonra yapılmalı.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

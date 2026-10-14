@@ -47,6 +47,11 @@ try {
     check($mail->From === 'sender@gmail.com' && $mail->getToAddresses()[0][0] === 'recipient@gmail.com' && array_values($mail->getReplyToAddresses())[0][0] === 'test@example.com', 'Trusted From / To and visitor Reply-To');
     check($mail->Host === 'smtp.gmail.com' && $mail->Port === 587 && $mail->SMTPSecure === 'tls' && $mail->SMTPDebug === 0, 'SMTP TLS and no debug');
     check($mail->preSend() && str_contains($mail->getSentMIMEMessage(), 'text/plain'), 'MIME generation without network');
+    check($mail->ContentType === 'multipart/alternative' && str_contains($mail->getSentMIMEMessage(), 'text/html') && str_contains($mail->AltBody, 'Sentetik test'), 'HTML with plain-text alternative');
+    $hostile = array_replace($payload, ['name'=>'<img src=x onerror=alert(1)>', 'detail'=>"<script>alert(1)</script>\nİkinci satır & detay"]);
+    $html = \Burkut\projectEmailHtml($hostile, 'test<receipt>');
+    check(!str_contains($html, '<script>') && !str_contains($html, '<img src=x') && str_contains($html, '&lt;script&gt;') && str_contains($html, 'İkinci satır &amp; detay') && str_contains($html, '<br'), 'Escape visitor HTML and preserve line breaks');
+    check(str_contains($html, 'test&lt;receipt&gt;') && str_contains($html, 'mailto:test%40example.com') && str_contains($html, 'Belirtilmedi'), 'Safe receipt, reply link and optional values');
     file_put_contents($directory . '/delivery.json', '{bad');
     check($run(ip:'four')[0] === 503 && $calls === 1, 'Corrupt storage fails closed');
     echo "PHP mail: $count checks passed; no SMTP connection made.\n";

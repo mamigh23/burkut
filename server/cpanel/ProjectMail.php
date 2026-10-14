@@ -107,6 +107,52 @@ function handleProject(string $method, array $headers, string $body, string $cli
     } catch (Throwable) { return [503, ['code'=>'SUBMISSION_UNAVAILABLE']]; }
 }
 
+function projectEmailHtml(array $data, string $receipt): string {
+    $escape = fn(string $text): string => htmlspecialchars($text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    $labels = ['web'=>'Web sitesi', 'app'=>'Uygulama', 'game'=>'Oyun', 'other'=>'Diğer'];
+    $areas = $escape(implode(' · ', array_map(fn($area) => $labels[$area], $data['areas'])));
+    $name = $escape($data['name']);
+    $detail = nl2br($escape($data['detail']));
+    $reference = $escape($receipt);
+    $reply = $escape('mailto:' . rawurlencode($data['email']));
+    $rows = '';
+    foreach (['email'=>'E-posta', 'phone'=>'Telefon', 'company'=>'Kurum', 'budget'=>'Bütçe'] as $key => $label) {
+        $value = $escape(trim($data[$key]) !== '' ? $data[$key] : 'Belirtilmedi');
+        $rows .= '<tr><td width="30%" valign="top" style="padding:14px 12px 14px 0;border-bottom:1px solid #e1e8e3;color:#64756b;font-size:13px;">' . $label . '</td><td valign="top" style="padding:14px 0;border-bottom:1px solid #e1e8e3;color:#172d23;font-size:14px;font-weight:600;word-break:break-word;overflow-wrap:anywhere;">' . $value . '</td></tr>';
+    }
+    return <<<HTML
+<!doctype html>
+<html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Yeni proje talebi — Bürküt</title></head>
+<body style="margin:0;padding:0;background-color:#eef2ee;color:#172d23;font-family:Arial,Helvetica,sans-serif;">
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Bürküt için yeni bir proje fikri var. İletişim bilgileri ve proje özeti içeride.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#eef2ee;"><tr><td align="center" style="padding:32px 12px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;border:1px solid #dce5de;border-radius:20px;overflow:hidden;background-color:#ffffff;">
+<tr><td style="padding:32px 28px;background-color:#0b1c17;color:#f3f7f2;">
+<p style="margin:0 0 32px;font-size:28px;line-height:1;font-weight:700;letter-spacing:-1px;">bürküt<span style="color:#acd0b8;">.</span></p>
+<p style="margin:0 0 12px;font-size:11px;letter-spacing:2px;color:#acd0b8;">YENİ PROJE TALEBİ</p>
+<h1 style="margin:0;font-size:30px;line-height:1.2;font-weight:600;letter-spacing:-0.8px;">Yeni bir fikir,<br>yeni bir başlangıç.</h1>
+<p style="margin:18px 0 0;font-size:14px;line-height:1.7;color:#c0d1c5;">Web siten üzerinden bir proje özeti iletildi.</p>
+</td></tr>
+<tr><td style="padding:28px;">
+<p style="margin:0 0 10px;font-size:11px;letter-spacing:1.5px;color:#567360;">İLETİŞİM KİŞİSİ</p>
+<h2 style="margin:0 0 12px;font-size:24px;line-height:1.3;color:#172d23;word-break:break-word;">{$name}</h2>
+<p style="margin:0 0 20px;color:#2d6b50;font-size:13px;line-height:1.6;font-weight:600;">{$areas}</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="table-layout:fixed;">{$rows}</table>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:28px;"><tr><td style="padding:22px;background-color:#f1f5ef;border:1px solid #e1e8dc;border-radius:12px;">
+<h2 style="margin:0 0 14px;color:#2d6b50;font-size:11px;letter-spacing:1.5px;">PROJE ÖZETİ</h2>
+<div style="font-size:15px;line-height:1.8;color:#243b2d;word-break:break-word;overflow-wrap:anywhere;">{$detail}</div>
+</td></tr></table>
+<table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:28px;"><tr><td bgcolor="#2d6b50" style="border-radius:24px;mso-padding-alt:14px 24px;"><a href="{$reply}" style="display:inline-block;padding:14px 24px;color:#ffffff;text-decoration:none;font-size:14px;font-weight:700;">E-posta ile yanıtla &#8599;</a></td></tr></table>
+<p style="margin:14px 0 0;color:#64756b;font-size:12px;line-height:1.7;">E-posta uygulamandaki Yanıtla seçeneği de talebi gönderen kişiye yönelir.</p>
+</td></tr>
+<tr><td style="padding:20px 28px;border-top:1px solid #e1e8e3;background-color:#fafbf8;">
+<p style="margin:0 0 6px;color:#45614f;font-size:12px;font-weight:700;">Bürküt · Fikirden çalışan ürüne</p>
+<p style="margin:0;color:#6b7b70;font-size:11px;line-height:1.7;word-break:break-all;">Kayıt: {$reference}<br>Bu bildirim web sitesi proje formundan oluşturuldu.</p>
+</td></tr></table>
+</td></tr></table></body></html>
+HTML;
+}
+
 function buildGmail(array $data, string $receipt, array $config): PHPMailer {
     $address = $config['gmail_address'] ?? '';
     $recipient = $config['recipient'] ?? '';
@@ -130,10 +176,11 @@ function buildGmail(array $data, string $receipt, array $config): PHPMailer {
     $mail->addReplyTo($data['email'], $data['name']);
     $mail->Subject = 'Bürküt — Yeni proje talebi';
     $labels = ['web'=>'Web sitesi', 'app'=>'Uygulama', 'game'=>'Oyun', 'other'=>'Diğer'];
-    $mail->Body = "Yeni proje talebi\nKayıt: $receipt\n\n" .
+    $mail->AltBody = "Yeni proje talebi\nKayıt: $receipt\n\n" .
         'Alanlar: ' . implode(', ', array_map(fn($area) => $labels[$area], $data['areas'])) . "\n" .
         "Ad: {$data['name']}\nE-posta: {$data['email']}\nTelefon: {$data['phone']}\nKurum: {$data['company']}\nBütçe: {$data['budget']}\n\nProje:\n{$data['detail']}";
-    $mail->isHTML(false);
+    $mail->isHTML(true);
+    $mail->Body = projectEmailHtml($data, $receipt);
     return $mail;
 }
 
