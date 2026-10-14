@@ -7,10 +7,28 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
+  const header = useRef<HTMLElement>(null);
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 768px)");
     const update = (event: MediaQueryListEvent) => {
-      if (event.matches) setOpen(false);
+      if (event.matches) {
+        const focused = document.activeElement;
+        if (
+          focused instanceof HTMLAnchorElement &&
+          focused.closest("#mobile-menu")
+        ) {
+          const href = focused.getAttribute("href");
+          const destination = Array.from(
+            header.current?.querySelectorAll<HTMLAnchorElement>(
+              ".nav-capsule a",
+            ) ?? [],
+          ).find((link) => link.getAttribute("href") === href);
+          destination?.focus();
+        } else if (focused === menuButton.current) {
+          header.current?.querySelector<HTMLAnchorElement>(".brand")?.focus();
+        }
+        setOpen(false);
+      }
     };
     desktop.addEventListener("change", update);
     return () => desktop.removeEventListener("change", update);
@@ -31,8 +49,27 @@ export default function Header() {
     window.addEventListener("keydown", key);
     return () => window.removeEventListener("keydown", key);
   }, [open]);
+  useEffect(() => {
+    if (!open) return;
+    const dismissOutside = (event: Event) => {
+      if (
+        event.target instanceof Node &&
+        !header.current?.contains(event.target)
+      )
+        setOpen(false);
+    };
+    document.addEventListener("pointerdown", dismissOutside);
+    document.addEventListener("focusin", dismissOutside);
+    return () => {
+      document.removeEventListener("pointerdown", dismissOutside);
+      document.removeEventListener("focusin", dismissOutside);
+    };
+  }, [open]);
   return (
-    <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
+    <header
+      ref={header}
+      className={`site-header ${scrolled ? "scrolled" : ""}`}
+    >
       <nav className="nav-capsule" aria-label="Ana navigasyon">
         <Brand />
         <div className="desktop-links">
@@ -57,7 +94,11 @@ export default function Header() {
         </button>
       </nav>
       {open && (
-        <div className="mobile-menu" id="mobile-menu">
+        <nav
+          className="mobile-menu"
+          id="mobile-menu"
+          aria-label="Mobil navigasyon"
+        >
           {[...navigation, ["İletişim", "iletisim"]].map(([label, id]) => (
             <a
               key={id}
@@ -77,7 +118,7 @@ export default function Header() {
               <ArrowUpRight size={20} />
             </a>
           ))}
-        </div>
+        </nav>
       )}
     </header>
   );

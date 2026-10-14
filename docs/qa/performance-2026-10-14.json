@@ -1,0 +1,127 @@
+{
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "fcpMs": 708,
+    "lcpMs": 708,
+    "cls": 0.0002701407095362275,
+    "domContentLoadedMs": 457.7000000476837,
+    "loadMs": 570.2999999523163,
+    "resourceCount": 9,
+    "resourceTransferBytes": 296894,
+    "resources": [
+      {
+        "path": "/assets/index-DFaWxfTX.js",
+        "transferBytes": 87050,
+        "durationMs": 175.10000002384186
+      },
+      {
+        "path": "/assets/index-CiRXaxvn.css",
+        "transferBytes": 14132,
+        "durationMs": 157.79999995231628
+      },
+      {
+        "path": "/assets/inter-tight-latin-wght-normal-DX-nOvPD.woff2",
+        "transferBytes": 45172,
+        "durationMs": 92.20000004768372
+      },
+      {
+        "path": "/assets/figtree-latin-wght-normal-D_ZTVpCC.woff2",
+        "transferBytes": 20456,
+        "durationMs": 97.10000002384186
+      },
+      {
+        "path": "/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2",
+        "transferBytes": 21468,
+        "durationMs": 118.69999992847443
+      },
+      {
+        "path": "/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2",
+        "transferBytes": 7636,
+        "durationMs": 115.5
+      },
+      {
+        "path": "/assets/figtree-latin-ext-wght-normal-DCwSJGxG.woff2",
+        "transferBytes": 10580,
+        "durationMs": 118.29999995231628
+      },
+      {
+        "path": "/assets/inter-tight-latin-ext-wght-normal-B4u9PlvR.woff2",
+        "transferBytes": 90100,
+        "durationMs": 123.5
+      },
+      {
+        "path": "/favicon.ico",
+        "transferBytes": 300,
+        "durationMs": 11.900000095367432
+      }
+    ],
+    "supported": {
+      "lcp": true,
+      "cls": true
+    },
+    "note": "Local production-build sample with inline measurement code. No CPU/network throttling; cache may be warm. Not a Lighthouse score, field data, or INP measurement."
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "fcpMs": 388,
+    "lcpMs": 388,
+    "cls": 0.014700927652119226,
+    "domContentLoadedMs": 123.89999997615814,
+    "loadMs": 340.2000000476837,
+    "resourceCount": 8,
+    "resourceTransferBytes": 2400,
+    "resources": [
+      {
+        "path": "/assets/index-DFaWxfTX.js",
+        "transferBytes": 300,
+        "durationMs": 48.60000002384186
+      },
+      {
+        "path": "/assets/index-CiRXaxvn.css",
+        "transferBytes": 300,
+        "durationMs": 49.39999997615814
+      },
+      {
+        "path": "/assets/inter-tight-latin-wght-normal-DX-nOvPD.woff2",
+        "transferBytes": 300,
+        "durationMs": 6.599999904632568
+      },
+      {
+        "path": "/assets/figtree-latin-wght-normal-D_ZTVpCC.woff2",
+        "transferBytes": 300,
+        "durationMs": 10.5
+      },
+      {
+        "path": "/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2",
+        "transferBytes": 300,
+        "durationMs": 11.5
+      },
+      {
+        "path": "/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2",
+        "transferBytes": 300,
+        "durationMs": 10.899999976158142
+      },
+      {
+        "path": "/assets/figtree-latin-ext-wght-normal-DCwSJGxG.woff2",
+        "transferBytes": 300,
+        "durationMs": 3.299999952316284
+      },
+      {
+        "path": "/assets/inter-tight-latin-ext-wght-normal-B4u9PlvR.woff2",
+        "transferBytes": 300,
+        "durationMs": 5.200000047683716
+      }
+    ],
+    "supported": {
+      "lcp": true,
+      "cls": true
+    },
+    "note": "Local production-build sample with inline measurement code. No CPU/network throttling; cache may be warm. Not a Lighthouse score, field data, or INP measurement."
+  }
+}

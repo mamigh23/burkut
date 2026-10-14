@@ -295,6 +295,13 @@ svg {
   color: var(--text-light);
   background: var(--forest-950);
   box-shadow: 0 20px 60px #060c0b50;
+  max-height: calc(100vh - 110px);
+  max-height: calc(
+    100dvh - 110px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+  );
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-padding-block: 12px;
 }
 .mobile-menu a {
   display: flex;

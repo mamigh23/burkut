@@ -24,6 +24,12 @@ export async function startAccessibilityAudit() {
     borderRadius: "12px",
   });
   document.body.append(button);
+  // A mouse/touch audit must not dismiss the disclosure being inspected or
+  // move focus away from its current control. Keyboard navigation stays normal.
+  button.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  });
   const run = async () => {
     button.disabled = true;
     report.textContent = JSON.stringify({ status: "running" });

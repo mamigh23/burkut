@@ -6,13 +6,13 @@
 
 **Yayın durumu:** Kullanıcı siteyi cPanel üzerinden `https://burkut.gemnative.com/` adresine yükledi. HTTPS, HTTP yönlendirmesi, temel SEO dosyaları ve responsive görünüm doğrulandı. [Canlı kontrol raporu](./docs/qa/CANLI-YAYIN.md). Gerçek talep ve AI bağlantıları kapalı; yeni geliştirmeler ayrıca ZIP ile yüklenmeli.
 
-## Güncel durum ve sıradaki işler — 13 Ekim 2026
+## Güncel durum ve sıradaki işler — 14 Ekim 2026
 
 | Aşama | Durum | Kalan iş |
 | --- | --- | --- |
 | 1–5: İçerik, temel, tasarım, ana sayfa, Yangan | Çalışan ilk sürüm tamamlandı | Gerçek servis bağlantıları 7. aşamada |
 | 6: Kalite | Devam ediyor | Fiziksel telefon/klavye, yüzde 200 zoom, ekran okuyucu, sistem hareket tercihi, manuel kontrast incelemesi, kapsamlı görsel kontrol ve Lighthouse |
-| 7: Gerçek servisler ve yayın | Statik yayın doğrulandı; talep ve sohbet temeli hazır | Talep sağlayıcısı/alıcı, API hosting rotaları, AI sağlayıcısı/bütçesi, nihai paylaşım görseli ve favicon |
+| 7: Gerçek servisler ve yayın | Statik yayın doğrulandı; Gmail ve sohbet temeli hazır | Gmail uygulama şifresi/cPanel kurulumu ve mail testi, AI sağlayıcısı/bütçesi ve hosting rotası, nihai paylaşım görseli ve favicon |
 | 8: Yayın sonrası geliştirme | Yayın kontrolü başladı | Gerçek portföy, içerik iyileştirme ve bakım |
 
 **Son pakette ilerleme:** Yangan'ın hata/tekrar deneme, klavye odağı, ekran küçülmesi ve mod değişimi kontrolleri tamamlandı; bulunan sorunlar düzeltildi. Toplam 37 test geçti. Mobil hata durumunda otomatik erişilebilirlik ihlali 0. [Kontrol ve sınırlar](./docs/qa/YANGAN-HATA-KONTROLU.md). Gerçek sağlayıcı bağlantıları kapalı kalıyor.
@@ -23,9 +23,11 @@
 
 **Yeni kalite paketi:** Font çıktısı 319264 → 193612 bayt (yaklaşık %39,4 azalma); Türkçe alt kümeler korundu. Form karakter sayacı, bütçe hata erişilebilirliği ve işlem sırasında giriş kilidi eklendi. [Doğrulama raporu](./docs/qa/FONT-VE-FORM.md).
 
+**14 Ekim kontrolleri:** Mobil menünün kısa ekran, dışarı tıklama ve odak davranışı düzeltildi. 47 uygulama testi ve 20 PHP kontrolü geçti. Canlı PageSpeed performansı mobil 95, masaüstü 100; diğer üç kategori iki görünümde de 100. [Kapsam, ham ölçümler ve kalan kontroller](./docs/qa/KALITE-2026-10-14.md). Logo, Gmail ve iletişim bilgilerini kullanıcı hazırlıyor. Reddedilen form hata tasarımı geri getirilmedi.
+
 **Öncelik sırası:** Kalan manuel kalite kontrolleri → API hosting ve sağlayıcı kararları → gerçek form ve Yangan servisleri → nihai paylaşım bilgileri ve servislerin canlı doğrulaması.
 
-**7. aşama için gereken kararlar:** Taleplerin ulaşacağı adres, API için hosting desteği ve AI sağlayıcısı/kullanım bütçesi. Domain ve statik cPanel yayını tamamlandı. Logo, gerçek iletişim bilgileri ve aydınlatma metni kullanıcı kararıyla ertelenmiş durumda; bu paketle yeniden açılmadı. Anahtarlar public repoya yazılmayacak; gerçek veri gönderimi servisler ve ilgili metinler hazır olduğunda açılacak.
+**7. aşama için gerekenler:** Gmail kurulumu ve doğrulanmış teslim, AI için hosting desteği ve sağlayıcı/kullanım bütçesi. Domain ve statik cPanel yayını tamamlandı. Logo ve iletişim bilgilerini kullanıcı hazırlıyor; aydınlatma metni ertelenmiş durumda. Anahtarlar public repoya yazılmayacak; gerçek veri gönderimi servisler ve ilgili metinler hazır olduğunda açılacak.
 
 ## Hedef
 

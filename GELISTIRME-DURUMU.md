@@ -146,13 +146,22 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Yerel sentetik form testi, Türkçe karakter görsel kontrolü, 320/390 px taşma kontrolü ve mobil form erişilebilirlik taraması geçti. Otomatik ihlal 0. 38 test, typecheck, lint, build ve boyut sınırları geçti.
 - Kapsam ve ölçüm sınırları [font/form raporunda](./docs/qa/FONT-VE-FORM.md). Gerçek cihaz/ekran okuyucu/Lighthouse çalışması sürüyor.
 
+## On dördüncü geliştirme paketi: 14 Ekim kalite kontrolü
+
+- Son hata tasarımı kullanıcı isteğiyle geri alınmış durumda; sade form korunuyor. Logo, Gmail ve iletişim bilgilerini kullanıcı hazırlıyor.
+- Kısa mobil ekranda menüye kaydırma sınırı, dışarı tıklama/Tab ile kapanma ve masaüstüne geçerken odak koruması eklendi. 640×360, 320×640 ve 1024×768 tarayıcı kontrolleri geçti.
+- Menü, ürün sekmeleri ve hareket tercihleri için 9 DOM etkileşim testi eklendi. Toplam 47 uygulama testi ve mevcut 20 PHP kontrolü geçti.
+- Açık mobil menü axe-core taramasında otomatik ihlal 0. Denetim düğmesinin tıklamasının menüyü kapatması giderildi; taranan durum ayrıca doğrulandı.
+- Yeni yerel üretim ölçümleri ve canlı PageSpeed raporları alındı: mobil performans 95, masaüstü 100; erişilebilirlik, en iyi uygulamalar ve SEO iki görünümde de 100. Bunlar tek laboratuvar örneği; manuel kontroller ve gerçek kullanıcı verisi yerine geçmez.
+- cPanel için yalnızca hash'li varlıklara uzun önbellek ve CSS/JS sıkıştırma dosyası eklendi. Henüz canlıya uygulanmadı. [Ayrıntılı kontrol raporu](./docs/qa/KALITE-2026-10-14.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
 - Gerçek yüzde 200 tarayıcı zoom testi ve ekran okuyucu kontrolü.
 - Azaltılmış hareket için CSS mevcut; işletim sistemi tercihiyle ayrı doğrulama yapılmadı.
 - Bütün bileşenlerin tüm ekran/etkileşim durumları için kapsamlı görsel regresyon kontrolü.
-- Ağ/CPU yavaşlatmalı Lighthouse ve gerçek yayın ortamı performansı. Yerel üretim örnekleri alındı; build boyutları veya yerel süreler gerçek ziyaretçi performans puanı değildir.
+- Güncel kaynaklar cPanel'e yüklendikten sonra Lighthouse ve önbellek HTTP başlıklarının tekrar kontrolü. Canlı laboratuvar ölçümü alındı; gerçek ziyaretçi verisi henüz yok.
 - Nihai paylaşım görseli ve favicon. Üretim domain'i, canonical/OG URL ve temel SEO dosyaları tamamlandı.
 - Gerçek talep servisi, hata/yoğunluk senaryoları, veri işleme düzeni ve gerçek AI bağlantısı.
 

@@ -23,6 +23,8 @@ npm run check:assets
 
 `dist/` klasörünün **içeriğini** aynı subdomain klasörüne yükleyin. `.qa-dist`, kaynak proje, node_modules veya .env dosyalarını yüklemeyin. Yeni kart görselleri için [Hero kartları rehberini](./HERO-KARTLARI.md) kullanın; kaynak değiştikten sonra yeniden build alın.
 
+Paketin `assets/.htaccess` dosyası da yüklenmeli; Dosya Yöneticisi'nde gizli dosyaları göster seçeneği gerekebilir. Bu dosya yalnızca hash'li JS/CSS/WOFF2 varlıkları için uzun önbellek ve destekleniyorsa CSS/JS sıkıştırması ekler. Ana dizinin mevcut `.htaccess` veya SSL kurallarını değiştirmez. Apache `mod_headers` / `mod_deflate` desteğine bağlıdır. Yeni sürüm sonrası hash'li bir varlığın HTTP cevabında `Cache-Control: public, max-age=31536000, immutable` başlığını kontrol edin. Dosya kaynak kodu değiştirilirse yeni build alın; üretilmiş hash'li dosyaları aynı adla elle değiştirmeyin.
+
 Form teslimini açmak için statik dosyaların yanına gerçek API ve SMTP ayarları gerekir. Gmail için ayrı PHP paketi ve [adım adım kurulum](./GMAIL-SMTP-KURULUM.md) hazırdır. `server/dev.mjs` yerel deneme aracıdır; cPanel'e yüklenerek üretim sunucusuna dönüşmez. [Servis temeli](../server/README.md).
 
 Kullanıcının statik yayını HTTPS üzerinden kontrol edildi: [canlı rapor](./qa/CANLI-YAYIN.md). Gmail paketi henüz canlıya yüklenmedi; yeni paket hazırlanması canlı formun açıldığı anlamına gelmez.
