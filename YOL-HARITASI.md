@@ -1,5 +1,7 @@
 # Bürküt — Marka ve web sitesi yol haritası
 
+**15 Ekim 2026:** Sonraki geliştirmeler için [ikinci aşama yol haritası](./YOL-HARITASI-V2.md) oluşturuldu. Bu belge ilk sürümün karar ve ilerleme geçmişini korur; yeni öncelikler ikinci aşama belgesindedir.
+
 **Tarih:** 12 Ekim 2026  
 **Durum:** Site ve Gmail form gönderimi canlıda; logolu e-posta kullanıcı tarafından doğrulandı. Kalan içerik ve kalite kontrolleri sürüyor.
 **Temel belgeler:** Bürküt.md ve REFERANS-INCELEMESI.md
