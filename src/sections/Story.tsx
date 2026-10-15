@@ -122,8 +122,14 @@ export function Services() {
                       <span key={tag}>{tag}</span>
                     ))}
                   </div>
-                  <a href="#iletisim" className="service-link">
-                    Fikrini anlat <ArrowUpRight size={18} />
+                  <a
+                    href={
+                      service.id === "web" ? "/hizmetler/web/" : "#iletisim"
+                    }
+                    className="service-link"
+                  >
+                    {service.id === "web" ? "Hizmeti incele" : "Fikrini anlat"}{" "}
+                    <ArrowUpRight size={18} />
                   </a>
                 </article>
               );

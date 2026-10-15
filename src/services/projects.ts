@@ -52,6 +52,18 @@ export async function submitProject(data: ProjectData, idempotencyKey: string) {
       throw new ProjectSubmissionError(
         "Kısa sürede çok fazla deneme oldu. Biraz sonra tekrar deneyebilirsin.",
       );
+    if (response.status === 503 && result.code === "SUBMISSION_UNAVAILABLE")
+      throw new ProjectSubmissionError(
+        "Gönderim servisi şu anda kullanılamıyor. Bilgilerin korundu; e-posta veya telefonla da bize ulaşabilirsin.",
+      );
+    if (response.status === 503 && result.code === "SUBMISSION_BUSY")
+      throw new ProjectSubmissionError(
+        "Gönderim servisi şu anda yoğun. Bilgilerin korundu; daha sonra tekrar deneyebilir veya e-posta ile ulaşabilirsin.",
+      );
+    if (response.status === 503 && result.code === "DELIVERY_UNCONFIRMED")
+      throw new ProjectSubmissionError(
+        "Gönderimin teslim durumu doğrulanamadı. Yinelenen e-posta oluşturmamak için yeniden göndermeden önce bize e-posta veya telefonla ulaşabilirsin. Bilgilerin bu sayfada korundu.",
+      );
     if (
       response.status !== 201 ||
       result.code !== "DELIVERED" ||
@@ -63,7 +75,8 @@ export async function submitProject(data: ProjectData, idempotencyKey: string) {
       );
     return {
       mode: "delivered",
-      message: "Proje özetin iletildi. İlgin için teşekkürler.",
+      message:
+        "Proje özetin iletildi. Talebini değerlendirip yazdığın e-posta adresinden seninle iletişime geçeceğiz. İlgin için teşekkürler.",
     };
   } catch (error) {
     if (error instanceof ProjectSubmissionError) throw error;

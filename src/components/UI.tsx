@@ -1,11 +1,17 @@
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import type { ReactNode } from "react";
 
-export function Brand({ footer = false }: { footer?: boolean }) {
+export function Brand({
+  footer = false,
+  href = "#top",
+}: {
+  footer?: boolean;
+  href?: string;
+}) {
   return (
     <a
       className={`brand ${footer ? "brand-footer" : ""}`}
-      href="#top"
+      href={href}
       aria-label="Bürküt ana sayfa"
     >
       <img

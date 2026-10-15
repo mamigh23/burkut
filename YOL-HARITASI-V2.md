@@ -1,8 +1,10 @@
 # Bürküt — İkinci aşama geliştirme yol haritası
 
 **Tarih:** 15 Ekim 2026  
-**Durum:** Plan hazır; aşağıdaki yeni işler uygulanmış sayılmaz.  
+**Durum:** İlk paketin kodu ve otomatik kontrolleri tamamlandı; görsel/canlı kabul açık. Sonraki paketler plan durumunda.
 **Hedef:** Ziyaretçinin Bürküt'ü daha iyi tanıdığı, doğru hizmete ulaştığı ve nitelikli proje talebi bırakabildiği bir site oluşturmak.
+
+**İlk paket uygulama durumu — 15 Ekim:** Standart SMTP yayın komutu/sürüm bilgisi, form durum mesajları, ortak hizmet sayfası yapısı, ilk web hizmeti sayfası ve içerik rehberi eklendi. 51 test geçti. Tarayıcı erişimi kısıtlandığı için yeni sayfanın görsel ve canlı kabulü açık; sonraki büyük özelliğe geçmeden bu kontroller tamamlanmalı. [Doğrulama ve sınırlar](./docs/qa/IKINCI-ASAMA-PAKET-1.md).
 
 İlk sürümün geçmişi [ilk yol haritasında](./YOL-HARITASI.md), teknik ilerleme [geliştirme durumunda](./GELISTIRME-DURUMU.md) korunur. Bu belge sonraki geliştirmelerin önceliğini belirler; teslim tarihi veya otomatik görev oluşturmaz.
 

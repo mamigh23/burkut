@@ -183,6 +183,12 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - SMTP bağlantısı açık güncel site paketi hazırlandı. Canlı özel config değiştirilmez; cPanel yüklemesi kullanıcı tarafından yapılmalı. 47 test, lint, typecheck, build ve varlık bütçeleri geçti.
 - Eksik bilgiler ve yükleme adımları [yayını tamamlama listesinde](./docs/YAYIN-TAMAMLAMA.md) toplandı. Manuel kabul kontrolleri aşağıda açık kalıyor.
 
+## İkinci aşama — ilk geliştirme paketi
+
+- İlk web hizmeti sayfası `/hizmetler/web/`, ortak hizmet içerik yapısı ve web seçili form eklendi. Üç ayrı servis hata mesajı ve başarı sonrası iletişim açıklaması hazırlandı.
+- Standart SMTP yayın komutu, public sürüm manifesti ve görünür sürüm bilgisi eklendi. İçerik değişikliği ve yayın/geri dönüş rehberleri hazırlandı. 51 test geçti.
+- Tarayıcı aracı URL güvenlik politikasıyla erişimi reddetti; görsel/canlı kabul açık. [Tam kapsam ve kalanlar](./docs/qa/IKINCI-ASAMA-PAKET-1.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

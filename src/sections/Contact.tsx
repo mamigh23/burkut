@@ -29,8 +29,17 @@ const empty: ProjectData = {
   detail: "",
   budget: "",
 };
-export default function Contact({ draft }: { draft: Draft | null }) {
-  const [data, setData] = useState<ProjectData>(empty);
+export default function Contact({
+  draft,
+  initialArea,
+}: {
+  draft: Draft | null;
+  initialArea?: Area;
+}) {
+  const [data, setData] = useState<ProjectData>(() => ({
+    ...empty,
+    areas: initialArea ? [initialArea] : [],
+  }));
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);

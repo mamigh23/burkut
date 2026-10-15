@@ -80,6 +80,9 @@ export default function App() {
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} Bürküt Teknoloji.</span>
             <span>İlk adım. Yeni ihtimaller.</span>
+            <span className="mono release-version">
+              Sürüm {import.meta.env.VITE_RELEASE_ID || "geliştirme"}
+            </span>
             <MotionToggle />
           </div>
         </div>

@@ -13,6 +13,11 @@ import console from "node:console";
 // Writes staging files only. Never reads a real server config or SMTP password.
 const gmail = process.argv[2] || "YOUR_ADDRESS@gmail.com";
 const cpanelUser = process.argv[3];
+const builtAt = new Date().toISOString();
+const revision = execFileSync("git", ["rev-parse", "--short", "HEAD"], {
+  encoding: "utf8",
+}).trim();
+const releaseId = `${revision}-${builtAt.replace(/[^0-9]/g, "").slice(0, 14)}`;
 if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(gmail))
   throw new Error("A Gmail address is required; do not pass any password.");
 if (cpanelUser && !/^[a-zA-Z0-9_]{1,32}$/.test(cpanelUser))
@@ -32,12 +37,28 @@ execFileSync(process.execPath, ["node_modules/vite/bin/vite.js", "build"], {
     VITE_PROJECT_SUBMISSION: "enabled",
     VITE_PROJECT_ENDPOINT: "/api/projects.php",
     VITE_YANGAN_CHAT: "disabled",
+    VITE_RELEASE_ID: releaseId,
   },
 });
 // A fresh directory prevents old assets or private configs leaking into the package.
 const stage = resolve(`artifacts/cpanel-smtp-${Date.now()}`);
 mkdirSync(stage, { recursive: true });
 cpSync("dist", `${stage}/public`, { recursive: true });
+writeFileSync(
+  `${stage}/public/release.json`,
+  JSON.stringify(
+    {
+      version: releaseId,
+      revision,
+      builtAt,
+      submission: "enabled",
+      endpoint: "/api/projects.php",
+      ai: "disabled",
+    },
+    null,
+    2,
+  ),
+);
 cpSync(`${source}/public/api`, `${stage}/public/api`, { recursive: true });
 if (cpanelUser) {
   const endpoint = `${stage}/public/api/projects.php`;

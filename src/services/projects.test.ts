@@ -25,6 +25,22 @@ async function enabledService(response: Response | Error) {
   return import("./projects");
 }
 describe("form teslim istemcisi", () => {
+  it.each([
+    ["SUBMISSION_UNAVAILABLE", "şu anda kullanılamıyor"],
+    ["SUBMISSION_BUSY", "şu anda yoğun"],
+    ["DELIVERY_UNCONFIRMED", "yeniden göndermeden önce"],
+  ])(
+    "%s cevabında doğru yönlendirmeyi gösterir ve tekrar göndermez",
+    async (code, message) => {
+      const { submitProject } = await enabledService(
+        Response.json({ code }, { status: 503 }),
+      );
+      await expect(submitProject(data, "same-request-key")).rejects.toThrow(
+        message,
+      );
+      expect(fetch).toHaveBeenCalledTimes(1);
+    },
+  );
   it("kapalı modda ağ isteği yapmaz", async () => {
     vi.stubEnv("VITE_PROJECT_SUBMISSION", "disabled");
     const fetch = vi.fn();

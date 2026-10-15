@@ -1,32 +1,39 @@
-# cPanel yayını — burkut.gemnative.com
+# Standart SMTP site yayını
 
-Hedef adres: **https://burkut.gemnative.com/**. Bu paket statik Vite üretim çıktısıdır. cPanel üzerinde Node.js çalıştırmadan mevcut ön yüz yayınlanabilir. Gerçek form teslimi ve gerçek AI servisi henüz bağlı değildir; gönderim bayrağı kapalı kalır.
+## Paketi oluştur
 
-## Yükleme
-
-1. cPanel → Domains → Create A New Domain bölümünde `burkut.gemnative.com` ekleyin. Ana domain ile belge kökünü paylaşma seçeneğini kapatın. Ayrı bir klasör seçin; örneğin `public_html/burkut`. Zaten oluşturulmuşsa Domains ekranındaki Document Root yolunu kullanın.
-2. DNS yönetimi başka yerdeyse `burkut` kaydını hosting sağlayıcısının verdiği sunucu IP'sine yönlendirin. IP'yi tahmin etmeyin; mevcut çalışan kaydı gereksiz yere değiştirmeyin.
-3. File Manager'da **bu subdomain'in Document Root klasörünü** açın. Var olan bir site varsa önce dosyalarını yedekleyin.
-4. Hazırlanan `burkut-cpanel.zip` dosyasını yükleyip bu klasöre çıkarın. `index.html`, `assets`, `images`, `licenses`, `robots.txt` ve `sitemap.xml` doğrudan belge kökünde olmalı. Araya `dist` klasörü eklemeyin. Gemnative ana sitesinin klasörüne yüklemeyin.
-5. SSL/TLS durumundan subdomain sertifikasını kontrol edin. Hosting'de AutoSSL mevcutsa çalıştırın veya sağlayıcıdan sertifika kurulmasını isteyin. Geçerli sertifika kurulduktan sonra cPanel'in HTTPS yönlendirme özelliğini kullanın.
-6. `https://burkut.gemnative.com/` adresini gizli pencerede açın. CSS/fontlar, gezegen, hero kartları, mobil menü, Yangan ve form özet kontrolünü sınayın. `robots.txt` ve `sitemap.xml` adreslerinin açıldığını kontrol edin.
-
-Mevcut sayfa bölüm bağlantıları `#` ile çalışır; statik sayfa için SPA rewrite zorunlu değildir. Yeni URL tabanlı sayfalar eklenirse yönlendirme ayrıca hazırlanır.
-
-## Yeni sürüm hazırlama
+Proje kökünde Windows PowerShell ile:
 
 ```sh
-npm ci
-npm run build
-npm run check:assets
+npm run release:cpanel -- gemnative
 ```
 
-`dist/` klasörünün **içeriğini** aynı subdomain klasörüne yükleyin. `.qa-dist`, kaynak proje, node_modules veya .env dosyalarını yüklemeyin. Yeni kart görselleri için [Hero kartları rehberini](./HERO-KARTLARI.md) kullanın; kaynak değiştikten sonra yeniden build alın.
+Argüman cPanel hesap adıdır; şifre veya uygulama şifresi değildir. Komut TypeScript/Vite derlemesini yapar, formu `/api/projects.php` için açık ve gerçek AI'ı kapalı üretir. Yalnızca `public/` staging içeriğini `artifacts/burkut-cpanel-smtp.zip` dosyasına paketler. Özel config kaynak dosyası veya canlı şifre okunmaz. Staging'deki özel örnek dosyalar bu ZIP'e dahil edilmez.
 
-Paketin `assets/.htaccess` dosyası da yüklenmeli; Dosya Yöneticisi'nde gizli dosyaları göster seçeneği gerekebilir. Bu dosya yalnızca hash'li JS/CSS/WOFF2 varlıkları için uzun önbellek ve destekleniyorsa CSS/JS sıkıştırması ekler. Ana dizinin mevcut `.htaccess` veya SSL kurallarını değiştirmez. Apache `mod_headers` / `mod_deflate` desteğine bağlıdır. Yeni sürüm sonrası hash'li bir varlığın HTTP cevabında `Cache-Control: public, max-age=31536000, immutable` başlığını kontrol edin. Dosya kaynak kodu değiştirilirse yeni build alın; üretilmiş hash'li dosyaları aynı adla elle değiştirmeyin.
+Paketleme şu an Windows PowerShell gerektirir. Diğer sistemlerde script staging klasörünü bildirip ZIP adımında açık hata verir; tamamlandı sayılmaz.
 
-Form teslimini açmak için statik dosyaların yanına gerçek API ve SMTP ayarları gerekir. Gmail için ayrı PHP paketi ve [adım adım kurulum](./GMAIL-SMTP-KURULUM.md) hazırdır. `server/dev.mjs` yerel deneme aracıdır; cPanel'e yüklenerek üretim sunucusuna dönüşmez. [Servis temeli](../server/README.md).
+## Sürümü doğrula
 
-Kullanıcının statik yayını HTTPS üzerinden kontrol edildi: [canlı rapor](./qa/CANLI-YAYIN.md). Gmail paketi henüz canlıya yüklenmedi; yeni paket hazırlanması canlı formun açıldığı anlamına gelmez.
+Paketin `release.json` dosyası Git revizyonu, UTC üretim zamanı, sürüm kimliği ve servis modlarını içerir. Ana sayfa ve hizmet sayfası alt bilgisindeki sürüm aynı olmalıdır. Bunlar kişisel bilgi veya şifre içermez. `release.json` içindeki zaman UTC'dir.
 
-Resmi kaynaklar: [cPanel subdomain oluşturma](https://support.cpanel.net/hc/en-us/articles/360052780313-How-to-create-a-subdomain), [SSL rehberi](https://docs.cpanel.net/knowledge-base/security/guide-to-ssl/).
+Git revizyonu derleme sırasında HEAD'dir; yerel kaydedilmemiş değişikliklerle paket oluşturulabilir. Resmî teslim paketini kaynak değişiklikleri commit edildikten sonra üret. Sürüm kimliği içerik bütünlüğü veya güvenlik imzası değildir.
+
+## cPanel'e yükle
+
+Mevcut domain, DNS ve geçerli SSL ayarlarını değiştirme. Yeni hosting kurulumu gerekirse subdomain için ayrı belge kökü seç; ana siteyle kökü paylaşma. Sunucu IP'si sağlayıcıdan alınmalı, tahmin edilmemeli. HTTPS yönlendirmesi geçerli sertifika kurulduktan sonra etkinleştirilir.
+
+1. Çalışan site dosyalarının geri alınabilir kopyasını belge kökü dışında sakla. Mevcut `api/projects.php` özel yolunu kontrol et.
+2. ZIP'i yalnızca `burkut.gemnative.com` belge köküne çıkar. Ana Gemnative sitesinin köküne veya özel mail klasörüne yükleme.
+3. `index.html`, `assets/`, `images/`, `hizmetler/web/index.html`, `api/projects.php` ve `release.json` doğru yerde olmalı. Ek bir `public/` üst klasörü oluşmamalı.
+4. `/release.json` ve sayfa alt bilgisinin sürümünü karşılaştır. `/hizmetler/web/` adresini doğrudan açıp yenile; Apache rewrite gerekmeden fiziksel index dosyası çalışmalıdır. Hosting'deki mevcut özel yönlendirmeler ayrıca kontrol edilir.
+5. Ana sayfa hizmet bağlantısı, seçili web alanı, forma geçiş, mobil menü ve görselleri kontrol et. GET API yanıtı 405 olmalı; gerçek gönderim kontrollü bir kullanıcı testiyle ayrıca doğrulanır.
+
+`assets/.htaccess` gizli dosyası da pakete dahildir; Dosya Yöneticisi'nde gizli dosyaları göster seçeneği gerekebilir. Desteklenen sunucularda hash'li varlıklar için uzun önbellek/sıkıştırma kuralları sağlar. Ana dizindeki mevcut SSL/yönlendirme kurallarını değiştirme. `robots.txt`, `sitemap.xml` ve lisans dosyalarını da koru. Kaynak proje, `.env`, `node_modules` veya yerel `server/dev.mjs` dosyasını belge köküne yükleme.
+
+**Özel klasörü güncelleme:** Bu site yayını için `/home/gemnative/burkut-private/` içeriğini değiştirme. Yeni bir özel ZIP'i açarak `config.php` üzerine yazmak çalışan Gmail ayarını siler. `state/` dosyalarını geri alma/silme; belirsiz teslimlerin tekrar gönderilmesine yol açabilir. Farklı bir gerçek hesap ana dizini varsa API özel yolu buna göre ayarlanmalı.
+
+## Geri dönüş
+
+Yayın sonrası kritik sorun çıkarsa belge köküne önceki çalışan site dosyalarını geri koy. Eski `index.html` dosyasının işaret ettiği eski hash'li varlıklar da bulunmalı. Yalnızca index dosyasını geri getirmek yeterli değildir. Kullanımdaki varlıkların eksilmemesi için yayın sırasında eski hash'li dosyaları hemen silme.
+
+Özel Gmail config, vendor ve gönderim kayıtları site geri dönüşünden bağımsız korunur. Eski sürümün API/şablon uyumluluğunu kontrol et; özel dosyaları körlemesine eski ZIP'le değiştirme.
