@@ -21,6 +21,8 @@
 
 ## Öncelik tablosu
 
+**Talep akışını sadeleştirme — 15 Ekim:** Telefon, kurum ve bütçe isteğe bağlı tek bölüme alındı; ilk görünüm yalnızca gerekli bilgilerden oluşur. Ek bilgileri kapatma veriyi silmez; Yangan bütçesi ve alan hataları bölümü otomatik açar. Reddedilmiş hata tasarımı geri getirilmedi. 60 test ve üretim/yayın kontrolleri geçti. [Kontrol raporu](./docs/qa/FORM-SADELESTIRME.md). Dönüşüm artışı ölçülmüş sayılmaz; manuel/canlı kabul açık kalır.
+
 **Yayın/görünürlük paketi — 15 Ekim:** Yol haritasının içerik bakım ve teknik görünürlük işleri ilerletildi. Eksik yerel görselleri, temel sayfa/metaveri sorunlarını engelleyen yayın kontrolü; otomatik statik JSON-LD ve küçük hizmet gezinme yolu eklendi. 57 test geçti. İzleyici veya yeni içerik bölümü eklenmedi; Search Console ve analitik kararları kullanıcı bağımlılığı olarak açık kalır. [Kapsam ve sınırlar](./docs/qa/YAYIN-VE-METAVERI-KONTROLU.md).
 
 **Kalıcı tasarım kuralı — 15 Ekim:** İçerik miktarını artırmak başarı ölçütü değildir. Her yeni bölüm ziyaretçinin hizmeti anlamasını veya proje talebi bırakmasını kolaylaştırmalı. Hizmet sayfalarında örnek görsel ve tek ana eylem öne çıkar; ayrıntılar isteğe bağlı açılır, rakip hizmet bağlantıları alt bilgide kalır. Yeni blog/panel/AI veya galeri eklenirken bu kural korunur.

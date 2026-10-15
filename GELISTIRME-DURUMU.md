@@ -207,6 +207,11 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Ortak kaynaklardan statik Organization/WebSite/Service/WebPage/BreadcrumbList JSON-LD ve hizmet gezinme yolu eklendi. Kullanıcıya yeni uzun bölüm veya takip aracı gösterilmedi.
 - 57 test, lint ve üretim kontrolleri geçti. Çevrim içi zengin sonuç doğrulayıcısı ve canlı kabul yapılmadı. [Rapor](./docs/qa/YAYIN-VE-METAVERI-KONTROLU.md).
 
+## İkinci aşama — sade proje başlangıcı
+
+- Ortak formun telefon, kurum ve bütçe alanları tek isteğe bağlı bölüme taşındı. Kapatılınca veri korunur; Yangan bütçesi veya alan hatasında açılır.
+- 60 test, lint, typecheck, üretim, dört sayfa ve varlık bütçe kontrolleri geçti. Gerçek SMTP ve dönüşüm ölçümü yapılmadı; manuel kabul açık. [Rapor](./docs/qa/FORM-SADELESTIRME.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

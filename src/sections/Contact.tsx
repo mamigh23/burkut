@@ -20,6 +20,41 @@ export interface Draft {
   detail: string;
   budget: string;
 }
+const inputFields = [
+  {
+    key: "name",
+    label: "Ad soyad",
+    required: true,
+    auto: "name",
+    type: "text",
+    placeholder: "Adın ve soyadın",
+  },
+  {
+    key: "email",
+    label: "E-posta",
+    required: true,
+    auto: "email",
+    type: "email",
+    placeholder: "E-posta adresin",
+  },
+  {
+    key: "phone",
+    label: "Telefon",
+    required: false,
+    auto: "tel",
+    type: "tel",
+    placeholder: "İsteğe bağlı",
+  },
+  {
+    key: "company",
+    label: "Kurum / marka",
+    required: false,
+    auto: "organization",
+    type: "text",
+    placeholder: "İsteğe bağlı",
+  },
+] as const;
+
 const empty: ProjectData = {
   areas: [],
   name: "",
@@ -44,9 +79,15 @@ export default function Contact({
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
   const form = useRef<HTMLFormElement>(null);
+  const optionalFields = useRef<HTMLDetailsElement>(null);
   const requestKey = useRef<{ payload: string; key: string } | null>(null);
   const focusError = (next: Errors) => {
     const first = Object.keys(next)[0];
+    if (
+      ["phone", "company", "budget"].some((key) => next[key as keyof Errors]) &&
+      optionalFields.current
+    )
+      optionalFields.current.open = true;
     if (first)
       form.current
         ?.querySelector<HTMLElement>(
@@ -63,6 +104,8 @@ export default function Contact({
         detail: draft.detail,
         budget: draft.budget,
       }));
+      if (draft.budget.trim() && optionalFields.current)
+        optionalFields.current.open = true;
       setStatus("Yangan proje özetin forma aktarıldı.");
     }
   }, [draft]);
@@ -71,6 +114,33 @@ export default function Contact({
     setErrors((current) => ({ ...current, [key]: undefined }));
     setStatus("");
   };
+  const renderField = (field: (typeof inputFields)[number]) => (
+    <div className="form-field" key={field.key}>
+      <label htmlFor={`contact-${field.key}`}>
+        {field.label}
+        {field.required && <span> *</span>}
+      </label>
+      <input
+        id={`contact-${field.key}`}
+        name={field.key}
+        type={field.type}
+        autoComplete={field.auto}
+        disabled={busy}
+        value={data[field.key]}
+        maxLength={projectLimits[field.key]}
+        placeholder={field.placeholder}
+        required={field.required}
+        aria-invalid={!!errors[field.key]}
+        aria-describedby={errors[field.key] ? `${field.key}-error` : undefined}
+        onChange={(event) => update(field.key, event.target.value)}
+      />
+      {errors[field.key] && (
+        <span id={`${field.key}-error`} className="field-error">
+          {errors[field.key]}
+        </span>
+      )}
+    </div>
+  );
   const submit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (busy) return;
@@ -203,70 +273,7 @@ export default function Contact({
               )}
             </fieldset>
             <div className="form-grid">
-              {(
-                [
-                  {
-                    key: "name",
-                    label: "Ad soyad",
-                    required: true,
-                    auto: "name",
-                    type: "text",
-                    placeholder: "Adın ve soyadın",
-                  },
-                  {
-                    key: "email",
-                    label: "E-posta",
-                    required: true,
-                    auto: "email",
-                    type: "email",
-                    placeholder: "E-posta adresin",
-                  },
-                  {
-                    key: "phone",
-                    label: "Telefon",
-                    required: false,
-                    auto: "tel",
-                    type: "tel",
-                    placeholder: "İsteğe bağlı",
-                  },
-                  {
-                    key: "company",
-                    label: "Kurum / marka",
-                    required: false,
-                    auto: "organization",
-                    type: "text",
-                    placeholder: "İsteğe bağlı",
-                  },
-                ] as const
-              ).map((field) => (
-                <div className="form-field" key={field.key}>
-                  <label htmlFor={`contact-${field.key}`}>
-                    {field.label}
-                    {field.required && <span> *</span>}
-                  </label>
-                  <input
-                    id={`contact-${field.key}`}
-                    name={field.key}
-                    type={field.type}
-                    autoComplete={field.auto}
-                    disabled={busy}
-                    value={data[field.key]}
-                    maxLength={projectLimits[field.key]}
-                    placeholder={field.placeholder}
-                    required={field.required}
-                    aria-invalid={!!errors[field.key]}
-                    aria-describedby={
-                      errors[field.key] ? `${field.key}-error` : undefined
-                    }
-                    onChange={(event) => update(field.key, event.target.value)}
-                  />
-                  {errors[field.key] && (
-                    <span id={`${field.key}-error`} className="field-error">
-                      {errors[field.key]}
-                    </span>
-                  )}
-                </div>
-              ))}
+              {inputFields.filter((field) => field.required).map(renderField)}
             </div>
             <div className="form-field">
               <label htmlFor="contact-detail">
@@ -296,27 +303,37 @@ export default function Contact({
                 </span>
               )}
             </div>
-            <div className="form-field">
-              <label htmlFor="contact-budget">
-                Bütçe <span className="optional">/ İSTEĞE BAĞLI</span>
-              </label>
-              <input
-                id="contact-budget"
-                name="budget"
-                disabled={busy}
-                placeholder="Henüz belli değil"
-                value={data.budget}
-                maxLength={projectLimits.budget}
-                aria-invalid={!!errors.budget}
-                aria-describedby={errors.budget ? "budget-error" : undefined}
-                onChange={(event) => update("budget", event.target.value)}
-              />
-              {errors.budget && (
-                <span id="budget-error" className="field-error">
-                  {errors.budget}
-                </span>
-              )}
-            </div>
+            <details ref={optionalFields} className="form-optional">
+              <summary>
+                Ek bilgi ekle <span>İsteğe bağlı</span>
+              </summary>
+              <div className="form-grid">
+                {inputFields
+                  .filter((field) => !field.required)
+                  .map(renderField)}
+              </div>
+              <div className="form-field">
+                <label htmlFor="contact-budget">
+                  Bütçe <span className="optional">/ İSTEĞE BAĞLI</span>
+                </label>
+                <input
+                  id="contact-budget"
+                  name="budget"
+                  disabled={busy}
+                  placeholder="Henüz belli değil"
+                  value={data.budget}
+                  maxLength={projectLimits.budget}
+                  aria-invalid={!!errors.budget}
+                  aria-describedby={errors.budget ? "budget-error" : undefined}
+                  onChange={(event) => update("budget", event.target.value)}
+                />
+                {errors.budget && (
+                  <span id="budget-error" className="field-error">
+                    {errors.budget}
+                  </span>
+                )}
+              </div>
+            </details>
             <p className="form-privacy">
               {projectSubmissionEnabled
                 ? "Gönderdiğin bilgiler proje talebini değerlendirmek için kullanılır."
