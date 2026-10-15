@@ -1902,6 +1902,10 @@ svg {
   place-items: center;
   flex-shrink: 0;
 }
+.yangan-mark img {
+  display: block;
+  object-fit: contain;
+}
 .yangan-intro .mono {
   font-size: 8px;
   color: var(--mint);
@@ -2993,15 +2997,57 @@ legend > span,
   place-items: center;
   box-shadow: 0 8px 25px #060c0b30;
 }
-.launcher-dot {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  background: var(--mint);
-  border: 2px solid var(--forest-950);
-  border-radius: 50%;
-  top: 2px;
-  right: 2px;
+.chat-launcher .yangan-mark {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: transparent;
+}
+.chat-launcher {
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+.chat-launcher:hover,
+.chat-launcher:focus-visible {
+  border-color: var(--mint);
+  box-shadow:
+    0 8px 28px #060c0b45,
+    0 0 0 4px #afcfb51a;
+}
+html[data-motion="enabled"]
+  .chat-launcher:hover
+  .yangan-mark:not(.yangan-thinking)
+  img,
+html[data-motion="enabled"]
+  .chat-header
+  .yangan-mark:not(.yangan-thinking)
+  img {
+  animation: yangan-greet 650ms ease both;
+}
+html[data-motion="enabled"] .yangan-thinking img {
+  animation: yangan-think 1.6s ease-in-out infinite;
+}
+@keyframes yangan-greet {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  35% {
+    transform: rotate(-9deg) translateY(-2px);
+  }
+  70% {
+    transform: rotate(5deg);
+  }
+}
+@keyframes yangan-think {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    filter: drop-shadow(0 0 5px #c4edb875);
+  }
 }
 .chat-panel {
   position: fixed;

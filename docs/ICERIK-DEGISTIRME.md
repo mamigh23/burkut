@@ -12,6 +12,7 @@
 | Ana sayfa başlık ve sosyal paylaşım etiketleri | `index.html` |
 | Web hizmeti sayfasının başlık ve paylaşım etiketleri | `hizmetler/web/index.html` |
 | Logodan türetilen site varlıkları | `public/images/brand/` |
+| Yangan karakterinin yüzü (saydam SVG) | `public/images/brand/yangan.svg` |
 
 Önce ilgili içerik dosyasındaki örnek kaydı koruyarak metni veya görsel yolunu değiştir. Dosya biçimini ve TypeScript alan adlarını koru. Hizmet detaylarını düzenlemek için `ServicePage.tsx` bileşenini değiştirmen gerekmez.
 

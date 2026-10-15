@@ -229,6 +229,10 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Boş galeri/açıklama/hizmet metni, yinelenen adres ve kimlik, eksik galeri eşleşmesi yayın kontrolünde durdurulur. Yerel varlıklarda bozuk adres ve klasör yolu hata olarak ele alınır.
 - 73 test, lint, üretim ve yayın öncesi site/varlık denetimleri geçti. Mevcut oyun galerisi gerçek tarayıcıda kontrol edildi. [Kapsam ve kanıt](./docs/qa/ICERIK-BAKIMI-2026-10-15.md).
 
+## Yangan karakteri — 15 Ekim
+
+Yangan için küçük boyutta okunabilir, mint yeşili, kartal esintili bir SVG yüz hazırlandı. Sohbet düğmesi, başlık ve ana sayfadaki tanıtım aynı varlığı kullanır. Açılış/hover selamlaması kısa ve tek seferliktir; yanıt beklerken hafif ışık kullanılır. Animasyonlar sitenin hareket tercihi ve sistemin azaltılmış hareket ayarıyla durur. Yeni sohbet veya AI servisi açılmadı. Düzenlenebilir dosya: `public/images/brand/yangan.svg`.
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

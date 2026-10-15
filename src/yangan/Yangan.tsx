@@ -193,8 +193,7 @@ export default function Yangan({
         aria-controls="yangan-panel"
         onClick={() => setOpen(!open)}
       >
-        <MessageCircle size={25} />
-        <span className="launcher-dot" />
+        <YanganMark size={42} busy={busy} />
       </button>
       {open && (
         <aside
@@ -210,7 +209,7 @@ export default function Yangan({
           }}
         >
           <div className="chat-header">
-            <YanganMark />
+            <YanganMark busy={busy} />
             <div>
               <b>Yangan</b>
               <span>Bürküt'ün dijital asistanı</span>
