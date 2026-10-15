@@ -10,6 +10,8 @@
 
 ## Başlangıç noktası
 
+**Hizmet sayfaları güncellemesi — 15 Ekim:** Web, uygulama ve oyun detay sayfalarının kodu tamamlandı; ana sayfa ve hizmetler arası bağlantılar, hizmete göre form ön seçimi ve üç sayfanın metaveri/sitemap kayıtları hazır. 54 test, lint, build ve boyut kontrolleri geçti. Görsel/canlı kabul açık. [Kontrol raporu](./docs/qa/HIZMET-SAYFALARI.md). Sonraki planlanan alan proje vitrini ve galeri; mevcut sayfaların manuel kontrol ihtiyacı korunur.
+
 - Site cPanel'de canlı; gerçek form ve logolu Gmail bildirimi kullanıcı tarafından doğrulandı.
 - Logo, favicon, etkileşimli hero kartları, Bürküt gezegeni, hizmetler, ürün konseptleri ve Yangan'ın yerel akışı mevcut.
 - E-posta, telefon ve Instagram kaynak koda eklendi. Paylaşım görseli ve OG/Twitter etiketleri hazır. Son paketlerin canlıya yüklendiği ayrıca doğrulanmalı.

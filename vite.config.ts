@@ -6,7 +6,12 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     rolldownOptions: {
-      input: { home: "index.html", web: "hizmetler/web/index.html" },
+      input: {
+        home: "index.html",
+        web: "hizmetler/web/index.html",
+        app: "hizmetler/uygulama/index.html",
+        game: "hizmetler/oyun/index.html",
+      },
     },
   },
   server: { proxy: { "/api": "http://127.0.0.1:8787" } },

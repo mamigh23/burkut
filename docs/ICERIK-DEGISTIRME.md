@@ -25,7 +25,7 @@
 
 ## Yeni hizmet sayfası hazırlama
 
-`ServiceDetail` ortak içerik tipini kullan. Yeni kayıt, HTML giriş dosyası, `src/main.tsx` sayfa seçimi, Vite çoklu giriş ayarı, ana sayfa hizmet bağlantısı ve sitemap birlikte güncellenmeli. Sadece kart bağlantısı eklemek sayfa oluşturmaz. Şu an yalnızca `/hizmetler/web/` detay sayfası hazırdır; uygulama/oyun kartları iletişim formuna yönelmeyi sürdürür.
+`ServiceDetail` ortak içerik tipini kullan. Yeni kayıt, HTML giriş dosyası, `serviceDetails` listesi, Vite çoklu giriş ayarı, ana sayfa hizmet bağlantısı ve sitemap birlikte güncellenmeli. Sadece kart bağlantısı eklemek sayfa oluşturmaz. `/hizmetler/web/`, `/hizmetler/uygulama/` ve `/hizmetler/oyun/` sayfaları hazırdır. Listeye eklenen sayfa, ortak yol çözümlemesi ve diğer hizmetler bağlantılarında kullanılır. İçerikteki `area` değeri formun ön seçimini, `path` sayfa adresini, `eyebrow` üst etiketi ve `action` form çağrısını belirler.
 
 ## Kontrol ve yayın
 

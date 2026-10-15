@@ -2,7 +2,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Brand, Eyebrow } from "../components/UI";
 import { MotionProvider, MotionToggle } from "../components/Motion";
 import Contact from "../sections/Contact";
-import type { ServiceDetail } from "../content/serviceDetails";
+import { serviceDetails, type ServiceDetail } from "../content/serviceDetails";
 
 export default function ServicePage({ service }: { service: ServiceDetail }) {
   return (
@@ -26,7 +26,7 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
       <main id="main" tabIndex={-1}>
         <section className="service-detail-hero">
           <div className="container">
-            <Eyebrow light>WEB TASARIM VE GELİŞTİRME</Eyebrow>
+            <Eyebrow light>{service.eyebrow}</Eyebrow>
             <h1>
               {service.title}
               <br />
@@ -34,8 +34,7 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
             </h1>
             <p>{service.intro}</p>
             <a href="#iletisim" className="button button-primary">
-              Web projemi konuşalım{" "}
-              <ArrowUpRight size={18} aria-hidden="true" />
+              {service.action} <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>
         </section>
@@ -110,6 +109,23 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
                 ))}
               </div>
             </div>
+          </div>
+        </section>
+        <section
+          className="container service-related"
+          aria-labelledby="related-title"
+        >
+          <Eyebrow>DİĞER HİZMETLER</Eyebrow>
+          <h2 id="related-title">Fikrin başka bir yere mi uzanıyor?</h2>
+          <div>
+            {serviceDetails
+              .filter((item) => item.area !== service.area)
+              .map((item) => (
+                <a key={item.area} href={item.path}>
+                  {item.label}
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </a>
+              ))}
           </div>
         </section>
         <Contact draft={null} initialArea={service.area} />

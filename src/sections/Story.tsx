@@ -12,6 +12,7 @@ import {
   Minus,
 } from "lucide-react";
 import { services, steps, faqs } from "../content";
+import { serviceDetails } from "../content/serviceDetails";
 import { ArrowLink, Eyebrow, YanganMark } from "../components/UI";
 import { Dashboard } from "../concepts/Scenes";
 import Planet from "../components/Planet";
@@ -124,12 +125,12 @@ export function Services() {
                   </div>
                   <a
                     href={
-                      service.id === "web" ? "/hizmetler/web/" : "#iletisim"
+                      serviceDetails.find((item) => item.area === service.id)!
+                        .path
                     }
                     className="service-link"
                   >
-                    {service.id === "web" ? "Hizmeti incele" : "Fikrini anlat"}{" "}
-                    <ArrowUpRight size={18} />
+                    Hizmeti incele <ArrowUpRight size={18} />
                   </a>
                 </article>
               );

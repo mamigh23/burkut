@@ -189,6 +189,12 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Standart SMTP yayın komutu, public sürüm manifesti ve görünür sürüm bilgisi eklendi. İçerik değişikliği ve yayın/geri dönüş rehberleri hazırlandı. 51 test geçti.
 - Tarayıcı aracı URL güvenlik politikasıyla erişimi reddetti; görsel/canlı kabul açık. [Tam kapsam ve kalanlar](./docs/qa/IKINCI-ASAMA-PAKET-1.md).
 
+## İkinci aşama — hizmet sayfalarının tamamlanması
+
+- `/hizmetler/uygulama/` ve `/hizmetler/oyun/` eklendi. Ortak sayfa bileşeninde hizmete özel etiket/çağrı, içerik ve diğer hizmet bağlantıları kullanılıyor.
+- Üç kart detay sayfalarına gider; her form kendi hizmeti seçili başlar. Fiziksel HTML girişleri, canonical, paylaşım etiketleri ve sitemap güncellendi.
+- 54 test, lint, üretim ve boyut kontrolleri geçti. Üretilmiş HTML varlıkları ayrıca doğrulandı; manuel görsel/canlı kabul açık. [Rapor](./docs/qa/HIZMET-SAYFALARI.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

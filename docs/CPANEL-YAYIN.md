@@ -24,7 +24,7 @@ Mevcut domain, DNS ve geçerli SSL ayarlarını değiştirme. Yeni hosting kurul
 
 1. Çalışan site dosyalarının geri alınabilir kopyasını belge kökü dışında sakla. Mevcut `api/projects.php` özel yolunu kontrol et.
 2. ZIP'i yalnızca `burkut.gemnative.com` belge köküne çıkar. Ana Gemnative sitesinin köküne veya özel mail klasörüne yükleme.
-3. `index.html`, `assets/`, `images/`, `hizmetler/web/index.html`, `api/projects.php` ve `release.json` doğru yerde olmalı. Ek bir `public/` üst klasörü oluşmamalı.
+3. `index.html`, `assets/`, `images/`, `hizmetler/web/index.html`, `hizmetler/uygulama/index.html`, `hizmetler/oyun/index.html`, `api/projects.php` ve `release.json` doğru yerde olmalı. Ek bir `public/` üst klasörü oluşmamalı.
 4. `/release.json` ve sayfa alt bilgisinin sürümünü karşılaştır. `/hizmetler/web/` adresini doğrudan açıp yenile; Apache rewrite gerekmeden fiziksel index dosyası çalışmalıdır. Hosting'deki mevcut özel yönlendirmeler ayrıca kontrol edilir.
 5. Ana sayfa hizmet bağlantısı, seçili web alanı, forma geçiş, mobil menü ve görselleri kontrol et. GET API yanıtı 405 olmalı; gerçek gönderim kontrollü bir kullanıcı testiyle ayrıca doğrulanır.
 

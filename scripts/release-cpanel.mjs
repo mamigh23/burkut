@@ -25,7 +25,9 @@ const manifest = JSON.parse(
 if (
   manifest.submission !== "enabled" ||
   manifest.endpoint !== "/api/projects.php" ||
-  !existsSync(`${stage}/public/hizmetler/web/index.html`) ||
+  ["web", "uygulama", "oyun"].some(
+    (slug) => !existsSync(`${stage}/public/hizmetler/${slug}/index.html`),
+  ) ||
   existsSync(`${stage}/public/config.php`) ||
   existsSync(`${stage}/public/vendor`)
 )

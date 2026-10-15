@@ -2326,6 +2326,31 @@ html[data-motion="paused"] {
   color: var(--text-light-muted);
   margin-top: 12px;
 }
+.service-related {
+  padding-bottom: 80px;
+}
+.service-related h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  max-width: 700px;
+}
+.service-related > div:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 28px;
+}
+.service-related a {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 24px;
+  border: 1px solid var(--border-light);
+  border-radius: 100px;
+  background: var(--surface);
+}
+.service-related a:hover {
+  background: var(--surface-muted);
+}
 .release-version {
   font-size: 9px;
   overflow-wrap: anywhere;
