@@ -1,6 +1,6 @@
 # Bürküt proje ve iletişim formu aydınlatma metni
 
-**Hazırlanma tarihi:** 14 Ekim 2026  
+**Hazırlanma tarihi:** 14 Ekim 2026 · **Güncelleme:** 15 Ekim 2026
 **Durum:** Yayın öncesi taslak. Köşeli parantezli işletme bilgileri, saklama düzeni ve Gmail aktarım değerlendirmesi tamamlanmadan nihai metin olarak kullanılmamalıdır. Bu dosya henüz ziyaretçiye yayımlanmamıştır.
 
 ## 1. Veri sorumlusu
@@ -8,6 +8,8 @@
 Bürküt markasıyla faaliyet gösteren **Bürküt Yazılım Teknoloji Limited Şirketi**, `burkut.gemnative.com` üzerindeki proje ve iletişim formunda kişisel verilerin hangi amaçlarla ve nasıl işleneceğini belirleyen veri sorumlusudur. Unvan, kullanıcı tarafından bildirilmiştir.
 
 Başvuru posta adresi: **[şirketin tebligata elverişli posta adresi — bekleniyor]**. Başvurular için e-posta: **burkuttechnlogie@gmail.com**.
+
+Telefon: **0505 932 7310**. Instagram: **[@burkutteknoloji](https://www.instagram.com/burkutteknoloji/)**. Haklara ilişkin başvurular aşağıdaki başvuru usulüyle yapılır; Instagram üzerinden özel nitelikli veri veya kimlik belgesi paylaşılmamalıdır.
 
 Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında proje talebi sırasında gerçekleştirilen işlemleri açıklar; bir pazarlama izni veya açık rıza beyanı değildir.
 
@@ -32,6 +34,8 @@ Form gönderimi, reklam veya bülten aboneliği oluşturmaz. Sonradan farklı bi
 
 Bilgiler, sizin formu doldurup göndermenizle internet üzerinden elektronik ortamda toplanır. Talep hosting sunucusundaki PHP servisine iletilir ve SMTP kullanılarak Bürküt'ün Gmail posta kutusuna bildirim olarak gönderilir. Talebi değerlendirmek için yetkili kişiler, hosting sağlayıcısı ve e-posta hizmeti sağlayıcısı Google/Gmail, hizmetin gerektirdiği kapsamda verileri işleyebilir. Kanunen yetkili kurumlara aktarım, geçerli bir talep veya yükümlülük bulunduğunda ilgili kapsamla sınırlı gerçekleştirilir.
 
+Kullanıcının bildirdiği hosting sunucusu ülkesi **Hollanda**, hosting yedek saklama süresi **2 gündür**. Bu süre Gmail posta kutusu veya hosting erişim/hata kayıtlarının saklama süresi olarak değerlendirilmez. Hollanda'daki hosting de yurt dışı veri aktarım değerlendirmesine dahildir.
+
 **Yurt dışı aktarım bölümü tamamlanacak:** Gmail kullanımı nedeniyle verilerin yurt dışında işlenmesi veya yurt dışından erişilmesi söz konusu olabilir. **[Hizmet sözleşmesindeki gerçek alıcı tüzel kişi, veri işleme ülkeleri ve Kanun m.9 kapsamında uygulanabilir aktarım mekanizması doğrulanıp burada belirtilmelidir.]** Yalnızca bu metnin yayımlanması veya “formu gönder” düğmesine basılması uygun bir yurt dışı aktarım dayanağı oluşturmaz. Düzenli form gönderimi için arızi aktarıma ilişkin istisnalar otomatik çözüm olarak kabul edilmemelidir. Uygulanabilir mekanizma sağlanamıyorsa aktarım düzeni/hizmet sağlayıcısı değiştirilmelidir.
 
 Yangan'ın mevcut yerel proje özeti akışında bilgiler siz forma aktarıp gönderene kadar gerçek AI sağlayıcısına iletilmez. Gerçek AI hizmeti açılırsa veri akışı ve bilgilendirme ayrıca güncellenir.
@@ -40,7 +44,7 @@ Yangan'ın mevcut yerel proje özeti akışında bilgiler siz forma aktarıp gö
 
 Form alanları uygulama tarafından kalıcı tarayıcı deposuna yazılmaz. Gönderilen proje içeriği Gmail posta kutusunda ve varsa işletmenin sonraki yazışmalarında bulunur. Teknik uygulama kaydı mesaj içeriğini veya açık e-posta adresini saklamaz; tekrar kontrolü kayıtları yaklaşık 24 saatlik süre sonunda sonraki isteklerde temizlenir. Günlük sayaçlar gün değişiminde yenilenir. Hosting kayıtları, Gmail saklama ve yedekleme düzenleri bu uygulama kaydından ayrıdır.
 
-**[İşletmenin onayladığı talep/yazışma saklama süresi veya belirleme ölçütü; hosting log ve yedek süreleri]** bu bölüme işlenmelidir. Mevcut kod Gmail'deki e-postaları otomatik silmez. İşleme amacı veya geçerli hukuki saklama sebebi sona erdiğinde silme, yok etme veya anonimleştirme işlemi uygulanmalıdır; süresiz saklama varsayılmamalıdır.
+Hosting yedekleri **2 gün** saklanır. **[İşletmenin onayladığı talep/yazışma saklama süresi veya belirleme ölçütü; hosting log süreleri]** ayrıca tamamlanmalıdır. Mevcut kod Gmail'deki e-postaları otomatik silmez. İşleme amacı veya geçerli hukuki saklama sebebi sona erdiğinde silme, yok etme veya anonimleştirme işlemi uygulanmalıdır; süresiz saklama varsayılmamalıdır.
 
 ## 6. Haklarınız ve başvuru
 
@@ -51,7 +55,7 @@ Başvurunuzu yukarıdaki posta adresine yazılı olarak veya Veri Sorumlusuna Ba
 ## Yayına hazırlık notları — ziyaretçi metnine dahil edilmez
 
 - Veri sorumlusu ve posta/e-posta başvuru adresini kullanıcı doğrulamalı. Marka adı tüzel kişi kimliği yerine geçmez.
-- Hosting sağlayıcısı, ülke, log/yedek ve Gmail saklama düzeni bilinmeden somut süre veya yurt içi saklama garantisi verilmedi.
+- Hosting ülkesi Hollanda ve yedek süresi 2 gün olarak kullanıcı tarafından bildirildi. Hosting sağlayıcısı, log ve Gmail saklama düzeni ayrıca doğrulanmalı; yedek süresi bütün veriler için silme garantisi değildir.
 - Gmail aktarımı için m.9 değerlendirmesi gerekli. Tüketici Gmail hesabının kendiliğinden KVKK standart sözleşmesi sunduğu varsayılmadı; sırf form onay kutusu eklenerek çözüldüğü iddia edilmiyor.
 - Kullanılacak hukuki sebepler gerçek faaliyetle eşleştirilmeli; taslak bu alanları iş akışına göre önerir. Son metin veri sorumlusu tarafından doğrulanmalı, özellikle aktarım düzeni uzmanla netleştirilmeli.
 - Son metin formdaki gönder düğmesinden önce ve alt bilgiden erişilebilir olmalı. Aydınlatmayı açık rıza/pazarlama izni ile birleştiren zorunlu kutu eklenmemeli.

@@ -13,6 +13,7 @@ import {
   projectSubmissionEnabled,
 } from "../services/projects";
 import { projectLimits } from "../shared/project";
+import { companyContact } from "../contact";
 
 export interface Draft {
   area: Area;
@@ -122,6 +123,21 @@ export default function Contact({ draft }: { draft: Draft | null }) {
                 02 <b>Birlikte netleştirelim</b>
               </span>
             </div>
+            <address className="contact-details">
+              <a href={`mailto:${companyContact.email}`}>
+                {companyContact.email}
+              </a>
+              <a href={companyContact.phoneHref}>{companyContact.phone}</a>
+              <a
+                href={companyContact.instagramHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram · @{companyContact.instagram}
+                <ArrowUpRight size={15} aria-hidden="true" />
+                <span className="sr-only"> (yeni sekmede açılır)</span>
+              </a>
+            </address>
           </div>
           <form
             ref={form}

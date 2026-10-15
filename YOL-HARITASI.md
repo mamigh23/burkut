@@ -33,6 +33,8 @@
 
 ## Hedef
 
+**15 Ekim iletişim güncellemesi:** Şirket e-postası, telefon ve Instagram iletişim alanına ve alt bilgiye eklendi. Hosting ülkesi Hollanda ve yedek saklama süresi 2 gün olarak aydınlatma taslağına işlendi. İletişim değerleri `src/contact.ts` dosyasından yönetilir. Aydınlatma metninin diğer eksik alanları tamamlanmış sayılmaz.
+
 **İlerleme:** 1–5. aşamaların ilk sürümü uygulandı ve site yayımlandı. 6. aşamada kalan manuel kontroller sürüyor. 7. aşamada Gmail gönderimi ve logolu bildirim tamamlandı; gerçek AI bağlantısı kapalı. Ayrıntılar: [GELISTIRME-DURUMU.md](./GELISTIRME-DURUMU.md).
 
 **Son görsel karar:** Soyut bağlantı küresi yerine hayalî **Bürküt gezegeni** kullanılacak. İlk görsel ve responsive sürümleri eklendi. Bu karar marka görseli içindir; gerçek operasyon coğrafyası veya müşteri istatistiği anlamına gelmez.

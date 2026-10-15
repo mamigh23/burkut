@@ -16,6 +16,7 @@ import {
 import Contact, { type Draft } from "./sections/Contact";
 import Yangan from "./yangan/Yangan";
 import { MotionProvider, MotionToggle } from "./components/Motion";
+import { companyContact } from "./contact";
 
 export default function App() {
   const [chatOpen, setChatOpen] = useState(false);
@@ -62,6 +63,15 @@ export default function App() {
               <a href="#urunler">Ürün konseptleri</a>
               <a href="#yaklasim">Yaklaşım</a>
               <a href="#sss">SSS</a>
+              <a href={`mailto:${companyContact.email}`}>E-posta</a>
+              <a href={companyContact.phoneHref}>{companyContact.phone}</a>
+              <a
+                href={companyContact.instagramHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram<span className="sr-only"> (yeni sekmede açılır)</span>
+              </a>
             </div>
             <a className="footer-back" href="#top">
               Yukarı dön <ArrowUpRight size={18} />

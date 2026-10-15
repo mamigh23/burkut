@@ -10,6 +10,8 @@
 
 ## Kullanıcının sağlaması gereken bilgiler
 
+**15 Ekim güncellemesi:** Şirket e-postası `burkuttechnlogie@gmail.com`, telefon `0505 932 7310`, Instagram `@burkutteknoloji` siteye eklendi. Sunucu ülkesi Hollanda, yedek saklama süresi 2 gün olarak aydınlatma taslağına işlendi. Aşağıdaki eski listede bu alanlar artık tamamlanmıştır; posta adresi, hosting sağlayıcısı/log süreleri ve aktarım düzeni açık kalır.
+
 1. Şirketin tebligata elverişli posta adresi. Telefon ve sosyal hesaplar varsa sitede gösterilmesi istenen güncel değerler.
 2. Hosting firmasının adı ve sunucu ülkesi; erişim/hata logları ile yedeklerin saklanma süreleri. Hosting desteğinden öğrenilebilir; şifre gerekmez.
 3. Gmail ve proje yazışmalarında uygulanacak saklama/silme düzeni. Kod Gmail'deki e-postaları silmez; işletme bir süre veya ölçüt belirleyip uygulamalı.
