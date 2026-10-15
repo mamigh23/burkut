@@ -3,6 +3,7 @@ import { Brand, Eyebrow } from "../components/UI";
 import { MotionProvider, MotionToggle } from "../components/Motion";
 import Contact from "../sections/Contact";
 import ServiceExample from "../components/ServiceExample";
+import { startProject } from "../shared/startProject";
 import { serviceDetails, type ServiceDetail } from "../content/serviceDetails";
 
 export default function ServicePage({ service }: { service: ServiceDetail }) {
@@ -18,7 +19,7 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
             <a href="/#hizmetler">
               <ArrowLeft size={16} aria-hidden="true" /> Tüm hizmetler
             </a>
-            <a href="#iletisim">
+            <a href="#iletisim" onClick={startProject}>
               Projeni anlat <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </nav>
@@ -40,7 +41,11 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
                 <span>{service.highlight}</span>
               </h1>
               <p>{service.intro}</p>
-              <a href="#iletisim" className="button button-primary">
+              <a
+                href="#iletisim"
+                className="button button-primary"
+                onClick={startProject}
+              >
                 {service.action} <ArrowUpRight size={18} aria-hidden="true" />
               </a>
             </div>

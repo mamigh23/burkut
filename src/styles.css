@@ -2727,6 +2727,7 @@ html[data-motion="paused"] .service-example-open:focus-visible {
   margin: 0 auto;
 }
 .contact-form {
+  scroll-margin-top: 96px;
   color: var(--text-dark);
   background: white;
   border-radius: 24px;

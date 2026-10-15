@@ -212,6 +212,11 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Ortak formun telefon, kurum ve bütçe alanları tek isteğe bağlı bölüme taşındı. Kapatılınca veri korunur; Yangan bütçesi veya alan hatasında açılır.
 - 60 test, lint, typecheck, üretim, dört sayfa ve varlık bütçe kontrolleri geçti. Gerçek SMTP ve dönüşüm ölçümü yapılmadı; manuel kabul açık. [Rapor](./docs/qa/FORM-SADELESTIRME.md).
 
+## İkinci aşama — doğrudan proje başlangıcı
+
+- Sayfalardaki proje çağrıları ortak yönlendirmeyle formun ilk eksik/hatalı alanına odaklanır. Bilgiler ve hizmet seçimi korunur; mobil menü odağı geri almaz.
+- Azaltılmış hareket, kapalı ek bilgi alanı ve alternatif tıklamalar kontrol edildi. 64 test geçti; gerçek mobil scroll/klavye kabulü açık. [Rapor](./docs/qa/PROJE-BASLANGIC-NAVIGASYONU.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

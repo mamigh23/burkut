@@ -26,19 +26,16 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 async function fillRequired(user: ReturnType<typeof userEvent.setup>) {
-  await user.type(
-    screen.getByRole("textbox", { name: /ad soyad/i }),
-    "Örnek Kişi",
-  );
-  await user.type(
-    screen.getByRole("textbox", { name: /^e-posta/i }),
-    "ornek@example.com",
-  );
-  await user.type(
-    screen.getByRole("textbox", { name: /fikrinden bahset/i }),
-    "Bir web sitesi hazırlamak istiyoruz.",
-  );
+  for (const [label, value] of [
+    [/ad soyad/i, "Örnek Kişi"],
+    [/^e-posta/i, "ornek@example.com"],
+    [/fikrinden bahset/i, "Bir web sitesi hazırlamak istiyoruz."],
+  ] as const) {
+    await user.click(screen.getByRole("textbox", { name: label }));
+    await user.paste(value);
+  }
 }
+
 it("isteğe bağlı alanları açmadan yalnızca gerekli bilgilerle gönderebilir", async () => {
   const user = userEvent.setup();
   const { container } = render(<Contact draft={null} initialArea="web" />);
@@ -64,7 +61,8 @@ it("ek bilgiler kapatılınca korunur, sunucu alan hatasında tekrar görünür 
   await fillRequired(user);
   await user.click(screen.getByText("Ek bilgi ekle"));
   const phone = screen.getByRole("textbox", { name: "Telefon" });
-  await user.type(phone, "0505 000 00 00");
+  await user.click(phone);
+  await user.paste("0505 000 00 00");
   await user.click(screen.getByText("Ek bilgi ekle"));
   expect(container.querySelector("details")?.open).toBe(false);
   submit.mockRejectedValue(

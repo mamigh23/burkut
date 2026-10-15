@@ -17,6 +17,7 @@ import { ArrowLink, Eyebrow, YanganMark } from "../components/UI";
 import { Dashboard } from "../concepts/Scenes";
 import Planet from "../components/Planet";
 import ScrollBand from "../components/ScrollBand";
+import { startProject } from "../shared/startProject";
 
 export function Vision() {
   return (
@@ -352,7 +353,7 @@ export function FAQ() {
             <br />
             Seninkini de birlikte yanıtlayalım.
           </p>
-          <a className="text-link" href="#iletisim">
+          <a className="text-link" href="#iletisim" onClick={startProject}>
             Başka bir sorun mu var? <ArrowUpRight size={16} />
           </a>
         </div>

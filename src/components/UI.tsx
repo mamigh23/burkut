@@ -1,5 +1,6 @@
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import type { ReactNode } from "react";
+import { startProject } from "../shared/startProject";
 
 export function Brand({
   footer = false,
@@ -41,7 +42,11 @@ export function ArrowLink({
   className?: string;
 }) {
   return (
-    <a className={`button ${className}`} href={href}>
+    <a
+      className={`button ${className}`}
+      href={href}
+      onClick={href === "#iletisim" ? startProject : undefined}
+    >
       {children}
       <ArrowUpRight size={18} aria-hidden="true" />
     </a>

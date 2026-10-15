@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { navigation } from "../content";
 import { Brand } from "./UI";
+import { startProject } from "../shared/startProject";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -79,7 +80,7 @@ export default function Header() {
             </a>
           ))}
         </div>
-        <a className="nav-cta" href="#iletisim">
+        <a className="nav-cta" href="#iletisim" onClick={startProject}>
           Projeni Anlat <ArrowUpRight size={16} aria-hidden="true" />
         </a>
         <button
@@ -103,7 +104,12 @@ export default function Header() {
             <a
               key={id}
               href={`#${id}`}
-              onClick={() => {
+              onClick={(event) => {
+                if (id === "iletisim") {
+                  startProject(event);
+                  setOpen(false);
+                  return;
+                }
                 setOpen(false);
                 requestAnimationFrame(() => {
                   const section = document.getElementById(id);
