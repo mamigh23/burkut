@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight, Check, ArrowRight } from "lucide-react";
 import { areaLabels, type Area } from "../content";
 import {
@@ -95,7 +95,7 @@ export default function Contact({
         )
         ?.focus();
   };
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (draft) {
       setErrors({});
       setData((current) => ({

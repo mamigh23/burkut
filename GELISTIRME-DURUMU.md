@@ -217,12 +217,18 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Sayfalardaki proje çağrıları ortak yönlendirmeyle formun ilk eksik/hatalı alanına odaklanır. Bilgiler ve hizmet seçimi korunur; mobil menü odağı geri almaz.
 - Azaltılmış hareket, kapalı ek bilgi alanı ve alternatif tıklamalar kontrol edildi. 64 test geçti; gerçek mobil scroll/klavye kabulü açık. [Rapor](./docs/qa/PROJE-BASLANGIC-NAVIGASYONU.md).
 
+## İkinci aşama — gerçek tarayıcıda baştan sona kontrol
+
+- Dört sayfanın 16 viewport görünümü ve menü, sekme, SSS, hero kartı, galeri, form ve Yangan akışları gerçek tarayıcıda denendi.
+- Doğrudan iletişim bağlantısı, modal Tab çevrimi, Yangan ilk aktarımının kaydırma/odak yarışı ve iki erişilebilirlik bulgusu giderildi. Normal yerel sunucu 5173 de yeniden çalışır hale getirildi.
+- 67 uygulama testi, 24 PHP kontrolü ve üretim/yayın denetimleri geçti. Dört mobil axe taramasında otomatik ihlal 0; manuel kontrast ve diğer fiziksel kabuller aşağıda açık. [Tam kapsam ve kanıtlar](./docs/qa/UCTAN-UCA-KONTROL-2026-10-15.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
 - Gerçek yüzde 200 tarayıcı zoom testi ve ekran okuyucu kontrolü.
 - Azaltılmış hareket için CSS mevcut; işletim sistemi tercihiyle ayrı doğrulama yapılmadı.
-- Bütün bileşenlerin tüm ekran/etkileşim durumları için kapsamlı görsel regresyon kontrolü.
+- Dört sayfada 16 viewport ve temel etkileşimler kontrol edildi. Bütün durumları kapsayan görsel regresyon, gerçek cihaz ve kapsamlı manuel kontrast incelemesi sürüyor.
 - Güncel kaynaklar cPanel'e yüklendikten sonra Lighthouse ve önbellek HTTP başlıklarının tekrar kontrolü. Canlı laboratuvar ölçümü alındı; gerçek ziyaretçi verisi henüz yok.
 - Paylaşım görseli ve OG/Twitter etiketleri hazır; cPanel yüklemesi ve sosyal platformdaki görünümü bekliyor. Favicon, üretim domain'i, canonical/OG URL ve temel SEO dosyaları tamamlandı.
 - Canlı hata/yoğunluk senaryoları, veri işleme düzeni ve gerçek AI bağlantısı. Talep servisi ve Gmail gönderimi çalışıyor; otomatik sunucu sınır testleri geçti.

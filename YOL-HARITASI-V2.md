@@ -21,6 +21,8 @@
 
 ## Öncelik tablosu
 
+**Baştan sona kontrol — 15 Ekim:** Gerçek yerel tarayıcı erişimi sağlandı. Dört sayfa × dört ekran genişliği, menü/sekme/SSS/galeri/form/Yangan akışları kontrol edildi. Doğrudan form bağlantısı, galeri odak çevrimi/ortalama, Yangan aktarımı, görsel düğme adı ve üst alan landmark hataları giderildi. 67 uygulama testi, 24 PHP kontrolü ve dört mobil axe taramasında 0 otomatik ihlal; fiziksel cihaz/gerçek zoom/ekran okuyucu ve canlı cPanel kabulü açık. [Rapor ve kanıtlar](./docs/qa/UCTAN-UCA-KONTROL-2026-10-15.md).
+
 **Doğrudan proje başlangıcı — 15 Ekim:** Proje çağrıları mevcut bilgileri koruyarak ilk eksik/hatalı form alanına götürür. Seçili hizmet korunur, gerekirse ek bilgi bölümü açılır; hareket tercihi ve yeni sekme davranışları gözetilir. Yeni görünür içerik/çağrı kalabalığı eklenmedi. 64 test geçti; gerçek mobil klavye/scroll kabulü açık. [Rapor](./docs/qa/PROJE-BASLANGIC-NAVIGASYONU.md).
 
 **Talep akışını sadeleştirme — 15 Ekim:** Telefon, kurum ve bütçe isteğe bağlı tek bölüme alındı; ilk görünüm yalnızca gerekli bilgilerden oluşur. Ek bilgileri kapatma veriyi silmez; Yangan bütçesi ve alan hataları bölümü otomatik açar. Reddedilmiş hata tasarımı geri getirilmedi. 60 test ve üretim/yayın kontrolleri geçti. [Kontrol raporu](./docs/qa/FORM-SADELESTIRME.md). Dönüşüm artışı ölçülmüş sayılmaz; manuel/canlı kabul açık kalır.

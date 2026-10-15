@@ -16,6 +16,13 @@ export function startProject(event: MouseEvent<HTMLAnchorElement>) {
   );
   if (!form) return; // Preserve the ordinary anchor if the form is unavailable.
   event.preventDefault();
+  focusProjectForm(form);
+}
+
+export function focusProjectForm(
+  form = document.querySelector<HTMLFormElement>("#iletisim .contact-form"),
+) {
+  if (!form) return;
   const enabled = (field: HTMLInputElement | HTMLTextAreaElement) =>
     !field.disabled;
   const invalid = Array.from(

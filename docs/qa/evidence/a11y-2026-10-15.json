@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/",
+    "status": "complete",
+    "violations": [],
+    "incomplete": 1
+  },
+  {
+    "path": "/hizmetler/web/",
+    "status": "complete",
+    "violations": [],
+    "incomplete": 1
+  },
+  {
+    "path": "/hizmetler/uygulama/",
+    "status": "complete",
+    "violations": [],
+    "incomplete": 1
+  },
+  {
+    "path": "/hizmetler/oyun/",
+    "status": "complete",
+    "violations": [],
+    "incomplete": 1
+  }
+]

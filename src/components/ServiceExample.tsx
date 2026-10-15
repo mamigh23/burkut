@@ -32,7 +32,7 @@ export default function ServiceExample({ area }: { area: Area }) {
           type="button"
           className="service-example-open"
           onClick={() => setActive(0)}
-          aria-label={`${example.title} görsellerini büyüt`}
+          aria-label={`Yakından bak: ${example.title} görsellerini büyüt`}
         >
           <img
             src={source(0)}
@@ -62,6 +62,22 @@ export default function ServiceExample({ area }: { area: Area }) {
           if (event.target === event.currentTarget) setActive(null);
         }}
         onKeyDown={(event) => {
+          if (event.key === "Tab") {
+            const buttons = Array.from(
+              dialog.current?.querySelectorAll<HTMLButtonElement>(
+                "button:not(:disabled)",
+              ) ?? [],
+            );
+            const first = buttons[0];
+            const last = buttons[buttons.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+              event.preventDefault();
+              last?.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+              event.preventDefault();
+              first?.focus();
+            }
+          }
           if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
             event.preventDefault();
             setActive((current) => (current === 0 ? 1 : 0));

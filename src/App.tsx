@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Header from "./components/Header";
 import { Brand } from "./components/UI";
@@ -17,18 +17,13 @@ import Contact, { type Draft } from "./sections/Contact";
 import Yangan from "./yangan/Yangan";
 import { MotionProvider, MotionToggle } from "./components/Motion";
 import { companyContact } from "./contact";
+import { useInitialAnchor } from "./shared/useInitialAnchor";
+import { focusProjectForm } from "./shared/startProject";
 
 export default function App() {
   const [chatOpen, setChatOpen] = useState(false);
   const [draft, setDraft] = useState<Draft | null>(null);
-  useEffect(() => {
-    const anchor = window.location.hash.slice(1);
-    if (!anchor) return;
-    const frame = requestAnimationFrame(() => {
-      document.getElementById(anchor)?.scrollIntoView({ behavior: "instant" });
-    });
-    return () => cancelAnimationFrame(frame);
-  }, []);
+  useInitialAnchor();
   return (
     <MotionProvider>
       <a className="skip-link" href="#main">
@@ -93,9 +88,7 @@ export default function App() {
         onDraft={(nextDraft) => {
           setDraft(nextDraft);
           requestAnimationFrame(() => {
-            document
-              .getElementById("contact-name")
-              ?.focus({ preventScroll: true });
+            focusProjectForm();
           });
         }}
       />

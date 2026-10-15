@@ -4,15 +4,17 @@ import { MotionProvider, MotionToggle } from "../components/Motion";
 import Contact from "../sections/Contact";
 import ServiceExample from "../components/ServiceExample";
 import { startProject } from "../shared/startProject";
+import { useInitialAnchor } from "../shared/useInitialAnchor";
 import { serviceDetails, type ServiceDetail } from "../content/serviceDetails";
 
 export default function ServicePage({ service }: { service: ServiceDetail }) {
+  useInitialAnchor();
   return (
     <MotionProvider>
       <a className="skip-link" href="#main">
         İçeriğe geç
       </a>
-      <div className="service-page-header">
+      <header className="service-page-header">
         <div className="container">
           <Brand href="/" />
           <nav aria-label="Hizmet sayfası">
@@ -24,7 +26,7 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
             </a>
           </nav>
         </div>
-      </div>
+      </header>
       <main id="main" tabIndex={-1}>
         <section className="service-detail-hero">
           <div className="container service-hero-layout">

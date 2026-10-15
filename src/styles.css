@@ -2504,6 +2504,7 @@ html[data-motion="paused"] .service-example-open:focus-visible {
   gap: 16px;
 }
 .service-gallery {
+  margin: auto;
   border: 0;
   padding: 0;
   border-radius: 20px;

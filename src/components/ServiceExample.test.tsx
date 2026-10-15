@@ -30,6 +30,15 @@ it("galeri açılır, klavyeyle diğer görsele geçer ve kapanınca odağı ger
   await user.click(trigger);
   const dialog = screen.getByRole("dialog");
   expect(document.body.style.overflow).toBe("hidden");
+  screen.getByRole("button", { name: "Görseli kapat" }).focus();
+  await user.keyboard("{Shift>}{Tab}{/Shift}");
+  expect(document.activeElement).toBe(
+    screen.getByRole("button", { name: "Sonraki görsel" }),
+  );
+  await user.tab();
+  expect(document.activeElement).toBe(
+    screen.getByRole("button", { name: "Görseli kapat" }),
+  );
   fireEvent.keyDown(dialog, { key: "ArrowRight" });
   expect(
     screen.getByRole("img", { name: /ürün detayı/i }).getAttribute("src"),

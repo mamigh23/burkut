@@ -340,13 +340,6 @@ export default function Yangan({
                           detail: summaryDetail(flow.answers),
                         });
                         close();
-                        document.getElementById("iletisim")?.scrollIntoView({
-                          behavior: window.matchMedia(
-                            "(prefers-reduced-motion: reduce)",
-                          ).matches
-                            ? "instant"
-                            : "smooth",
-                        });
                       }}
                     >
                       Forma aktar <ArrowUpRight size={16} />

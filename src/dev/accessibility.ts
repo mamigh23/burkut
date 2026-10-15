@@ -34,6 +34,14 @@ export async function startAccessibilityAudit() {
     button.disabled = true;
     report.textContent = JSON.stringify({ status: "running" });
     try {
+      // Audit the settled interface, not a partially transparent entry frame.
+      // Never wait for decorative loops; those intentionally have no end.
+      const entering = (document.getAnimations?.() ?? []).filter(
+        (animation) =>
+          animation.playState === "running" &&
+          Number.isFinite(animation.effect?.getComputedTiming().endTime),
+      );
+      await Promise.allSettled(entering.map((animation) => animation.finished));
       const result = await axe.run(document, {
         runOnly: {
           type: "tag",
