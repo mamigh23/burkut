@@ -17,7 +17,15 @@
 
 ## Görsel kuralları
 
-Hizmet galerileri ikişer görsel kullanır. Değiştirmek için `serviceExamples.ts` içindeki `src` ve `alt` değerlerini güncelle; aynı 4:3 oranını koru. Varsayılan SVG'ler `scripts/prepare-service-previews.mjs` ile tekrar üretilebilir. Bu komut varsayılan görselleri yeniler; özelleştirilmiş dosyanın üzerine yazmadan önce farklı ad kullan. Örnekler müşteri işi değil tasarım konseptidir. Görseller 960×720 boyutlarında hafif vektör varlıklardır.
+Hizmet galerileri bir veya daha fazla görsel kullanır; müşterinin karar vermesine yardımcı olan 2–4 seçilmiş ekran genellikle yeterlidir. Değiştirmek için `serviceExamples.ts` içindeki `src` ve `alt` değerlerini güncelle; aynı 4:3 oranını koru. İlk kayıt sayfadaki kapaktır. `images` listesine aynı biçimde yeni kayıt ekleyebilir veya mevcut kaydı çıkarabilirsin; bileşeni değiştirmen gerekmez. Tek görselde gezinme okları gizlenir, birden fazla görselde oklar ve klavyenin sağ/sol tuşları tüm listeyi dolaşır. Otomatik slayt yoktur. Listeyi tamamen boş bırakma; yayın kontrolü bunu reddeder.
+
+Örnek yeni kayıt (dosyayı önce `public/images/services/` içine ekle):
+
+```ts
+{ src: "/images/services/web-mobile.webp", alt: "Kök mobil koleksiyon ekranı: ürünler ve kategori seçimi" },
+```
+
+Varsayılan SVG'ler `scripts/prepare-service-previews.mjs` ile tekrar üretilebilir. Bu komut varsayılan görselleri yeniler; özelleştirilmiş dosyanın üzerine yazmadan önce farklı ad kullan. Örnekler müşteri işi değil tasarım konseptidir. Mevcut görseller 960×720 boyutlarında hafif vektör varlıklardır.
 
 - Yeni görseli `public/images/` altında açıklayıcı, küçük harfli, boşluksuz bir adla sakla. Kodda `/images/dosya-adi.webp` gibi kökten başlayan yol kullan.
 - Kartın mevcut en/boy oranına uygun görsel seç; önemli yazı veya logoyu kenarlara yerleştirme. Dikey telefon görseliyle yatay masaüstü görselini aynı kırpmayla değiştirme.
@@ -32,7 +40,7 @@ Hizmet galerileri ikişer görsel kullanır. Değiştirmek için `serviceExample
 
 ## Kontrol ve yayın
 
-`npm run check:site` derlenmiş `dist/` içinde dört sayfanın canonical, başlık/açıklama, sitemap ve JSON-LD bilgilerini; statik sayfa varlıklarını, galeri ve özel hero görsellerinin yerel dosyalarını kontrol eder. Yeni bir görsel yolu yazıp dosyayı eklemeyi unutursan yayın durur. Harici bağlantılara ağ isteği yapmaz; bütün tarayıcı etkileşimlerinin çalıştığını veya özel görsellerin görünümünü doğrulamaz.
+`npm run check:site` derlenmiş `dist/` içinde dört sayfanın canonical, başlık/açıklama, sitemap ve JSON-LD bilgilerini; statik sayfa varlıklarını, galeri ve özel hero görsellerinin yerel dosyalarını kontrol eder. Boş galeri, görsel açıklaması, hizmet metni veya liste; yinelenen hizmet adresi/alanı veya hero kimliği; eksik galeri eşleşmesi de yayın paketini durdurur. Yeni bir görsel yolu yazıp dosyayı eklemeyi unutursan, dosya yerine klasör belirtirsen veya adres bozuksa kontrol başarısız olur. Harici bağlantılara ağ isteği yapmaz; bütün tarayıcı etkileşimlerinin çalıştığını veya özel görsellerin görünümünü doğrulamaz.
 
 Önce `npm run lint`, `npm test` ve `npm run release:cpanel -- gemnative` çalıştır. Yayın komutu TypeScript derlemesini ve Vite çıktısını üretir. Boyut sınırlarını `npm run check:assets` ile kontrol et. Sayfa ve görselleri yerelde incele; yalnızca otomatik testlere bakarak görsel kontrol tamamlandı deme.
 

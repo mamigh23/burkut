@@ -1,7 +1,7 @@
 # Bürküt — İkinci aşama geliştirme yol haritası
 
 **Tarih:** 15 Ekim 2026  
-**Durum:** İlk paketin kodu ve otomatik kontrolleri tamamlandı; görsel/canlı kabul açık. Sonraki paketler plan durumunda.
+**Durum:** Hizmet sayfaları, sade talep akışı, galeri ve teknik SEO uygulandı; yerel tarayıcı kontrolleri yapıldı. İçerik bakım kontrolleri güçlendiriliyor. Fiziksel cihaz, canlı sürüm kabulü ve kullanıcı bilgisine bağlı işler açık.
 **Hedef:** Ziyaretçinin Bürküt'ü daha iyi tanıdığı, doğru hizmete ulaştığı ve nitelikli proje talebi bırakabildiği bir site oluşturmak.
 
 **İlk paket uygulama durumu — 15 Ekim:** Standart SMTP yayın komutu/sürüm bilgisi, form durum mesajları, ortak hizmet sayfası yapısı, ilk web hizmeti sayfası ve içerik rehberi eklendi. 51 test geçti. Tarayıcı erişimi kısıtlandığı için yeni sayfanın görsel ve canlı kabulü açık; sonraki büyük özelliğe geçmeden bu kontroller tamamlanmalı. [Doğrulama ve sınırlar](./docs/qa/IKINCI-ASAMA-PAKET-1.md).
@@ -20,6 +20,8 @@
 - Gerçek müşteri işleri, ekip geçmişi ve başarı sayıları sağlanmadı. Konseptler gerçek müşteri referansı gibi sunulmaz. Gerçek AI kapalı.
 
 ## Öncelik tablosu
+
+**İçerik bakımı — 15 Ekim:** Hizmet galerilerinin iki görsel sınırı kaldırıldı. Görsel sayısı içerik dosyasından değişir; tek görselde oklar gizlenir. Yayın kontrolü boş galeriyi/açıklamayı/hizmet metnini, yinelenen adres ve kimlikleri, eksik galeri eşleşmesini ve geçersiz yerel dosyaları durdurur. Yeni görünür bölüm eklenmedi. Düzenleme adımları [içerik rehberinde](./docs/ICERIK-DEGISTIRME.md).
 
 **Baştan sona kontrol — 15 Ekim:** Gerçek yerel tarayıcı erişimi sağlandı. Dört sayfa × dört ekran genişliği, menü/sekme/SSS/galeri/form/Yangan akışları kontrol edildi. Doğrudan form bağlantısı, galeri odak çevrimi/ortalama, Yangan aktarımı, görsel düğme adı ve üst alan landmark hataları giderildi. 67 uygulama testi, 24 PHP kontrolü ve dört mobil axe taramasında 0 otomatik ihlal; fiziksel cihaz/gerçek zoom/ekran okuyucu ve canlı cPanel kabulü açık. [Rapor ve kanıtlar](./docs/qa/UCTAN-UCA-KONTROL-2026-10-15.md).
 

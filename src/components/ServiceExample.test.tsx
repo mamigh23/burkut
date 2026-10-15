@@ -1,8 +1,11 @@
 // @vitest-environment jsdom
-import { afterEach, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ServiceExample from "./ServiceExample";
+import { serviceExamples } from "../content/serviceExamples";
+
+const originalImages = structuredClone(serviceExamples.web.images);
 
 afterEach(() => {
   cleanup();
@@ -10,8 +13,9 @@ afterEach(() => {
   Reflect.deleteProperty(HTMLDialogElement.prototype, "close");
   vi.restoreAllMocks();
   document.body.style.overflow = "";
+  serviceExamples.web.images = structuredClone(originalImages);
 });
-it("galeri açılır, klavyeyle diğer görsele geçer ve kapanınca odağı geri verir", async () => {
+beforeEach(() => {
   Object.defineProperty(HTMLDialogElement.prototype, "showModal", {
     configurable: true,
     value: function (this: HTMLDialogElement) {
@@ -24,6 +28,8 @@ it("galeri açılır, klavyeyle diğer görsele geçer ve kapanınca odağı ger
       this.removeAttribute("open");
     },
   });
+});
+it("galeri açılır, klavyeyle diğer görsele geçer ve kapanınca odağı geri verir", async () => {
   const user = userEvent.setup();
   render(<ServiceExample area="web" />);
   const trigger = screen.getByRole("button", { name: /görsellerini büyüt/ });
@@ -47,4 +53,41 @@ it("galeri açılır, klavyeyle diğer görsele geçer ve kapanınca odağı ger
   expect(screen.queryByRole("dialog")).toBeNull();
   expect(document.body.style.overflow).toBe("");
   expect(document.activeElement).toBe(trigger);
+});
+
+it("üç görselde ileri ve geri dolaşır, son görsel çıkarıldığında geçerli görseli gösterir", async () => {
+  serviceExamples.web.images.push({ src: "/third.webp", alt: "Üçüncü ekran" });
+  const user = userEvent.setup();
+  const { rerender } = render(<ServiceExample area="web" />);
+  await user.click(screen.getByRole("button", { name: /görsellerini büyüt/ }));
+  await user.click(screen.getByRole("button", { name: "Önceki görsel" }));
+  expect(
+    screen.getByRole("img", { name: "Üçüncü ekran" }).getAttribute("src"),
+  ).toBe("/third.webp");
+  expect(screen.getByText("3 / 3")).toBeTruthy();
+  fireEvent.keyDown(screen.getByRole("dialog"), { key: "ArrowRight" });
+  expect(screen.getByText("1 / 3")).toBeTruthy();
+  fireEvent.keyDown(screen.getByRole("dialog"), { key: "ArrowLeft" });
+  expect(screen.getByText("3 / 3")).toBeTruthy();
+  serviceExamples.web.images.pop();
+  rerender(<ServiceExample area="web" />);
+  expect(screen.getByText("1 / 2")).toBeTruthy();
+});
+
+it("tek görselde gezinme oklarını gizler, boş galeride kırık bir açıcı oluşturmaz", async () => {
+  serviceExamples.web.images = originalImages.slice(0, 1);
+  const user = userEvent.setup();
+  const { rerender } = render(<ServiceExample area="web" />);
+  await user.click(screen.getByRole("button", { name: /görsellerini büyüt/ }));
+  expect(screen.getByText("1 / 1")).toBeTruthy();
+  expect(screen.queryByRole("button", { name: "Sonraki görsel" })).toBeNull();
+  const close = screen.getByRole("button", { name: "Görseli kapat" });
+  close.focus();
+  await user.tab();
+  expect(document.activeElement).toBe(close);
+  serviceExamples.web.images = [];
+  rerender(<ServiceExample area="web" />);
+  expect(screen.queryByRole("dialog")).toBeNull();
+  expect(screen.queryByRole("button")).toBeNull();
+  expect(document.body.style.overflow).toBe("");
 });

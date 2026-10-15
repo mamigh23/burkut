@@ -1,4 +1,14 @@
-export const serviceExamples = {
+import type { Area } from "../content.ts";
+
+export interface ServiceExampleContent {
+  title: string;
+  images: { src: string; alt: string }[];
+}
+
+export const serviceExamples: Record<
+  Exclude<Area, "other">,
+  ServiceExampleContent
+> = {
   web: {
     title: "Kök / Web deneyimi",
     images: [

@@ -10,7 +10,16 @@ export default function ServiceExample({ area }: { area: Area }) {
   const [active, setActive] = useState<number | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
-  const isOpen = active !== null;
+  const count = example.images.length;
+  const index = active === null || count === 0 ? 0 : active % count;
+  const isOpen = active !== null && count > 0;
+  const selected = example.images[index];
+  const move = (direction: number) =>
+    setActive((current) =>
+      current === null || count === 0
+        ? current
+        : ((current % count) + direction + count) % count,
+    );
   useEffect(() => {
     if (!isOpen) return;
     const modal = dialog.current!;
@@ -23,7 +32,7 @@ export default function ServiceExample({ area }: { area: Area }) {
       trigger.current?.focus({ preventScroll: true });
     };
   }, [isOpen]);
-  const source = (index: number) => example.images[index].src;
+  if (count === 0) return null;
   return (
     <>
       <figure className="service-example">
@@ -35,7 +44,7 @@ export default function ServiceExample({ area }: { area: Area }) {
           aria-label={`Yakından bak: ${example.title} görsellerini büyüt`}
         >
           <img
-            src={source(0)}
+            src={example.images[0].src}
             alt={example.images[0].alt}
             width={960}
             height={720}
@@ -80,7 +89,7 @@ export default function ServiceExample({ area }: { area: Area }) {
           }
           if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
             event.preventDefault();
-            setActive((current) => (current === 0 ? 1 : 0));
+            move(event.key === "ArrowRight" ? 1 : -1);
           }
         }}
       >
@@ -96,30 +105,36 @@ export default function ServiceExample({ area }: { area: Area }) {
               <X size={22} />
             </button>
           </div>
-          {active !== null && (
+          {isOpen && selected && (
             <img
-              src={source(active)}
-              alt={example.images[active].alt}
+              src={selected.src}
+              alt={selected.alt}
               width={960}
               height={720}
             />
           )}
           <div className="service-gallery-controls">
-            <button
-              type="button"
-              onClick={() => setActive((current) => (current === 0 ? 1 : 0))}
-              aria-label="Önceki görsel"
-            >
-              <ArrowLeft size={20} />
-            </button>
-            <span aria-live="polite">{(active ?? 0) + 1} / 2</span>
-            <button
-              type="button"
-              onClick={() => setActive((current) => (current === 0 ? 1 : 0))}
-              aria-label="Sonraki görsel"
-            >
-              <ArrowRight size={20} />
-            </button>
+            {count > 1 && (
+              <button
+                type="button"
+                onClick={() => move(-1)}
+                aria-label="Önceki görsel"
+              >
+                <ArrowLeft size={20} />
+              </button>
+            )}
+            <span aria-live="polite">
+              {index + 1} / {count}
+            </span>
+            {count > 1 && (
+              <button
+                type="button"
+                onClick={() => move(1)}
+                aria-label="Sonraki görsel"
+              >
+                <ArrowRight size={20} />
+              </button>
+            )}
           </div>
         </div>
       </dialog>

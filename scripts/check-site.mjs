@@ -1,27 +1,40 @@
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, statSync } from "node:fs";
 import { resolve, relative, isAbsolute } from "node:path";
 import { JSDOM } from "jsdom";
 import { serviceDetails } from "../src/content/serviceDetails.ts";
 import { serviceExamples } from "../src/content/serviceExamples.ts";
 import { heroCards } from "../src/content/heroCards.ts";
 import { siteOrigin } from "../src/shared/siteMetadata.ts";
+import { validateContent } from "../src/shared/validateContent.ts";
 import console from "node:console";
 import process from "node:process";
 import { URL } from "node:url";
 
 const root = resolve("dist");
-const failures = [];
+const failures = validateContent(serviceDetails, serviceExamples, heroCards);
 function requireLocal(url, label) {
-  const parsed = new URL(url, siteOrigin);
-  if (!["http:", "https:"].includes(parsed.protocol)) {
-    failures.push(`${label}: unsupported asset protocol`);
-    return;
+  try {
+    if (!url?.trim()) throw new Error("empty asset URL");
+    const parsed = new URL(url, siteOrigin);
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      failures.push(`${label}: unsupported asset protocol`);
+      return;
+    }
+    if (parsed.origin !== siteOrigin) return;
+    const path = resolve(root, "." + decodeURIComponent(parsed.pathname));
+    const boundary = relative(root, path);
+    if (
+      boundary.startsWith("..") ||
+      isAbsolute(boundary) ||
+      !existsSync(path) ||
+      !statSync(path).isFile()
+    )
+      failures.push(
+        `${label}: missing or invalid local file ${parsed.pathname}`,
+      );
+  } catch {
+    failures.push(`${label}: malformed asset URL ${url}`);
   }
-  if (parsed.origin !== siteOrigin) return;
-  const path = resolve(root, "." + decodeURIComponent(parsed.pathname));
-  const boundary = relative(root, path);
-  if (boundary.startsWith("..") || isAbsolute(boundary) || !existsSync(path))
-    failures.push(`${label}: missing or invalid local file ${parsed.pathname}`);
 }
 const sitemap = readFileSync(resolve(root, "sitemap.xml"), "utf8");
 const titles = new Set();
@@ -81,8 +94,6 @@ for (const route of routes) {
 for (const example of Object.values(serviceExamples))
   for (const image of example.images) {
     requireLocal(image.src, example.title);
-    if (!image.alt.trim())
-      failures.push(`Missing image description: ${example.title}`);
   }
 for (const card of heroCards)
   if (card.image) requireLocal(card.image.src, card.label);
@@ -91,5 +102,5 @@ if (failures.length) {
   process.exitCode = 1;
 } else
   console.log(
-    `Site checks passed: ${routes.length} pages, metadata, sitemap and configured images. External links and browser interactions were not tested.`,
+    `Site checks passed: ${routes.length} pages, content, metadata, sitemap and configured images. External links and browser interactions were not tested.`,
   );

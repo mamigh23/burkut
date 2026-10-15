@@ -223,6 +223,12 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Doğrudan iletişim bağlantısı, modal Tab çevrimi, Yangan ilk aktarımının kaydırma/odak yarışı ve iki erişilebilirlik bulgusu giderildi. Normal yerel sunucu 5173 de yeniden çalışır hale getirildi.
 - 67 uygulama testi, 24 PHP kontrolü ve üretim/yayın denetimleri geçti. Dört mobil axe taramasında otomatik ihlal 0; manuel kontrast ve diğer fiziksel kabuller aşağıda açık. [Tam kapsam ve kanıtlar](./docs/qa/UCTAN-UCA-KONTROL-2026-10-15.md).
 
+## İçerik bakımı — 15 Ekim
+
+- Hizmet galerilerinde sabit iki görsel sınırı kaldırıldı. Tek görselde gereksiz oklar gizlenir; eklenen/çıkarılan kayıtlar içerik dosyasından yönetilir.
+- Boş galeri/açıklama/hizmet metni, yinelenen adres ve kimlik, eksik galeri eşleşmesi yayın kontrolünde durdurulur. Yerel varlıklarda bozuk adres ve klasör yolu hata olarak ele alınır.
+- 73 test, lint, üretim ve yayın öncesi site/varlık denetimleri geçti. Mevcut oyun galerisi gerçek tarayıcıda kontrol edildi. [Kapsam ve kanıt](./docs/qa/ICERIK-BAKIMI-2026-10-15.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.
