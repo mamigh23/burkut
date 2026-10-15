@@ -8,6 +8,7 @@
 | Ana sayfa hizmetleri, ürün konseptleri, SSS | `src/content.ts` |
 | Web hizmetinin açıklaması, teslimler, adımlar ve SSS | `src/content/serviceDetails.ts` |
 | Hero kartlarının görsel ayarları | `src/content/heroCards.ts` |
+| Hizmet sayfası örnek görselleri, ad ve alt metinler | `src/content/serviceExamples.ts` |
 | Ana sayfa başlık ve sosyal paylaşım etiketleri | `index.html` |
 | Web hizmeti sayfasının başlık ve paylaşım etiketleri | `hizmetler/web/index.html` |
 | Logodan türetilen site varlıkları | `public/images/brand/` |
@@ -15,6 +16,8 @@
 Önce ilgili içerik dosyasındaki örnek kaydı koruyarak metni veya görsel yolunu değiştir. Dosya biçimini ve TypeScript alan adlarını koru. Hizmet detaylarını düzenlemek için `ServicePage.tsx` bileşenini değiştirmen gerekmez.
 
 ## Görsel kuralları
+
+Hizmet galerileri ikişer görsel kullanır. Değiştirmek için `serviceExamples.ts` içindeki `src` ve `alt` değerlerini güncelle; aynı 4:3 oranını koru. Varsayılan SVG'ler `scripts/prepare-service-previews.mjs` ile tekrar üretilebilir. Bu komut varsayılan görselleri yeniler; özelleştirilmiş dosyanın üzerine yazmadan önce farklı ad kullan. Örnekler müşteri işi değil tasarım konseptidir. Görseller 960×720 boyutlarında hafif vektör varlıklardır.
 
 - Yeni görseli `public/images/` altında açıklayıcı, küçük harfli, boşluksuz bir adla sakla. Kodda `/images/dosya-adi.webp` gibi kökten başlayan yol kullan.
 - Kartın mevcut en/boy oranına uygun görsel seç; önemli yazı veya logoyu kenarlara yerleştirme. Dikey telefon görseliyle yatay masaüstü görselini aynı kırpmayla değiştirme.

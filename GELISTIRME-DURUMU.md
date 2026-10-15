@@ -195,6 +195,12 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Üç kart detay sayfalarına gider; her form kendi hizmeti seçili başlar. Fiziksel HTML girişleri, canonical, paylaşım etiketleri ve sitemap güncellendi.
 - 54 test, lint, üretim ve boyut kontrolleri geçti. Üretilmiş HTML varlıkları ayrıca doğrulandı; manuel görsel/canlı kabul açık. [Rapor](./docs/qa/HIZMET-SAYFALARI.md).
 
+## İkinci aşama — hizmet görselleri ve sade galeri
+
+- Altı düzenlenebilir SVG arayüz örneği, büyütme galerisi, hafif hover ve azaltılmış hareket desteği eklendi. Süreç/hazırlık tek kapalı bölüme alındı; diğer hizmetler alt bilgiye taşındı.
+- Galeri/kart görselleri ayrı içerik dosyasından değişir. Yol haritasındaki ilk konsept vitrini/galeri işi yeni sayfa kalabalığı oluşturmadan uygulandı.
+- 55 test, lint, typecheck, build ve boyut kontrolleri geçti; görsel/canlı kabul açık. Tam kurulum ZIP'i için tekrar kullanılabilir komut eklendi. [Rapor](./docs/qa/HIZMET-GORSELLERI-VE-GALERI.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

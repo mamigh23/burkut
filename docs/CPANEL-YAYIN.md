@@ -34,6 +34,8 @@ Mevcut domain, DNS ve geçerli SSL ayarlarını değiştirme. Yeni hosting kurul
 
 ## Geri dönüş
 
+**Sıfır kurulum paketi:** `npm run release:full -- gemnative ADDRESS@gmail.com` komutu SMTP site paketini de yenileyerek `burkut-tam-kurulum.zip` üretir. Adres yerine şirket Gmail adresini yaz; şifreyi komuta verme. İçindeki `site/` ve `burkut-private/` farklı sunucu konumlarına yüklenir; kökteki `KURULUM.txt` yönergelerini izle. Özel config boş şifre ve kapalı gönderimle gelir. Çalışan kurulumda yalnızca site ZIP'ini kullanmak mail ayarlarının korunmasını kolaylaştırır.
+
 Yayın sonrası kritik sorun çıkarsa belge köküne önceki çalışan site dosyalarını geri koy. Eski `index.html` dosyasının işaret ettiği eski hash'li varlıklar da bulunmalı. Yalnızca index dosyasını geri getirmek yeterli değildir. Kullanımdaki varlıkların eksilmemesi için yayın sırasında eski hash'li dosyaları hemen silme.
 
 Özel Gmail config, vendor ve gönderim kayıtları site geri dönüşünden bağımsız korunur. Eski sürümün API/şablon uyumluluğunu kontrol et; özel dosyaları körlemesine eski ZIP'le değiştirme.

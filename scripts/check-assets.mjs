@@ -21,7 +21,7 @@ let css = 0;
 let fonts = 0;
 const failures = [];
 for (const path of files) {
-  if (!/\.(js|css|webp|png|jpe?g|avif|woff2?)$/.test(path)) continue;
+  if (!/\.(js|css|svg|webp|png|jpe?g|avif|woff2?)$/.test(path)) continue;
   const data = await readFile(path);
   if (path.endsWith(".js")) js += gzipSync(data).byteLength;
   else if (path.endsWith(".css")) css += gzipSync(data).byteLength;

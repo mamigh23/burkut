@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Brand, Eyebrow } from "../components/UI";
 import { MotionProvider, MotionToggle } from "../components/Motion";
 import Contact from "../sections/Contact";
+import ServiceExample from "../components/ServiceExample";
 import { serviceDetails, type ServiceDetail } from "../content/serviceDetails";
 
 export default function ServicePage({ service }: { service: ServiceDetail }) {
@@ -25,28 +26,27 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
       </div>
       <main id="main" tabIndex={-1}>
         <section className="service-detail-hero">
-          <div className="container">
-            <Eyebrow light>{service.eyebrow}</Eyebrow>
-            <h1>
-              {service.title}
-              <br />
-              <span>{service.highlight}</span>
-            </h1>
-            <p>{service.intro}</p>
-            <a href="#iletisim" className="button button-primary">
-              {service.action} <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
+          <div className="container service-hero-layout">
+            <div className="service-hero-copy">
+              <Eyebrow light>{service.eyebrow}</Eyebrow>
+              <h1>
+                {service.title}
+                <br />
+                <span>{service.highlight}</span>
+              </h1>
+              <p>{service.intro}</p>
+              <a href="#iletisim" className="button button-primary">
+                {service.action} <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+            <ServiceExample area={service.area} />
           </div>
         </section>
         <section className="section-pad service-detail-content">
           <div className="container">
             <div className="service-detail-intro">
-              <Eyebrow>KİMLER İÇİN?</Eyebrow>
-              <h2>
-                İhtiyacına göre
-                <br />
-                bir başlangıç.
-              </h2>
+              <Eyebrow>NE ELDE EDERSİN?</Eyebrow>
+              <h2>Fikrinden ilk somut adıma.</h2>
               <p>{service.audience}</p>
             </div>
             <div className="service-detail-grid">
@@ -57,47 +57,53 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
                 </article>
               ))}
             </div>
-            <div className="service-detail-section">
-              <Eyebrow>NASIL İLERLERİZ?</Eyebrow>
-              <h2>
-                Adım adım,
-                <br />
-                birlikte şekillenir.
-              </h2>
-              <ol className="service-detail-steps">
-                {service.steps.map((step, i) => (
-                  <li key={step.title}>
-                    <span className="mono">0{i + 1}</span>
-                    <div>
-                      <h3>{step.title}</h3>
-                      <p>{step.description}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <div className="service-detail-section service-preparation">
-              <div>
-                <Eyebrow>İLK GÖRÜŞME İÇİN</Eyebrow>
+            <details className="service-process-disclosure">
+              <summary>
+                Süreç ve ilk görüşme için hazırlık{" "}
+                <span aria-hidden="true">+</span>
+              </summary>
+              <div className="service-detail-section">
+                <Eyebrow>NASIL İLERLERİZ?</Eyebrow>
                 <h2>
-                  Fikrin yeter.
+                  Adım adım,
                   <br />
-                  Detayları konuşuruz.
+                  birlikte şekillenir.
                 </h2>
-              </div>
-              <div>
-                <p>
-                  Varsa bunları hazırlaman, ihtiyaçlarını daha hızlı anlamamıza
-                  yardımcı olur.
-                </p>
-                <ul>
-                  {service.preparation.map((item) => (
-                    <li key={item}>{item}</li>
+                <ol className="service-detail-steps">
+                  {service.steps.map((step, i) => (
+                    <li key={step.title}>
+                      <span className="mono">0{i + 1}</span>
+                      <div>
+                        <h3>{step.title}</h3>
+                        <p>{step.description}</p>
+                      </div>
+                    </li>
                   ))}
-                </ul>
+                </ol>
               </div>
-            </div>
-            <div className="service-detail-section">
+              <div className="service-detail-section service-preparation">
+                <div>
+                  <Eyebrow>İLK GÖRÜŞME İÇİN</Eyebrow>
+                  <h2>
+                    Fikrin yeter.
+                    <br />
+                    Detayları konuşuruz.
+                  </h2>
+                </div>
+                <div>
+                  <p>
+                    Varsa bunları hazırlaman, ihtiyaçlarını daha hızlı
+                    anlamamıza yardımcı olur.
+                  </p>
+                  <ul>
+                    {service.preparation.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <div className="service-detail-section service-faq-compact">
               <Eyebrow>MERAK ETTİKLERİN</Eyebrow>
               <h2>Başlamadan önce.</h2>
               <div className="service-detail-faq">
@@ -111,29 +117,21 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
             </div>
           </div>
         </section>
-        <section
-          className="container service-related"
-          aria-labelledby="related-title"
-        >
-          <Eyebrow>DİĞER HİZMETLER</Eyebrow>
-          <h2 id="related-title">Fikrin başka bir yere mi uzanıyor?</h2>
-          <div>
-            {serviceDetails
-              .filter((item) => item.area !== service.area)
-              .map((item) => (
-                <a key={item.area} href={item.path}>
-                  {item.label}
-                  <ArrowUpRight size={18} aria-hidden="true" />
-                </a>
-              ))}
-          </div>
-        </section>
         <Contact draft={null} initialArea={service.area} />
       </main>
       <footer className="footer">
         <div className="container footer-bottom">
           <Brand footer href="/" />
           <a href="/">Ana sayfaya dön</a>
+          <nav className="service-footer-related" aria-label="Diğer hizmetler">
+            {serviceDetails
+              .filter((item) => item.area !== service.area)
+              .map((item) => (
+                <a key={item.area} href={item.path}>
+                  {item.label}
+                </a>
+              ))}
+          </nav>
           <span className="mono release-version">
             Sürüm {import.meta.env.VITE_RELEASE_ID || "geliştirme"}
           </span>

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "release:cpanel": "node scripts/release-cpanel.mjs",
+    "release:full": "node scripts/release-full.mjs",
     "server:dev": "node server/dev.mjs",
     "qa:prepare": "npm run build && node scripts/prepare-performance.mjs",
     "qa:preview": "vite preview --host 127.0.0.1 --outDir .qa-dist --port 4173 --strictPort",

@@ -21,6 +21,10 @@
 
 ## Öncelik tablosu
 
+**Kalıcı tasarım kuralı — 15 Ekim:** İçerik miktarını artırmak başarı ölçütü değildir. Her yeni bölüm ziyaretçinin hizmeti anlamasını veya proje talebi bırakmasını kolaylaştırmalı. Hizmet sayfalarında örnek görsel ve tek ana eylem öne çıkar; ayrıntılar isteğe bağlı açılır, rakip hizmet bağlantıları alt bilgide kalır. Yeni blog/panel/AI veya galeri eklenirken bu kural korunur.
+
+**Görsel ve galeri paketi:** Üç hizmete ikişer düzenlenebilir arayüz konsepti, büyütme galerisi ve hover etkileşimi eklendi. Süreç/hazırlık tek açılır bölüme alındı, hizmetler arası gezinme alt bilgiye taşındı. Böylece proje vitrini/galeri aşamasının ilk uygulaması mevcut sayfalar içinde gerçekleştirildi; ayrı uzun proje sayfaları açılmadı. Gerçek müşteri portföyü içerik/izin bekliyor.
+
 | Sıra | Paket | Beklenen fayda | Bağımlılık |
 | --- | --- | --- | --- |
 | 1 | Canlı sürümü ve temel kullanımı sağlamlaştırma | Yayın ve gönderim sorunlarını erken bulmak | Son paketin yüklenmesi; fiziksel cihaz kontrolü |
