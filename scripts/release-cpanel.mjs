@@ -22,6 +22,9 @@ execFileSync(process.execPath, ["scripts/check-assets.mjs"], {
 const manifest = JSON.parse(
   readFileSync(`${stage}/public/release.json`, "utf8"),
 );
+execFileSync(process.execPath, ["scripts/check-site.mjs"], {
+  stdio: "inherit",
+});
 if (
   manifest.submission !== "enabled" ||
   manifest.endpoint !== "/api/projects.php" ||

@@ -32,6 +32,8 @@ Hizmet galerileri ikişer görsel kullanır. Değiştirmek için `serviceExample
 
 ## Kontrol ve yayın
 
+`npm run check:site` derlenmiş `dist/` içinde dört sayfanın canonical, başlık/açıklama, sitemap ve JSON-LD bilgilerini; statik sayfa varlıklarını, galeri ve özel hero görsellerinin yerel dosyalarını kontrol eder. Yeni bir görsel yolu yazıp dosyayı eklemeyi unutursan yayın durur. Harici bağlantılara ağ isteği yapmaz; bütün tarayıcı etkileşimlerinin çalıştığını veya özel görsellerin görünümünü doğrulamaz.
+
 Önce `npm run lint`, `npm test` ve `npm run release:cpanel -- gemnative` çalıştır. Yayın komutu TypeScript derlemesini ve Vite çıktısını üretir. Boyut sınırlarını `npm run check:assets` ile kontrol et. Sayfa ve görselleri yerelde incele; yalnızca otomatik testlere bakarak görsel kontrol tamamlandı deme.
 
 Güncel SMTP ZIP'ini Bürküt belge köküne çıkar; özel `config.php`, `vendor/` ve `state/` dosyalarına dokunma. [Yayın ve geri dönüş rehberi](./CPANEL-YAYIN.md).

@@ -22,6 +22,7 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run check:assets
+      - run: npm run check:site
   php-mail:
     runs-on: ubuntu-latest
     steps:

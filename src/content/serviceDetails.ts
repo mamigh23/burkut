@@ -1,4 +1,4 @@
-import type { Area } from "../content";
+import type { Area } from "../content.ts";
 
 export interface ServiceDetail {
   area: Area;

@@ -201,6 +201,12 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Galeri/kart görselleri ayrı içerik dosyasından değişir. Yol haritasındaki ilk konsept vitrini/galeri işi yeni sayfa kalabalığı oluşturmadan uygulandı.
 - 55 test, lint, typecheck, build ve boyut kontrolleri geçti; görsel/canlı kabul açık. Tam kurulum ZIP'i için tekrar kullanılabilir komut eklendi. [Rapor](./docs/qa/HIZMET-GORSELLERI-VE-GALERI.md).
 
+## İkinci aşama — güvenilir yayın ve teknik görünürlük
+
+- Dört sayfa ve içerik dosyalarındaki yerel görseller için `check:site` yayın/GitHub denetimi eklendi. Kontrollü eksik görsel denemesinde yayını engelledi; geri yüklemede geçti.
+- Ortak kaynaklardan statik Organization/WebSite/Service/WebPage/BreadcrumbList JSON-LD ve hizmet gezinme yolu eklendi. Kullanıcıya yeni uzun bölüm veya takip aracı gösterilmedi.
+- 57 test, lint ve üretim kontrolleri geçti. Çevrim içi zengin sonuç doğrulayıcısı ve canlı kabul yapılmadı. [Rapor](./docs/qa/YAYIN-VE-METAVERI-KONTROLU.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

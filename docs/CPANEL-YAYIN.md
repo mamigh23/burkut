@@ -14,6 +14,8 @@ Paketleme şu an Windows PowerShell gerektirir. Diğer sistemlerde script stagin
 
 ## Sürümü doğrula
 
+Yayın komutuna `check:site` denetimi de dahildir. Eksik sayfa, yanlış canonical, yinelenen başlık, eksik paylaşım/galeri/hero görseli veya geçersiz yapılandırılmış bilgi saptanırsa yeni ZIP üretilmez. Önceki ZIP diskte kalabilir; başarısız komuttan sonra onu yeni sürüm sanarak yükleme. Aynı denetim GitHub kalite iş akışında da çalışır.
+
 Paketin `release.json` dosyası Git revizyonu, UTC üretim zamanı, sürüm kimliği ve servis modlarını içerir. Ana sayfa ve hizmet sayfası alt bilgisindeki sürüm aynı olmalıdır. Bunlar kişisel bilgi veya şifre içermez. `release.json` içindeki zaman UTC'dir.
 
 Git revizyonu derleme sırasında HEAD'dir; yerel kaydedilmemiş değişikliklerle paket oluşturulabilir. Resmî teslim paketini kaynak değişiklikleri commit edildikten sonra üret. Sürüm kimliği içerik bütünlüğü veya güvenlik imzası değildir.

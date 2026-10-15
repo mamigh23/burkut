@@ -1,9 +1,30 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import { serviceForPath } from "./src/content/serviceDetails.ts";
+import { siteSchema } from "./src/shared/siteMetadata.ts";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    {
+      name: "burkut-structured-data",
+      transformIndexHtml(html, context) {
+        return {
+          html,
+          tags: [
+            {
+              tag: "script",
+              attrs: { type: "application/ld+json" },
+              children: siteSchema(serviceForPath(context.path)),
+              injectTo: "head",
+            },
+          ],
+        };
+      },
+    },
+  ],
   build: {
     rolldownOptions: {
       input: {

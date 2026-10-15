@@ -28,6 +28,11 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
         <section className="service-detail-hero">
           <div className="container service-hero-layout">
             <div className="service-hero-copy">
+              <nav className="service-breadcrumb" aria-label="Sayfa konumu">
+                <a href="/">Ana sayfa</a>
+                <span aria-hidden="true">/</span>
+                <span aria-current="page">{service.label}</span>
+              </nav>
               <Eyebrow light>{service.eyebrow}</Eyebrow>
               <h1>
                 {service.title}
