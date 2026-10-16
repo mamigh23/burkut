@@ -1,0 +1,26 @@
+[
+  {
+    "options": [
+      "Markamı tanıtmak",
+      "Talep toplamak",
+      "Ürün satmak",
+      "Birlikte netleştirelim"
+    ],
+    "overflow": false,
+    "panelOverflow": false,
+    "path": "/hizmetler/web/",
+    "progress": "ADIM 1 / 4 Geri"
+  },
+  {
+    "options": [
+      "Mobil uygulama",
+      "Web uygulaması",
+      "Mevcut uygulamayı geliştirme",
+      "Birlikte netleştirelim"
+    ],
+    "overflow": false,
+    "panelOverflow": false,
+    "path": "/hizmetler/uygulama/",
+    "progress": "ADIM 1 / 4 Geri"
+  }
+]

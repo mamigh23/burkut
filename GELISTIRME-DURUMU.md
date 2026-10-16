@@ -233,6 +233,13 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 
 Mavi/beyaz Bürküt esintili 3D konseptin önden görünümü şeffaf ve 256×256 boyutunda hazırlandı. Sohbet düğmesi, başlık ve tanıtım tek görseli kullanır. Düğme/görsel boyutları ve pencere boşluğu ayarlandı; masaüstü ile 390/320 px tarayıcı görünümleri, kapanış odağı ve temel proje akışı kontrol edildi. 73 test, lint ve üretim derlemesi geçti. [Varlık, istem ve ekran görüntüleri](./docs/YANGAN-KARAKTERI.md).
 
+## Yangan proje yardımcısı — 16 Ekim
+
+- Hizmete özel amaç/detay soruları ve cevaplara göre kısa başlangıç önerileri eklendi. Ana sayfada beş, hizmet sayfasında ön seçimle dört soru sorulur. Bütçe formda isteğe bağlı kalır.
+- Özette düzeltme diğer cevapları korur; alan değiştiğinde bağımlı cevaplar temizlenir. Öneri ve cevaplar mevcut forma aktarılır; önceden yazılmış bütçe/ad korunur. Aktarım tek başına talep göndermez.
+- Özetin aktar düğmesi sohbetin altında sabit kalır. Karakter başlıkta kısa selamlama ve yanıt beklerken ışık tepkisi verir; hareket ayarına uyar.
+- 80 uygulama testi, lint, üretim, dört sayfanın site kontrolü ve varlık bütçeleri geçti. Ana sayfa/üç hizmet bağlamı ve mobil aktarım gerçek yerel tarayıcıda denendi. Gerçek AI açılmadı, canlı SMTP gönderimi yapılmadı. [Rapor ve kanıtlar](./docs/qa/YANGAN-AKISI-2026-10-16.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

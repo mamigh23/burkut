@@ -66,9 +66,12 @@ export function Eyebrow({
     </div>
   );
 }
-export function YanganMark() {
+export function YanganMark({ thinking = false }: { thinking?: boolean }) {
   return (
-    <span className="yangan-mark" aria-hidden="true">
+    <span
+      className={`yangan-mark${thinking ? " yangan-thinking" : ""}`}
+      aria-hidden="true"
+    >
       <img
         src="/images/brand/yangan-avatar.png"
         width={256}

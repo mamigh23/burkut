@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ServicePage from "./ServicePage";
 import {
@@ -11,6 +11,10 @@ import {
 } from "../content/serviceDetails";
 
 beforeEach(() => {
+  vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) =>
+    setTimeout(() => callback(0), 0),
+  );
+  HTMLElement.prototype.scrollIntoView = vi.fn();
   vi.stubGlobal("matchMedia", () =>
     Object.assign(new EventTarget(), { matches: false }),
   );
@@ -18,6 +22,46 @@ beforeEach(() => {
 afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
+  window.history.replaceState(null, "", "/");
+});
+it("hizmet sayfasında Yangan özeti forma aktarılır ve yazılmış bütçe korunur", async () => {
+  const user = userEvent.setup();
+  render(<ServicePage service={appService} />);
+  await user.click(screen.getByRole("textbox", { name: /ad soyad/i }));
+  await user.paste("Örnek Kullanıcı");
+  await user.click(screen.getByText("Ek bilgi ekle", { exact: true }));
+  const budget = screen.getByRole("textbox", {
+    name: /bütçe/i,
+  }) as HTMLInputElement;
+  await user.click(budget);
+  await user.paste("Görüşmede paylaşacağım");
+  await user.click(screen.getByRole("button", { name: "Yangan'ı aç" }));
+  await user.click(screen.getByRole("button", { name: "Fikrimi netleştir" }));
+  for (const name of ["Mobil uygulama", "Fikir aşamasında", "Yakında", "Atla"])
+    await user.click(screen.getByRole("button", { name }));
+  await user.click(screen.getByRole("button", { name: "Forma aktar" }));
+  await waitFor(() =>
+    expect(
+      screen.getByText("Yangan proje özetin forma aktarıldı."),
+    ).toBeTruthy(),
+  );
+  expect(
+    (
+      screen.getByRole("textbox", {
+        name: /fikrinden bahset/i,
+      }) as HTMLTextAreaElement
+    ).value,
+  ).toContain("Amaç: Mobil uygulama");
+  expect(
+    (screen.getByRole("checkbox", { name: "Uygulama" }) as HTMLInputElement)
+      .checked,
+  ).toBe(true);
+  expect(budget.value).toBe("Görüşmede paylaşacağım");
+  expect(
+    (screen.getByRole("textbox", { name: /ad soyad/i }) as HTMLInputElement)
+      .value,
+  ).toBe("Örnek Kullanıcı");
+  expect(screen.queryByLabelText("Yangan proje asistanı")).toBeNull();
 });
 it.each([
   [appService, "Uygulama"],

@@ -7,6 +7,7 @@
 - Üretim: yerleşik Imagegen aracıyla onaylanan konseptten şeffaf tek karakter çıkarıldı; Windows görüntü kitaplığıyla 256×256 PNG olarak küçültüldü. Alfa korundu (köşe alfa değeri 0).
 - Ortak bileşen: `YanganMark`; sohbet düğmesinde 56 px, başlıkta 44 px, tanıtımda 72 px, dar ekrandaki tanıtımda 52 px. Düğme 64 px; masaüstü sohbet penceresinin alt boşluğu 102 px.
 - Bağımsız görsel kutusu, çevrimiçi durum noktası veya sürekli hareket eklenmedi. Mavi karakter mevcut koyu yeşil zemin üstünde kullanılır.
+- Akış geliştirmesinde başlığa kısa bir selamlama ve yalnızca yanıt beklerken hafif ışık tepkisi eklendi. İkisi de sitenin hareket tercihini ve sistemin azaltılmış hareket ayarını izler.
 - [Masaüstü](./qa/evidence/yangan-blue-desktop-2026-10-16.png), [mobil](./qa/evidence/yangan-blue-mobile-2026-10-16.png) ekran görüntüleri.
 
 Gerçek yerel tarayıcıda masaüstü, 390 px ve 320 px görünüm kontrol edildi. Mobilde yatay sayfa/başlık taşması yok. Görsel 256 px doğal genişlikle yükleniyor. Proje akışında hizmet seçimi, yeni konuşma ve Escape ile kapanıp odağın açıcıya dönmesi denendi. Gerçek fiziksel cihaz/ekran okuyucu kabulü bu kontrolün kapsamında değildir.

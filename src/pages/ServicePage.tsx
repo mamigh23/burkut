@@ -1,13 +1,17 @@
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 import { Brand, Eyebrow } from "../components/UI";
 import { MotionProvider, MotionToggle } from "../components/Motion";
-import Contact from "../sections/Contact";
+import Contact, { type Draft } from "../sections/Contact";
+import Yangan from "../yangan/Yangan";
 import ServiceExample from "../components/ServiceExample";
-import { startProject } from "../shared/startProject";
+import { startProject, focusProjectForm } from "../shared/startProject";
 import { useInitialAnchor } from "../shared/useInitialAnchor";
 import { serviceDetails, type ServiceDetail } from "../content/serviceDetails";
 
 export default function ServicePage({ service }: { service: ServiceDetail }) {
+  const [chatOpen, setChatOpen] = useState(false);
+  const [draft, setDraft] = useState<Draft | null>(null);
   useInitialAnchor();
   return (
     <MotionProvider>
@@ -129,7 +133,7 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
             </div>
           </div>
         </section>
-        <Contact draft={null} initialArea={service.area} />
+        <Contact draft={draft} initialArea={service.area} />
       </main>
       <footer className="footer">
         <div className="container footer-bottom">
@@ -150,6 +154,15 @@ export default function ServicePage({ service }: { service: ServiceDetail }) {
           <MotionToggle />
         </div>
       </footer>
+      <Yangan
+        open={chatOpen}
+        setOpen={setChatOpen}
+        initialArea={service.area}
+        onDraft={(nextDraft) => {
+          setDraft(nextDraft);
+          requestAnimationFrame(() => focusProjectForm());
+        }}
+      />
     </MotionProvider>
   );
 }

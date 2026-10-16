@@ -13,6 +13,7 @@
 | Web hizmeti sayfasının başlık ve paylaşım etiketleri | `hizmetler/web/index.html` |
 | Logodan türetilen site varlıkları | `public/images/brand/` |
 | Onaylanan mavi Yangan karakteri | `public/images/brand/yangan-avatar.png` |
+| Yangan hizmet soruları, cevap etiketleri ve başlangıç önerileri | `src/yangan/flow.ts` |
 
 Önce ilgili içerik dosyasındaki örnek kaydı koruyarak metni veya görsel yolunu değiştir. Dosya biçimini ve TypeScript alan adlarını koru. Hizmet detaylarını düzenlemek için `ServicePage.tsx` bileşenini değiştirmen gerekmez.
 

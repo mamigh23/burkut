@@ -12,13 +12,15 @@ import { YanganMark } from "../components/UI";
 import { ChatError, chatEnabled, replyToChat } from "../services/chat";
 import {
   answerArea,
+  answerLabels,
+  createInitialFlow,
   flowReducer,
-  initialFlow,
-  questions,
+  questionsFor,
+  startingPoint,
   summaryDetail,
 } from "./flow";
 import type { Draft } from "../sections/Contact";
-import { projectLimits } from "../shared/project";
+import { areaLabels, type Area } from "../content";
 
 interface Message {
   role: "assistant" | "user";
@@ -28,13 +30,28 @@ export default function Yangan({
   open,
   setOpen,
   onDraft,
+  initialArea,
 }: {
   open: boolean;
   setOpen: (value: boolean) => void;
   onDraft: (draft: Draft) => void;
+  initialArea?: Area;
 }) {
   const [mode, setMode] = useState<"welcome" | "flow" | "chat">("welcome");
-  const [flow, dispatch] = useReducer(flowReducer, initialFlow);
+  const [flow, dispatch] = useReducer(
+    flowReducer,
+    initialArea,
+    createInitialFlow,
+  );
+  const questions = questionsFor(flow.answers);
+  const suggestion = startingPoint(flow.answers);
+  const isSummary = mode === "flow" && flow.step >= questions.length;
+  const firstStep =
+    initialArea &&
+    flow.answers.area === areaLabels[initialArea] &&
+    flow.step > 0
+      ? 1
+      : 0;
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [announcement, setAnnouncement] = useState("");
@@ -73,10 +90,10 @@ export default function Yangan({
     if (!open) return;
     if (mode === "flow") {
       panel.current
-        ?.querySelector<HTMLButtonElement>(
-          ".chat-options button, .summary-transfer",
+        ?.querySelector<HTMLElement>(
+          ".chat-options button, .flow-summary h3",
         )
-        ?.focus();
+        ?.focus({ preventScroll: true });
     } else if (mode === "chat") {
       panel.current?.querySelector<HTMLInputElement>("#chat-input")?.focus();
     }
@@ -107,10 +124,11 @@ export default function Yangan({
     };
   }, [open]);
   useEffect(() => {
-    if (nearBottom.current && scroll.current)
+    if (isSummary && scroll.current) scroll.current.scrollTop = 0;
+    else if (nearBottom.current && scroll.current)
       scroll.current.scrollTop = scroll.current.scrollHeight;
     else if (messages.length) setUnread(true);
-  }, [messages, mode, flow.step, busy, chatError]);
+  }, [messages, mode, flow.step, busy, chatError, isSummary]);
   const close = () => {
     setOpen(false);
   };
@@ -119,7 +137,7 @@ export default function Yangan({
     pending.current?.abort();
     setBusy(false);
     setChatError("");
-    dispatch({ type: "reset" });
+    dispatch({ type: "reset", area: initialArea });
     setMode("welcome");
     setMessages([]);
     setInput("");
@@ -128,13 +146,15 @@ export default function Yangan({
     nearBottom.current = true;
   };
   const answer = (value: string) => {
-    dispatch({
+    const action = {
       type: "answer",
       value: value === "Atla" ? "Belirtilmedi" : value,
-    });
+    } as const;
+    const next = flowReducer(flow, action);
+    dispatch(action);
     setInput("");
     setAnnouncement(
-      flow.step < 4 ? questions[flow.step + 1].title : "Proje özetin hazır.",
+      questionsFor(next.answers)[next.step]?.title ?? "Proje özetin hazır.",
     );
     nearBottom.current = true;
   };
@@ -209,7 +229,7 @@ export default function Yangan({
           }}
         >
           <div className="chat-header">
-            <YanganMark />
+            <YanganMark thinking={busy} />
             <div>
               <b>Yangan</b>
               <span>Bürküt'ün dijital asistanı</span>
@@ -239,16 +259,19 @@ export default function Yangan({
               if (nearBottom.current) setUnread(false);
             }}
           >
-            <div className="chat-message assistant">
-              Merhaba, ben Yangan. Web sitesi, uygulama veya oyun fikrini
-              birlikte netleştirebiliriz. Nereden başlayalım?
-            </div>
+            {!isSummary && (
+              <div className="chat-message assistant">
+                {initialArea
+                  ? `Merhaba, ben Yangan. ${areaLabels[initialArea]} fikrini birlikte netleştirelim. İstersen farklı bir alan da seçebilirsin.`
+                  : "Merhaba, ben Yangan. Web sitesi, uygulama veya oyun fikrini birlikte netleştirebiliriz. Nereden başlayalım?"}
+              </div>
+            )}
             {mode === "welcome" && (
               <div className="welcome-options">
                 <button
                   onClick={() => {
                     setMode("flow");
-                    dispatch({ type: "reset" });
+                    dispatch({ type: "reset", area: initialArea });
                   }}
                 >
                   Fikrimi netleştir <ArrowUpRight size={16} />
@@ -267,23 +290,27 @@ export default function Yangan({
             )}
             {mode === "flow" && (
               <>
-                {questions.slice(0, flow.step).map(
-                  (question) =>
-                    flow.answers[question.key] && (
-                      <div className="flow-history" key={question.key}>
-                        <div className="chat-message assistant">
-                          {question.title}
+                {current &&
+                  questions.slice(firstStep, flow.step).map(
+                    (question) =>
+                      flow.answers[question.key] && (
+                        <div className="flow-history" key={question.key}>
+                          <div className="chat-message assistant">
+                            {question.title}
+                          </div>
+                          <div className="chat-message user">
+                            {flow.answers[question.key]}
+                          </div>
                         </div>
-                        <div className="chat-message user">
-                          {flow.answers[question.key]}
-                        </div>
-                      </div>
-                    ),
-                )}
+                      ),
+                  )}
                 {current ? (
                   <>
                     <div className="flow-progress">
-                      <span>ADIM {flow.step + 1} / 5</span>
+                      <span>
+                        ADIM {flow.step + 1 - firstStep} /{" "}
+                        {questions.length - firstStep}
+                      </span>
                       {flow.step > 0 && (
                         <button
                           onClick={() => {
@@ -300,7 +327,11 @@ export default function Yangan({
                     </div>
                     <div className="chat-options">
                       {current.options.map((option) => (
-                        <button key={option} onClick={() => answer(option)}>
+                        <button
+                          key={option}
+                          aria-pressed={flow.answers[current.key] === option}
+                          onClick={() => answer(option)}
+                        >
                           {option}
                           <ArrowUpRight size={14} />
                         </button>
@@ -312,40 +343,35 @@ export default function Yangan({
                     <span className="mono">
                       <Check size={15} /> PROJE ÖZETİN HAZIR
                     </span>
-                    <h3>İyi bir başlangıç.</h3>
+                    <h3 tabIndex={-1}>İyi bir başlangıç.</h3>
+                    <section
+                      className="yangan-recommendation"
+                      aria-label="Başlangıç önerisi"
+                    >
+                      <span>BAŞLANGIÇ ÖNERİSİ</span>
+                      <h4>{suggestion.title}</h4>
+                      <p>{suggestion.description}</p>
+                    </section>
                     {questions.map((question, index) => (
                       <div key={question.key}>
-                        <span>
-                          {["Alan", "Aşama", "Zaman", "Bütçe", "Detay"][index]}
-                        </span>
+                        <span>{answerLabels[question.key]}</span>
                         <b>{flow.answers[question.key]}</b>
                         <button
-                          aria-label={`${["Alan", "Aşama", "Zaman", "Bütçe", "Detay"][index]} seçimini düzelt`}
+                          aria-label={`${answerLabels[question.key]} seçimini düzelt`}
                           onClick={() => {
                             dispatch({ type: "edit", step: index });
-                            setInput("");
+                            setInput(
+                              question.freeText &&
+                                flow.answers[question.key] !== "Belirtilmedi"
+                                ? flow.answers[question.key] || ""
+                                : "",
+                            );
                           }}
                         >
                           Düzelt
                         </button>
                       </div>
                     ))}
-                    <button
-                      className="summary-transfer"
-                      onClick={() => {
-                        onDraft({
-                          area: answerArea(flow.answers.area),
-                          budget: flow.answers.budget || "",
-                          detail: summaryDetail(flow.answers),
-                        });
-                        close();
-                      }}
-                    >
-                      Forma aktar <ArrowUpRight size={16} />
-                    </button>
-                    <p>
-                      Proje özetini formda gözden geçirip tamamlayabilirsin.
-                    </p>
                   </div>
                 )}
               </>
@@ -399,6 +425,21 @@ export default function Yangan({
             </button>
           )}
           <div className="chat-controls">
+            {isSummary && (
+              <button
+                className="summary-transfer"
+                onClick={() => {
+                  onDraft({
+                    area: answerArea(flow.answers.area),
+                    budget: "",
+                    detail: summaryDetail(flow.answers),
+                  });
+                  close();
+                }}
+              >
+                Forma aktar <ArrowUpRight size={16} />
+              </button>
+            )}
             {mode === "chat" ||
             (mode === "flow" && current && "freeText" in current) ? (
               <form onSubmit={send} className="chat-composer">
@@ -408,11 +449,7 @@ export default function Yangan({
                 <input
                   id="chat-input"
                   value={input}
-                  maxLength={
-                    mode === "flow" && current?.key === "budget"
-                      ? projectLimits.budget
-                      : 2000
-                  }
+                  maxLength={2000}
                   placeholder={
                     mode === "chat" ? "Bir soru yaz…" : "İstersen buraya yaz…"
                   }
@@ -427,7 +464,7 @@ export default function Yangan({
                 </button>
               </form>
             ) : null}
-            {mode !== "welcome" && (
+            {mode !== "welcome" && !isSummary && (
               <button
                 className="chat-mode-switch"
                 disabled={busy}
@@ -445,9 +482,11 @@ export default function Yangan({
               </button>
             )}
             <span className="chat-footnote">
-              {chatEnabled && mode === "chat"
-                ? "Yanıt almak için mesajların sohbet servisine gönderilir."
-                : "Bu konuşma yalnızca bu sayfada tutulur."}
+              {isSummary
+                ? "Formda gözden geçirip gönderebilirsin."
+                : chatEnabled && mode === "chat"
+                  ? "Yanıt almak için mesajların sohbet servisine gönderilir."
+                  : "Bu konuşma yalnızca bu sayfada tutulur."}
             </span>
           </div>
           <span className="sr-only" role="status" aria-live="polite">

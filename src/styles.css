@@ -3045,6 +3045,33 @@ legend > span,
   height: 44px;
   width: 44px;
 }
+html[data-motion="enabled"]
+  .chat-header
+  .yangan-mark:not(.yangan-thinking)
+  img {
+  animation: yangan-hello 450ms ease-out both;
+}
+html[data-motion="enabled"] .chat-header .yangan-thinking img {
+  animation: yangan-thinking 1.6s ease-in-out infinite;
+}
+@keyframes yangan-hello {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  45% {
+    transform: rotate(-4deg);
+  }
+}
+@keyframes yangan-thinking {
+  0%,
+  100% {
+    filter: drop-shadow(0 2px 4px #02192340);
+  }
+  50% {
+    filter: drop-shadow(0 0 6px #67c7f080);
+  }
+}
 .chat-header > div {
   flex: 1;
 }
@@ -3131,7 +3158,8 @@ legend > span,
   font-size: 12px;
 }
 .welcome-options button:hover,
-.chat-options button:hover {
+.chat-options button:hover,
+.chat-options button[aria-pressed="true"] {
   background: var(--paper);
   border-color: var(--forest-600);
 }
@@ -3189,10 +3217,35 @@ legend > span,
 }
 .flow-summary > div > button {
   color: var(--forest-600);
-  padding: 0;
+  padding: 0 3px;
+  min-height: 44px;
   border: 0;
   background: transparent;
   font-size: 9px;
+}
+.yangan-recommendation {
+  background: var(--paper);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+.yangan-recommendation > span {
+  font:
+    8px "JetBrains Mono",
+    monospace;
+  color: var(--forest-600);
+}
+.yangan-recommendation h4 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 7px 0;
+}
+.yangan-recommendation p {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 .summary-transfer {
   display: flex;
@@ -3216,6 +3269,9 @@ legend > span,
   padding: 12px 15px;
   border-top: 1px solid var(--surface-muted);
   flex-shrink: 0;
+}
+.chat-controls .summary-transfer {
+  margin-top: 0;
 }
 .chat-retry {
   margin-top: 10px;

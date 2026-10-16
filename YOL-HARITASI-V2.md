@@ -1,6 +1,7 @@
 # Bürküt — İkinci aşama geliştirme yol haritası
 
-**Tarih:** 15 Ekim 2026  
+**Tarih:** 16 Ekim 2026
+
 **Durum:** Hizmet sayfaları, sade talep akışı, galeri ve teknik SEO uygulandı; yerel tarayıcı kontrolleri yapıldı. İçerik bakım kontrolleri güçlendiriliyor. Fiziksel cihaz, canlı sürüm kabulü ve kullanıcı bilgisine bağlı işler açık.
 **Hedef:** Ziyaretçinin Bürküt'ü daha iyi tanıdığı, doğru hizmete ulaştığı ve nitelikli proje talebi bırakabildiği bir site oluşturmak.
 
@@ -20,6 +21,8 @@
 - Gerçek müşteri işleri, ekip geçmişi ve başarı sayıları sağlanmadı. Konseptler gerçek müşteri referansı gibi sunulmaz. Gerçek AI kapalı.
 
 ## Öncelik tablosu
+
+**Yangan — 16 Ekim:** Web/uygulama/oyuna özel amaç ve detay soruları, cevaplara göre başlangıç önerisi ve cevapları koruyan özet düzenleme uygulandı. Beş soruluk akışta bütçe yerine amaç sorulur; bütçe formda isteğe bağlı kalır. Hizmet sayfalarında alan önceden seçilir ve akış dört soruyla ilerler. Özetin aktar düğmesi sabit görünür; öneri ve düzenlenmiş bilgiler forma taşınır. Karakterin kısa selamlaması ve bekleme tepkisi hareket tercihini izler. 80 test geçti; gerçek AI bağlantısı kapalı kalır. [Kontrol kapsamı](./docs/qa/YANGAN-AKISI-2026-10-16.md).
 
 **İçerik bakımı — 15 Ekim:** Hizmet galerilerinin iki görsel sınırı kaldırıldı. Görsel sayısı içerik dosyasından değişir; tek görselde oklar gizlenir. Yayın kontrolü boş galeriyi/açıklamayı/hizmet metnini, yinelenen adres ve kimlikleri, eksik galeri eşleşmesini ve geçersiz yerel dosyaları durdurur. Yeni görünür bölüm eklenmedi. Düzenleme adımları [içerik rehberinde](./docs/ICERIK-DEGISTIRME.md).
 

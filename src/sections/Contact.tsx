@@ -102,7 +102,7 @@ export default function Contact({
         ...current,
         areas: [draft.area],
         detail: draft.detail,
-        budget: draft.budget,
+        budget: draft.budget || current.budget,
       }));
       if (draft.budget.trim() && optionalFields.current)
         optionalFields.current.open = true;
