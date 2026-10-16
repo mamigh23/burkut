@@ -229,6 +229,10 @@ Nihai logo yerine geçici metin işareti kullanıldı. İletişim bilgileri ve a
 - Boş galeri/açıklama/hizmet metni, yinelenen adres ve kimlik, eksik galeri eşleşmesi yayın kontrolünde durdurulur. Yerel varlıklarda bozuk adres ve klasör yolu hata olarak ele alınır.
 - 73 test, lint, üretim ve yayın öncesi site/varlık denetimleri geçti. Mevcut oyun galerisi gerçek tarayıcıda kontrol edildi. [Kapsam ve kanıt](./docs/qa/ICERIK-BAKIMI-2026-10-15.md).
 
+## Onaylanan Yangan karakteri — 16 Ekim
+
+Mavi/beyaz Bürküt esintili 3D konseptin önden görünümü şeffaf ve 256×256 boyutunda hazırlandı. Sohbet düğmesi, başlık ve tanıtım tek görseli kullanır. Düğme/görsel boyutları ve pencere boşluğu ayarlandı; masaüstü ile 390/320 px tarayıcı görünümleri, kapanış odağı ve temel proje akışı kontrol edildi. 73 test, lint ve üretim derlemesi geçti. [Varlık, istem ve ekran görüntüleri](./docs/YANGAN-KARAKTERI.md).
+
 ## Henüz tamamlanmayan kabul kontrolleri
 
 - Gerçek telefon ve mobil klavye kontrolü. VisualViewport desteği uygulandı, fiziksel cihaz testi yapılmadı.

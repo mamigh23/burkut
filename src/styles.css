@@ -1893,14 +1893,22 @@ svg {
   align-items: flex-start;
 }
 .yangan-mark {
-  background: var(--forest-950);
-  color: var(--mint);
   height: 48px;
   width: 48px;
-  border-radius: 16px;
   display: grid;
   place-items: center;
   flex-shrink: 0;
+}
+.yangan-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px #02192340);
+}
+.yangan-intro .yangan-mark {
+  width: 72px;
+  height: 72px;
 }
 .yangan-intro .mono {
   font-size: 8px;
@@ -2979,11 +2987,11 @@ legend > span,
 
 /* Yangan */
 .chat-launcher {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   background: var(--forest-950);
   color: var(--mint);
-  border: 1px solid var(--border-dark);
+  border: 1px solid #74b7dc50;
   border-radius: 50%;
   position: fixed;
   z-index: 60;
@@ -2992,21 +3000,25 @@ legend > span,
   display: grid;
   place-items: center;
   box-shadow: 0 8px 25px #060c0b30;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
-.launcher-dot {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  background: var(--mint);
-  border: 2px solid var(--forest-950);
-  border-radius: 50%;
-  top: 2px;
-  right: 2px;
+.chat-launcher .yangan-mark {
+  width: 56px;
+  height: 56px;
+}
+.chat-launcher:hover,
+.chat-launcher:focus-visible {
+  border-color: #92d1ef;
+  box-shadow:
+    0 8px 28px #060c0b40,
+    0 0 0 4px #74b7dc12;
 }
 .chat-panel {
   position: fixed;
   z-index: 61;
-  bottom: 94px;
+  bottom: 102px;
   right: 24px;
   width: 390px;
   height: min(620px, calc(100dvh - 130px));
@@ -3030,10 +3042,8 @@ legend > span,
   flex-shrink: 0;
 }
 .chat-header .yangan-mark {
-  height: 36px;
-  width: 36px;
-  border-radius: 12px;
-  background: var(--forest-800);
+  height: 44px;
+  width: 44px;
 }
 .chat-header > div {
   flex: 1;
@@ -4135,9 +4145,8 @@ legend > span,
     gap: 12px;
   }
   .yangan-intro .yangan-mark {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
+    width: 52px;
+    height: 52px;
   }
   .yangan-intro h3 {
     font-size: 22px;

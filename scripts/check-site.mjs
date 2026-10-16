@@ -36,6 +36,7 @@ function requireLocal(url, label) {
     failures.push(`${label}: malformed asset URL ${url}`);
   }
 }
+requireLocal("/images/brand/yangan-avatar.png", "Yangan avatar");
 const sitemap = readFileSync(resolve(root, "sitemap.xml"), "utf8");
 const titles = new Set();
 const routes = ["/", ...serviceDetails.map((service) => service.path)];

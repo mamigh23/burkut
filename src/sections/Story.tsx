@@ -228,7 +228,7 @@ export function About({ onChat }: { onChat: () => void }) {
             <span>Özenle geliştiririz.</span>
           </div>
           <div className="yangan-intro">
-            <YanganMark size={30} />
+            <YanganMark />
             <div>
               <span className="mono">TANIŞTIRALIM: YANGAN</span>
               <h3>Bir fikirle başlayalım mı?</h3>

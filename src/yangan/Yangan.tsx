@@ -193,8 +193,7 @@ export default function Yangan({
         aria-controls="yangan-panel"
         onClick={() => setOpen(!open)}
       >
-        <MessageCircle size={25} />
-        <span className="launcher-dot" />
+        <YanganMark />
       </button>
       {open && (
         <aside
