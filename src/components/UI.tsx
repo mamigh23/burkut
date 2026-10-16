@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import type { ReactNode } from "react";
 import { startProject } from "../shared/startProject";
 
@@ -66,25 +66,10 @@ export function Eyebrow({
     </div>
   );
 }
-export function YanganMark({
-  size = 32,
-  busy = false,
-}: {
-  size?: number;
-  busy?: boolean;
-}) {
+export function YanganMark({ size = 22 }: { size?: number }) {
   return (
-    <span
-      className={`yangan-mark${busy ? " yangan-thinking" : ""}`}
-      aria-hidden="true"
-    >
-      <img
-        src="/images/brand/yangan.svg"
-        width={size}
-        height={size}
-        alt=""
-        draggable={false}
-      />
+    <span className="yangan-mark">
+      <Sparkles size={size} aria-hidden="true" />
     </span>
   );
 }
